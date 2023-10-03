@@ -34,4 +34,10 @@ public class MacedoineTest {
         assertFalse(m.isSeedless());
     }
 
+    @Test
+    public void testGetPrix() {
+        Macedoine m = new Macedoine(panierTest.getFruits());
+        assertEquals(1.5, m.getPrix());
+    }
+
 }
