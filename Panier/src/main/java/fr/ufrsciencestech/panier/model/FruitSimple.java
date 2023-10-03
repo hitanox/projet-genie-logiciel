@@ -45,7 +45,7 @@ public abstract class FruitSimple {
     }
 
     public String toJuice() {
-        return this.nom;
+        return this.nom+"(Jus)";
     }
 
     @Override
