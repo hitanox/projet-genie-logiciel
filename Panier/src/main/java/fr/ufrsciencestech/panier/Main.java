@@ -2,7 +2,7 @@ package fr.ufrsciencestech.panier;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.view.*;
-import fr.ufrsciencestech.panier.model.Panier;
+import fr.ufrsciencestech.panier.model.*;
 
 //utilise pour springIoC :
 import javax.swing.*;

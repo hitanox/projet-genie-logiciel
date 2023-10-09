@@ -4,14 +4,14 @@ public class Orange implements Fruit{
     private double prix;
     private String origine;
 	
-<span class="fc" id="L7">    public Orange() </span>
-    {
+    public Orange() 
+<span class="fc" id="L8">    {</span>
 <span class="fc" id="L9">        this.prix = 0.5;  //prix en euros</span>
 <span class="fc" id="L10">        this.origine=&quot;Espagne&quot;;</span>
 <span class="fc" id="L11">    }</span>
     
-<span class="nc" id="L13">    public Orange(double prix, String origine) </span>
-    {
+    public Orange(double prix, String origine) 
+<span class="nc" id="L14">    {</span>
 <span class="nc bnc" id="L15" title="All 2 branches missed.">	if(prix &lt; 0)</span>
 <span class="nc" id="L16">	    this.prix = -prix;  //une solution possible pour interdire les prix negatifs</span>
 	else
@@ -41,14 +41,14 @@ public class Orange implements Fruit{
 
     @Override
     public String toString(){
-<span class="fc" id="L44">        return &quot;Orange de &quot; + origine + &quot; a &quot; + prix + &quot; euros&quot;;</span>
+<span class="nc" id="L44">        return &quot;Orange de &quot; + origine + &quot; a &quot; + prix + &quot; euros&quot;;</span>
     }
 
     @Override
     public boolean equals(Object o){  //predicat pour tester si 2 oranges sont equivalentes
-<span class="pc bpc" id="L49" title="2 of 4 branches missed.">        if(o != null &amp;&amp; getClass() == o.getClass()){</span>
-<span class="fc" id="L50">            Orange or = (Orange) o;</span>
-<span class="pc bpc" id="L51" title="2 of 4 branches missed.">            return (prix == or.prix &amp;&amp; origine.equals(or.origine));</span>
+<span class="nc bnc" id="L49" title="All 4 branches missed.">        if(o != null &amp;&amp; getClass() == o.getClass()){</span>
+<span class="nc" id="L50">            Orange or = (Orange) o;</span>
+<span class="nc bnc" id="L51" title="All 4 branches missed.">            return (prix == or.prix &amp;&amp; origine.equals(or.origine));</span>
         }
 <span class="nc" id="L53">        return false;</span>
     }

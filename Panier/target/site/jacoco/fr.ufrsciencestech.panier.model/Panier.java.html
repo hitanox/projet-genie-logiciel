@@ -21,7 +21,7 @@ public class Panier extends Observable{
 <span class="nc" id="L21">        String result = &quot;&quot;;</span>
 <span class="nc bnc" id="L22" title="All 2 branches missed.">        for (Fruit f : fruits) {</span>
 <span class="nc" id="L23">            result += f.toString() + &quot;\n&quot;;</span>
-        }
+<span class="nc" id="L24">        }</span>
 <span class="nc" id="L25">        return result;</span>
     }
 
@@ -64,7 +64,7 @@ public class Panier extends Observable{
 <span class="fc" id="L64">            this.fruits.add(o);</span>
 <span class="fc" id="L65">            setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true</span>
 <span class="fc" id="L66">            notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed</span>
-<span class="fc" id="L67">        }</span>
+        }
 <span class="nc" id="L68">        else throw new PanierPleinException();</span>
 <span class="fc" id="L69">    }</span>
 
@@ -73,7 +73,7 @@ public class Panier extends Observable{
 <span class="nc" id="L73">            this.fruits.remove(getTaillePanier() - 1);</span>
 <span class="nc" id="L74">            setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true</span>
 <span class="nc" id="L75">            notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed</span>
-<span class="nc" id="L76">        }</span>
+        }
 <span class="fc" id="L77">        else throw new PanierVideException();</span>
 <span class="nc" id="L78">    }</span>
 
@@ -101,7 +101,7 @@ public class Panier extends Observable{
 <span class="nc" id="L101">                        System.out.println(f);</span>
 <span class="nc" id="L102">                        compt++;</span>
                     }
-                }
+<span class="nc" id="L104">                }</span>
 <span class="nc bnc" id="L105" title="All 2 branches missed.">                return compt == p.fruits.size();</span>
             }
         }

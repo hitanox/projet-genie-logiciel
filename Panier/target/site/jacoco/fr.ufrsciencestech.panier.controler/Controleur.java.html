@@ -17,14 +17,14 @@ import java.awt.event.*;
 <span class="fc bfc" id="L17" title="All 2 branches covered.">        if(((Component)e.getSource()).getName().equals(&quot;Plus&quot;)) {</span>
             try {
 <span class="fc" id="L19">                p.ajout(new Orange());</span>
-<span class="fc" id="L20">            }</span>
-<span class="nc" id="L21">            catch(PanierPleinException ppe) {System.out.println(ppe);}</span>
-<span class="nc" id="L22">        }</span>
+            }
+<span class="pc" id="L21">            catch(PanierPleinException ppe) {System.out.println(ppe);}</span>
+        }
         else {
             try {
-<span class="fc" id="L25">                p.retrait(); </span>
-<span class="fc" id="L26">            }</span>
-<span class="fc" id="L27">            catch(PanierVideException pve) {System.out.println(pve);}</span>
+<span class="nc" id="L25">                p.retrait(); </span>
+            }
+<span class="pc" id="L27">            catch(PanierVideException pve) {System.out.println(pve);}</span>
         }
 <span class="fc" id="L29">    }</span>
     public void setPanier(Panier p){
