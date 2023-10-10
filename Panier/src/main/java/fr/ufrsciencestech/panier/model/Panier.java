@@ -19,7 +19,7 @@ public class Panier extends Observable{
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
         String result = "Panier de " + this.getTaillePanier() 
-                + "fruits : " + this.getPrix() + "\n" ;
+                + " fruits : " + this.getPrix() + "\n" ;
         for (Fruit f : fruits) {
             result += f.toString() + "\n";
         }

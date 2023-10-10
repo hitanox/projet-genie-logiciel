@@ -17,7 +17,8 @@ public class Controleur implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e){   //Invoked when an action occurs
         if(((Component)e.getSource()).getName().equals("comboBox")) {
-            this.setFruit(this.vg.getComboBox().getSelectedItem().toString());
+            this.setFruit(vg.getComboBox().getSelectedItem().toString());
+            System.out.println(fruit);
         }
         else if(((Component)e.getSource()).getName().equals("Plus")){
             try {
@@ -31,13 +32,13 @@ public class Controleur implements ActionListener {
                 
                 }
             }
-            catch(PanierPleinException ppe) {System.out.println(ppe);}
+            catch(PanierPleinException ppe) {System.err.println(ppe);}
         }
         else {
             try {
                 p.retrait(); 
             }
-            catch(PanierVideException pve) {System.out.println(pve);}
+            catch(PanierVideException pve) {System.err.println(pve);}
         }
               
     }

@@ -46,6 +46,7 @@ public class Main {
         Panier panier = new Panier(5);
         this.vueg = new VueGraphique();
         
+        controleur.setVue(vueg);
         controleur.setPanier(panier);                 
         panier.addObserver(vueg);                
         vueg.addControleur(controleur);
