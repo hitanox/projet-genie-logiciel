@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.model;
+package fr.ufrsciencestech.panier.model.panier;
 
 public class PanierVideException extends Exception {
     public PanierVideException() {

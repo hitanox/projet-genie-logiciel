@@ -1,4 +1,7 @@
-package fr.ufrsciencestech.panier.model;
+package fr.ufrsciencestech.panier.model.panier;
+
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
+import fr.ufrsciencestech.panier.model.fruits.Orange;
 
 import java.util.ArrayList;
 import java.util.Observable;

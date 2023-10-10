@@ -1,7 +1,10 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.model.fruits;
 import static junit.framework.TestCase.assertEquals;
+
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
+import fr.ufrsciencestech.panier.model.fruits.Jus;
+import fr.ufrsciencestech.panier.model.fruits.Orange;
 import org.junit.Test;
-import fr.ufrsciencestech.panier.model.*;
 
 
 public class JusTest {

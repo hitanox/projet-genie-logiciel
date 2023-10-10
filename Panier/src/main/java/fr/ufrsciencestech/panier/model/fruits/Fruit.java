@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.model;
+package fr.ufrsciencestech.panier.model.fruits;
 
 public interface Fruit {
     public boolean isSeedless();  //predicat indiquant si le fruit a ou non des pepins

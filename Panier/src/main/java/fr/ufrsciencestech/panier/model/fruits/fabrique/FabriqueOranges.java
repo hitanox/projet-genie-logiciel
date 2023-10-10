@@ -1,4 +1,7 @@
-package fr.ufrsciencestech.panier.model;
+package fr.ufrsciencestech.panier.model.fruits.fabrique;
+
+import fr.ufrsciencestech.panier.model.fruits.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.Orange;
 
 public class FabriqueOranges implements Fabrique {
     @Override

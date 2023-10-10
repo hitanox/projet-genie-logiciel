@@ -1,7 +1,10 @@
 package fr.ufrsciencestech.panier.controler;
 
-import fr.ufrsciencestech.panier.model.*;
-import fr.ufrsciencestech.panier.view.*;
+import fr.ufrsciencestech.panier.model.fruits.Orange;
+import fr.ufrsciencestech.panier.model.panier.Panier;
+import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
+import fr.ufrsciencestech.panier.model.panier.PanierVideException;
+import fr.ufrsciencestech.panier.view.VueG;
 
 import java.awt.*;
 import java.awt.event.*;

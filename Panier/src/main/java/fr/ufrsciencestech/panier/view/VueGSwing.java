@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
-import fr.ufrsciencestech.panier.model.Panier;
+
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;

@@ -1,11 +1,14 @@
 package fr.ufrsciencestech.panier;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
+import fr.ufrsciencestech.panier.model.fruits.fabrique.FabriqueOranges;
+import fr.ufrsciencestech.panier.model.fruits.fabrique.FabriquePoires;
+import fr.ufrsciencestech.panier.model.panier.Panier;
+import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import fr.ufrsciencestech.panier.view.*;
-import fr.ufrsciencestech.panier.model.*;
 
 //utilise pour springIoC :
-import javax.swing.*;
+
 
 public class Main {
     private static VueG vueg;      //pour pouvoir changer de vue si on le souhaite

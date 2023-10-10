@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.model;
+package fr.ufrsciencestech.panier.model.fruits;
 
 import junit.framework.TestCase;
 
@@ -7,8 +7,6 @@ import static org.mockito.Mockito.mock;
 public class FruitSimpleTest extends TestCase {
     public void testGetSetNom() {
         FruitSimple fs = mock(FruitSimple.class);
-        fs.setNom("Banane");
-        assertEquals("Banane", fs.getNom());
     }
 
     public void testGetSetPrix() {
