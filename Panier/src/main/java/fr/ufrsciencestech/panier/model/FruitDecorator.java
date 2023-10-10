@@ -1,18 +1,18 @@
 package fr.ufrsciencestech.panier.model;
 
-public abstract class FruitDecorator implements Fruit{
+public abstract class FruitDecorator implements Fruit {
     private Fruit fruit;
 
-    public FruitDecorator(Fruit fruit){
+    public FruitDecorator(Fruit fruit) {
         this.fruit = fruit;
     }
 
-    public Fruit getFruit(){
+    public Fruit getFruit() {
         return this.fruit;
     }
 
     @Override
-    public String toString(){
+    public String toString() {
         return fruit.toString();
     }
 }

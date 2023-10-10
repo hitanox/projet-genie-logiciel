@@ -38,17 +38,17 @@ public abstract class FruitSimple implements Fruit {
     }
 
     public String toJuice() {
-        return this.getNom()+"(Jus)";
+        return this.getNom() + "(Jus)";
     }
 
     @Override
-    public String toString(){
-        return this.getNom()+" de " + origine + " a " + prix + " euros.";
+    public String toString() {
+        return this.getNom() + " de " + origine + " a " + prix + " euros.";
     }
 
     @Override
     public boolean equals(Object o) {
-        if(o != null && getClass() == o.getClass()){
+        if (o != null && getClass() == o.getClass()) {
             FruitSimple fruit = (FruitSimple) o;
             return (prix == fruit.prix && origine.equals(fruit.origine));
         }

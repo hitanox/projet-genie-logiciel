@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class Macedoine implements Fruit {
     private ArrayList<Fruit> fruits;
+
     public Macedoine(ArrayList<Fruit> fruits) {
         this.fruits = fruits;
     }

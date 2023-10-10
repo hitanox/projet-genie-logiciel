@@ -1,14 +1,14 @@
 package fr.ufrsciencestech.panier.model;
 
-public class Jus extends FruitDecorator{
+public class Jus extends FruitDecorator {
 
 
-    public Jus(Fruit fruit){
+    public Jus(Fruit fruit) {
         super(fruit);
     }
 
-    public String toString(){
-        return "Jus("+super.toString().split(" ")[0]+")";
+    public String toString() {
+        return "Jus(" + super.toString().split(" ")[0] + ")";
     }
 
     @Override
@@ -26,5 +26,5 @@ public class Jus extends FruitDecorator{
         return super.getFruit().getOrigine();
     }
 
-    
+
 }

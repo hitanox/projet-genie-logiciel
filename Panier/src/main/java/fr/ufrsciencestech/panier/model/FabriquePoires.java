@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier.model;
 
-public class FabriquePoires implements Fabrique{
+public class FabriquePoires implements Fabrique {
     @Override
     public FruitSimple fabrique() {
         return new Poire();

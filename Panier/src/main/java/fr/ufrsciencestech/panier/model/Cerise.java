@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier.model;
 
 public class Cerise extends FruitSimple {
-    public Cerise(Double prix,  String origine) {
+    public Cerise(Double prix, String origine) {
         super(prix, origine, false);
     }
 
