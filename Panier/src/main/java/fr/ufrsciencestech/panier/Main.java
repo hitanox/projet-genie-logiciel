@@ -55,22 +55,5 @@ public class Main {
         panier.addObserver(vuec);
         vueg.addControleur(controleur);
 
-        FabriqueOranges fo = new FabriqueOranges();
-        FabriquePoires fp = new FabriquePoires();
-
-		Panier panier2 = new Panier(5);
-        try {
-            panier2.ajout(fo.fabrique());
-            panier2.ajout(fo.fabrique(10.0, "Espagne"));
-            panier2.ajout(fp.fabrique(2.0, "Madagascar"));
-
-    
-        } catch (PanierPleinException e) {
-            System.out.println(e.getMessage());
-        }
-
-		// Panier pBanane = new Panier(fb.Fabrique(), 2);
-		System.out.println("Le panier coûte"  + panier2.getPrix());
-        System.out.println("Le panier est : " + panier2.getFruits().toString());
     }
 }

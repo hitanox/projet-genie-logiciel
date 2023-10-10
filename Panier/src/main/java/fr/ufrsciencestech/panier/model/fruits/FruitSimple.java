@@ -37,10 +37,6 @@ public abstract class FruitSimple implements Fruit {
         isSeedless = seedless;
     }
 
-    public String toJuice() {
-        return this.getNom() + "(Jus)";
-    }
-
     @Override
     public String toString() {
         return this.getNom() + " de " + origine + " a " + prix + " euros.";

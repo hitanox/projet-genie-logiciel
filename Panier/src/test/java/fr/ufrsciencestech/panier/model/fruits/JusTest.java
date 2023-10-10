@@ -1,5 +1,5 @@
 package fr.ufrsciencestech.panier.model.fruits;
-import static junit.framework.TestCase.assertEquals;
+import static junit.framework.TestCase.*;
 
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
 import fr.ufrsciencestech.panier.model.fruits.Jus;
@@ -15,5 +15,20 @@ public class JusTest {
     public void testToString(){
         assertEquals("Jus(Orange)", jFruit.toString());
     }
-    
+
+    @Test
+    public void testIsSeedLess(){
+        assertFalse(jFruit.isSeedless());
+    }
+
+    @Test
+    public void testGetPrix(){
+        assertEquals(2.0, jFruit.getPrix());
+    }
+
+    @Test
+    public void testGetOrigine(){
+        assertEquals("France", jFruit.getOrigine());
+    }
+
 }
