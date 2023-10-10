@@ -3,9 +3,9 @@ package fr.ufrsciencestech.panier.model;
 import java.util.ArrayList;
 import java.util.Observable;
 
-public class Panier extends Observable{
+public class Panier extends Observable {
     private ArrayList<Fruit> fruits;  //attribut pour stocker les fruits
-    private int contenanceMax;        //nb maximum d'oranges que peut contenir le panier
+    private final int contenanceMax; //nb maximum d'oranges que peut contenir le panier
 
     public Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
         this.fruits = new ArrayList<Fruit>();
@@ -18,11 +18,11 @@ public class Panier extends Observable{
 
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
-        String result = "";
+        StringBuilder result = new StringBuilder();
         for (Fruit f : fruits) {
-            result += f.toString() + "\n";
+            result.append(f.toString()).append("\n");
         }
-        return result;
+        return result.toString();
     }
 
     public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
@@ -60,7 +60,7 @@ public class Panier extends Observable{
     }
 
     public void ajout(Fruit o) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
-        if(!estPlein()) {
+        if (!estPlein()) {
             this.fruits.add(o);
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
             notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
@@ -77,10 +77,10 @@ public class Panier extends Observable{
         else throw new PanierVideException();
     }
 
-    public double getPrix(){  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
-	double prix = 0.0;
-        for (int i=0; i<fruits.size(); i++) {
-            prix += fruits.get(i).getPrix();
+    public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
+        double prix = 0.0;
+        for (Fruit fruit : fruits) {
+            prix += fruit.getPrix();
         }
         return prix;
     }
