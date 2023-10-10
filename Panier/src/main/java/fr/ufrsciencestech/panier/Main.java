@@ -8,8 +8,8 @@ import fr.ufrsciencestech.panier.model.*;
 import javax.swing.*;
 
 public class Main {
-    private VueG vueg;      //pour pouvoir changer de vue si on le souhaite
-    private Controleur controleur;  //pour pouvoir changer de controleur si on le souhaite
+    private static VueG vueg;      //pour pouvoir changer de vue si on le souhaite
+    private static Controleur controleur;  //pour pouvoir changer de controleur si on le souhaite
     
     /**
      * @return the vueg
@@ -38,33 +38,28 @@ public class Main {
     public void setControleur(Controleur controleur) {
         this.controleur = controleur;
     }
-    
-    
-    public Main(){
+
+    public static void main(String[] args){
         //sans utiliser SpringIoC :
         vueg = new VueGSwing();
         //vueg = new VueGAWT();
         controleur = new Controleur();
         Panier panier = new Panier(5);
         VueConsole vuec = new VueConsole();
-        
-        controleur.setPanier(panier);                 
-        panier.addObserver(vueg);        
-        panier.addObserver(vuec);         
+
+        controleur.setPanier(panier);
+        panier.addObserver(vueg);
+        panier.addObserver(vuec);
         vueg.addControleur(controleur);
-    }
-    
-    public static void main(String[] args){
-        // Main test = new Main();    //sans utiliser SpringIoC
 
         FabriqueOranges fo = new FabriqueOranges();
         FabriquePoires fp = new FabriquePoires();
 
-		Panier panier = new Panier(5);
+		Panier panier2 = new Panier(5);
         try {
-            panier.ajout(fo.fabrique());
-            panier.ajout(fo.fabrique(10.0, "Espagne"));
-            panier.ajout(fp.fabrique(2.0, "Madagascar"));
+            panier2.ajout(fo.fabrique());
+            panier2.ajout(fo.fabrique(10.0, "Espagne"));
+            panier2.ajout(fp.fabrique(2.0, "Madagascar"));
 
     
         } catch (PanierPleinException e) {
@@ -72,7 +67,7 @@ public class Main {
         }
 
 		// Panier pBanane = new Panier(fb.Fabrique(), 2);
-		System.out.println("Le panier coûte"  + panier.getPrix());
-        System.out.println("Le panier est : " + panier.getFruits().toString());
+		System.out.println("Le panier coûte"  + panier2.getPrix());
+        System.out.println("Le panier est : " + panier2.getFruits().toString());
     }
 }

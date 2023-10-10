@@ -8,4 +8,9 @@ public class Cerise extends FruitSimple {
     public Cerise() {
         super(6.5, "Caucase", false);
     }
+
+    @Override
+    public String getNom() {
+        return "Cerise";
+    }
 }

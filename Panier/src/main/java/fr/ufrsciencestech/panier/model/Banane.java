@@ -8,4 +8,9 @@ public class Banane extends FruitSimple {
     public Banane() {
         super(1.99, "Papouasie-Nouvelle-Guinée", true);
     }
+
+    @Override
+    public String getNom() {
+        return "Banane";
+    }
 }

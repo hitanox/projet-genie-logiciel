@@ -1,7 +1,6 @@
 package fr.ufrsciencestech.panier.model;
 
 public abstract class FruitSimple implements Fruit {
-    private String nom;
     private double prix;
     private String origine;
     private boolean isSeedless;
@@ -12,13 +11,7 @@ public abstract class FruitSimple implements Fruit {
         this.isSeedless = isSeedless;
     }
 
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
+    public abstract String getNom();
 
     public double getPrix() {
         return prix;
@@ -45,12 +38,12 @@ public abstract class FruitSimple implements Fruit {
     }
 
     public String toJuice() {
-        return this.nom+"(Jus)";
+        return this.getNom()+"(Jus)";
     }
 
     @Override
     public String toString(){
-        return this.nom+" de " + origine + " a " + prix + " euros.";
+        return this.getNom()+" de " + origine + " a " + prix + " euros.";
     }
 
     @Override

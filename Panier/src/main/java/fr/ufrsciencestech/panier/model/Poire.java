@@ -8,4 +8,9 @@ public class Poire extends FruitSimple {
     public Poire() {
         super(0.8, "Espagne", false);
     }
+
+    @Override
+    public String getNom() {
+        return "Poire";
+    }
 }
