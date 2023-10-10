@@ -2,11 +2,11 @@ package fr.ufrsciencestech.panier.model;
 
 public class FabriqueBananes implements Fabrique{
     @Override
-    public Fruit fabrique() {
+    public FruitSimple fabrique() {
         return new Banane();
     }
 
-    public Fruit fabrique(double prix, String origine) {
+    public FruitSimple fabrique(double prix, String origine) {
         return new Banane(prix, origine);
     }
 }

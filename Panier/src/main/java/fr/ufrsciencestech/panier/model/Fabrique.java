@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier.model;
 
 public interface Fabrique {
-    public Fruit fabrique();
-    public Fruit fabrique(double prix, String origine);
+    public FruitSimple fabrique();
+    public FruitSimple fabrique(double prix, String origine);
 }
