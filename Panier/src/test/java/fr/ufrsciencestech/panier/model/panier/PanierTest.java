@@ -1,0 +1,154 @@
+package fr.ufrsciencestech.panier.model.panier;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+
+import java.util.ArrayList;
+
+import org.junit.Before;
+import org.junit.Test;
+
+import fr.ufrsciencestech.panier.model.fruits.Cerise;
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
+import fr.ufrsciencestech.panier.model.fruits.Orange;
+import fr.ufrsciencestech.panier.model.fruits.Poire;
+
+public class PanierTest {
+
+    Panier panierTest = new Panier(10);
+    Orange orange1 = new Orange(0.5, "France");
+    Poire poire1= new Poire(1.0, "Espagne");
+
+    @Before
+    public void setUp() throws Exception {
+        panierTest.ajout(orange1);
+        panierTest.ajout(poire1);
+    }
+
+    @Test
+    public void testToString() {
+        String text = "Orange de France a 0.5 euros.\nPoire de Espagne a 1.0 euros.\n";
+        assertEquals(text, this.panierTest.toString());
+    }
+
+    @Test
+    public void testGetFruits() {
+        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
+        fruits.add(orange1);
+        fruits.add(poire1);
+        assertEquals(panierTest.getFruits(), fruits);
+    }
+
+    @Test
+    public void testGetFruit() {
+        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
+        fruits.add(orange1);
+        fruits.add(poire1);
+        assertEquals(panierTest.getFruit(0), fruits.get(0)); 
+    }
+
+    @Test
+    public void testSetFruits() {
+        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
+        fruits.add(orange1);
+        fruits.add(poire1);
+
+        Panier pTest = new Panier(10);
+
+        pTest.setFruits(fruits);
+        assertEquals(this.panierTest, pTest); 
+    }
+
+    @Test
+    public void testSetFruit() {
+        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
+        fruits.add(poire1);
+        fruits.add(orange1);
+
+        this.panierTest.setFruit(0,poire1);
+        this.panierTest.setFruit(1,orange1);
+
+        assertEquals(this.panierTest.getFruits(), fruits); 
+    }
+
+    @Test
+    public void testGetTaillePanier() {
+        assertEquals(this.panierTest.getTaillePanier(), this.panierTest.getFruits().size()); 
+    }
+
+    @Test
+    public void testGetContenanceMax() {
+        assertEquals(this.panierTest.getContenanceMax(),10); 
+    }
+
+    @Test
+    public void testEstVide() {
+        Panier pTest = new Panier(10);
+        assertTrue(pTest.estVide()); 
+    }
+
+    @Test
+    public void testEstPlein() throws PanierPleinException {
+        Panier pTest = new Panier(2);
+
+        pTest.ajout(new Orange());
+        pTest.ajout(new Orange());
+        
+        assertTrue(pTest.estPlein()); 
+    }
+
+    @Test
+    public void testAjout() throws PanierPleinException {
+        Cerise cerise1 = new Cerise();
+        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
+        fruits.add(orange1);
+        fruits.add(poire1);
+        fruits.add(cerise1);
+
+        this.panierTest.ajout(cerise1);
+
+        assertEquals(this.panierTest.getFruits(),fruits); 
+    }
+
+    @Test
+    public void testRetrait() throws PanierVideException {
+        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
+        fruits.add(orange1);
+        fruits.add(poire1);
+
+        this.panierTest.retrait(); 
+        fruits.remove(1);
+
+        assertEquals(this.panierTest.getFruits(),fruits); 
+    }
+
+    @Test
+    public void testGetPrix() {
+        assertEquals(1.5, this.panierTest.getPrix(),0.0f);
+    }
+
+    @Test
+    public void testBoycotteOrigine() {
+        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
+        fruits.add(orange1);
+
+        this.panierTest.boycotteOrigine("Espagne");
+        assertEquals(this.panierTest.getFruits(), fruits);
+    }
+
+    @Test
+    public void testEquals() throws PanierPleinException {
+        Panier pTest = new Panier(10);
+
+        pTest.ajout(orange1);
+        pTest.ajout(poire1);
+
+        assertEquals(this.panierTest,pTest);
+    }
+
+
+
+
+
+    
+}
