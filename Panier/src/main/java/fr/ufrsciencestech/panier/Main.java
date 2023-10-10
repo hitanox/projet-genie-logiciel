@@ -2,7 +2,7 @@ package fr.ufrsciencestech.panier;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.view.*;
-import fr.ufrsciencestech.panier.model.Panier;
+import fr.ufrsciencestech.panier.model.*;
 
 //utilise pour springIoC :
 import javax.swing.*;
@@ -55,6 +55,24 @@ public class Main {
     }
     
     public static void main(String[] args){
-        Main test = new Main();    //sans utiliser SpringIoC
+        // Main test = new Main();    //sans utiliser SpringIoC
+
+        FabriqueOranges fo = new FabriqueOranges();
+        FabriquePoires fp = new FabriquePoires();
+
+		Panier panier = new Panier(5);
+        try {
+            panier.ajout(fo.fabrique());
+            panier.ajout(fo.fabrique(10.0, "Espagne"));
+            panier.ajout(fp.fabrique(2.0, "Madagascar"));
+
+    
+        } catch (PanierPleinException e) {
+            System.out.println(e.getMessage());
+        }
+
+		// Panier pBanane = new Panier(fb.Fabrique(), 2);
+		System.out.println("Le panier coûte"  + panier.getPrix());
+        System.out.println("Le panier est : " + panier.getFruits().toString());
     }
 }

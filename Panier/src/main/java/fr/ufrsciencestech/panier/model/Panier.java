@@ -64,15 +64,17 @@ public class Panier extends Observable {
             this.fruits.add(o);
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
             notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
-        } else throw new PanierPleinException();
+        }
+        else throw new PanierPleinException();
     }
 
     public void retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
-        if (!estVide()) {
+        if(!estVide()) {
             this.fruits.remove(getTaillePanier() - 1);
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
             notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
-        } else throw new PanierVideException();
+        }
+        else throw new PanierVideException();
     }
 
     public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
@@ -109,7 +111,7 @@ public class Panier extends Observable {
     //tests
     public static void main(String[] args) throws PanierPleinException {
         //Ecrire ici vos tests
-
+        
         System.out.println("premier test Panier");
         Panier p1 = new Panier(5);
         Panier p2 = new Panier(5);
