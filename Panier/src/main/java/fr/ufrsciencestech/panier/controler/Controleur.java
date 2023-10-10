@@ -5,18 +5,31 @@ import fr.ufrsciencestech.panier.model.Panier;
 import fr.ufrsciencestech.panier.model.Orange;
 import fr.ufrsciencestech.panier.model.PanierPleinException;
 import fr.ufrsciencestech.panier.model.PanierVideException;
+import fr.ufrsciencestech.panier.model.Poire;
 import java.awt.*;
 import java.awt.event.*;
 
 public class Controleur implements ActionListener {
     private Panier p;
-    private VueG vg;
+    private VueGraphique vg;
+    private String fruit = "Orange"; 
     
     @Override
     public void actionPerformed(ActionEvent e){   //Invoked when an action occurs
-        if(((Component)e.getSource()).getName().equals("Plus")) {
+        if(((Component)e.getSource()).getName().equals("comboBox")) {
+            this.setFruit(this.vg.getComboBox().getSelectedItem().toString());
+        }
+        else if(((Component)e.getSource()).getName().equals("Plus")){
             try {
-                p.ajout(new Orange());
+                switch (this.getFruit()) {
+                    case "Orange":
+                        p.ajout(new Orange());
+                        break;
+                    case "Poire":
+                        p.ajout(new Poire());
+                        break;
+                
+                }
             }
             catch(PanierPleinException ppe) {System.out.println(ppe);}
         }
@@ -26,6 +39,7 @@ public class Controleur implements ActionListener {
             }
             catch(PanierVideException pve) {System.out.println(pve);}
         }
+              
     }
     public void setPanier(Panier p){
         this.p = p;
@@ -34,11 +48,19 @@ public class Controleur implements ActionListener {
     public Panier getPanier() {
         return this.p;
     }
-    public void setVue(VueG vg){
+    public void setVue(VueGraphique vg){
         this.vg = vg;
     }
 
-    public VueG getVue() {
+    public VueGraphique getVue() {
         return this.vg;
+    }
+    
+     public String getFruit() {
+        return fruit;
+    }
+
+    public void setFruit(String fruit) {
+        this.fruit = fruit;
     }
 }

@@ -18,7 +18,8 @@ public class Panier extends Observable{
 
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
-        String result = "";
+        String result = "Panier de " + this.getTaillePanier() 
+                + "fruits : " + this.getPrix() + "\n" ;
         for (Fruit f : fruits) {
             result += f.toString() + "\n";
         }
@@ -63,7 +64,7 @@ public class Panier extends Observable{
         if(!estPlein()) {
             this.fruits.add(o);
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-            notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
         }
         else throw new PanierPleinException();
     }
@@ -72,7 +73,7 @@ public class Panier extends Observable{
         if(!estVide()) {
             this.fruits.remove(getTaillePanier() - 1);
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-            notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
         }
         else throw new PanierVideException();
     }
