@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier.model;
 
-public abstract class FruitSimple {
+public abstract class FruitSimple implements Fruit {
     private String nom;
     private double prix;
     private String origine;
