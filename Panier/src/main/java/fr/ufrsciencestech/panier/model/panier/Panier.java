@@ -86,9 +86,16 @@ public class Panier extends Observable {
         return prix;
     }
 
-    //à faire
-    public void boycotteOrigine(String origine) {  //supprime du panier tous les fruits provenant du pays origine
-
+    public void boycotteOrigine(String origine) {
+        ArrayList<Fruit> filters = new ArrayList<>();
+        
+        for (Fruit fruit : this.fruits) {
+            if (!fruit.getOrigine().equals(origine)) {
+                filters.add(fruit);
+            }
+        }
+        
+        this.fruits = filters;
     }
 
     @Override
@@ -107,38 +114,5 @@ public class Panier extends Observable {
             }
         }
         return false;
-    }
-
-    //tests
-    public static void main(String[] args) throws PanierPleinException {
-        //Ecrire ici vos tests
-
-        System.out.println("premier test Panier");
-        Panier p1 = new Panier(5);
-        Panier p2 = new Panier(5);
-        Panier p3 = new Panier(1);
-
-        Orange o1 = new Orange(0.5, "Espagne");
-        Orange o2 = new Orange(1.0, "Espagne");
-        Orange o3 = new Orange(0.8, "France");
-        Orange o4 = new Orange(0.2, "Italy");
-        Orange o5 = new Orange(0.1, "France");
-
-        p1.ajout(o1);
-        p1.ajout(o2);
-        p1.ajout(o3);
-        p1.ajout(o4);
-        p1.ajout(o5);
-
-        p2.ajout(o5);
-        p2.ajout(o3);
-        p2.ajout(o2);
-        p2.ajout(o1);
-        p2.ajout(o4);
-
-        p3.ajout(o5);
-
-        System.out.println(p1.equals(p3));
-
     }
 }
