@@ -1,6 +1,7 @@
 package fr.ufrsciencestech.panier.model.panier;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 import fr.ufrsciencestech.panier.model.fruits.Cerise;
@@ -145,7 +146,10 @@ public class PanierTest {
     pTest.ajout(orange1);
     pTest.ajout(poire1);
 
-    assertEquals(this.panierTest, pTest);
+    assertTrue(this.panierTest.equals(pTest));
+
+    pTest.ajout(poire1);
+    assertFalse(this.panierTest.equals(pTest));
   }
 
   @Test(expected = PanierPleinException.class)
