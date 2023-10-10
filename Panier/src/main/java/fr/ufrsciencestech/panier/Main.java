@@ -8,20 +8,20 @@ import fr.ufrsciencestech.panier.model.Panier;
 import javax.swing.*;
 
 public class Main {
-    private VueG vueg;      //pour pouvoir changer de vue si on le souhaite
+    private VueGraphique vueg;      //pour pouvoir changer de vue si on le souhaite
     private Controleur controleur;  //pour pouvoir changer de controleur si on le souhaite
     
     /**
      * @return the vueg
      */
-    public VueG getVueg() {
+    public VueGraphique getVueg() {
         return vueg;
     }
 
     /**
      * @param vueg the vueg to set
      */
-    public void setVueg(VueG vueg) {
+    public void setVueg(VueGraphique vueg) {
         this.vueg = vueg;
     }
 
@@ -41,16 +41,12 @@ public class Main {
     
     
     public Main(){
-        //sans utiliser SpringIoC :
-        vueg = new VueGSwing();
         //vueg = new VueGAWT();
         controleur = new Controleur();
         Panier panier = new Panier(5);
-        VueConsole vuec = new VueConsole();
         
         controleur.setPanier(panier);                 
-        panier.addObserver(vueg);        
-        panier.addObserver(vuec);         
+        panier.addObserver(vueg);                
         vueg.addControleur(controleur);
     }
     
