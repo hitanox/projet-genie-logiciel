@@ -86,9 +86,16 @@ public class Panier extends Observable {
         return prix;
     }
 
-    //à faire
-    public void boycotteOrigine(String origine) {  //supprime du panier tous les fruits provenant du pays origine
-
+    public void boycotteOrigine(String origine) {
+        ArrayList<Fruit> filters = new ArrayList<>();
+        
+        for (Fruit fruit : this.fruits) {
+            if (!fruit.getOrigine().equals(origine)) {
+                filters.add(fruit);
+            }
+        }
+        
+        this.fruits = filters;
     }
 
     @Override
@@ -108,6 +115,4 @@ public class Panier extends Observable {
         }
         return false;
     }
-
-
 }
