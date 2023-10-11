@@ -1,40 +1,43 @@
 package fr.ufrsciencestech.panier.model.fruits;
 
-import junit.framework.TestCase;
+import org.junit.Test;
+import static org.junit.Assert.*;
 
-import static org.mockito.Mockito.mock;
 
-public class FruitSimpleTest extends TestCase {
-    public void testGetSetNom() {
-        FruitSimple fs = mock(FruitSimple.class);
+public class FruitSimpleTest {
+
+    Cerise cerise = new Cerise();
+
+    @Test
+    public void testGetSetPrix() {
+        cerise.setPrix(1.99);
+        assertEquals(1.99, cerise.getPrix(), 0.001);
     }
 
-    // public void testGetSetPrix() {
-    //     FruitSimple fs = mock(FruitSimple.class);
-    //     fs.setPrix(1.99);
-    //     assertEquals(1.99, fs.getPrix());
-    // }
-
-    // public void testGetSetOrigine() {
-    //     FruitSimple fs = mock(FruitSimple.class);
-    //     fs.setOrigine("Papouasie-Nouvelle-Guinée");
-    //     assertEquals("Papouasie-Nouvelle-Guinée", fs.getOrigine());
-    // }
-
-    // public void testGetSetSeedless() {
-    //     FruitSimple fs = mock(FruitSimple.class);
-    //     fs.setSeedless(true);
-    //     assertTrue(fs.isSeedless());
-    // }
-
-    public void testToJuice() {
-
+    @Test
+    public void testGetSetOrigine() {
+        cerise.setOrigine("Papouasie-Nouvelle-Guinée");
+        assertEquals("Papouasie-Nouvelle-Guinée", cerise.getOrigine());
     }
 
+    @Test
+    public void testGetSetSeedless() {
+        cerise.setSeedless(false);
+        assertFalse(cerise.isSeedless());
+    }
+
+    @Test
     public void testTestToString() {
-
+        assertEquals("Cerise de Caucase a 6.5 euros.", cerise.toString());
     }
-
+    
+    @Test
     public void testTestEquals() {
+        Cerise cerise2 = new Cerise();
+        Banane banane = new Banane();
+
+        assertTrue(cerise.equals(cerise2));
+        assertFalse(cerise.equals(banane));
     }
+    
 }
