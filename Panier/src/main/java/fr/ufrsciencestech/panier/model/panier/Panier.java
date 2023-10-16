@@ -1,7 +1,6 @@
 package fr.ufrsciencestech.panier.model.panier;
 
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
-import fr.ufrsciencestech.panier.model.fruits.Orange;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -21,11 +20,11 @@ public class Panier extends Observable {
 
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
-        StringBuilder result = new StringBuilder();
-        for (Fruit f : fruits) {
-            result.append(f.toString()).append("\n");
+        String res = "Panier de " + this.getTaillePanier() + " fruits : " + this.getPrix() + "\n";
+        for (Fruit fruit : fruits) {
+            res += fruit.toString() + "\n";
         }
-        return result.toString();
+        return res;
     }
 
     public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
@@ -66,7 +65,7 @@ public class Panier extends Observable {
         if (!estPlein()) {
             this.fruits.add(o);
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-            notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
         } else throw new PanierPleinException();
     }
 
@@ -74,7 +73,7 @@ public class Panier extends Observable {
         if (!estVide()) {
             this.fruits.remove(getTaillePanier() - 1);
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-            notifyObservers(getTaillePanier()); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
         } else throw new PanierVideException();
     }
 
@@ -88,13 +87,13 @@ public class Panier extends Observable {
 
     public void boycotteOrigine(String origine) {
         ArrayList<Fruit> filters = new ArrayList<>();
-        
+
         for (Fruit fruit : this.fruits) {
             if (!fruit.getOrigine().equals(origine)) {
                 filters.add(fruit);
             }
         }
-        
+
         this.fruits = filters;
     }
 
