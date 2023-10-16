@@ -1,7 +1,6 @@
 package fr.ufrsciencestech.panier.model.panier;
 
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
-import fr.ufrsciencestech.panier.model.fruits.Orange;
 
 import java.util.ArrayList;
 import java.util.Observable;
@@ -21,12 +20,11 @@ public class Panier extends Observable {
 
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
-        String result = "Panier de " + this.getTaillePanier()
-                + " fruits : " + this.getPrix() + "\n" ;
-        for (Fruit f : fruits) {
-            result.append(f.toString()).append("\n");
+        String res = "Panier de " + this.getTaillePanier() + " fruits : " + this.getPrix() + "\n";
+        for (Fruit fruit : fruits) {
+            res += fruit.toString() + "\n";
         }
-        return result.toString();
+        return res;
     }
 
     public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut

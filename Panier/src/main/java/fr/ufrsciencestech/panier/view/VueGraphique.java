@@ -1,10 +1,11 @@
 package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
+import fr.ufrsciencestech.panier.model.panier.Panier;
+
 import java.awt.*;
 import javax.swing.*;
 import java.util.*;
-import fr.ufrsciencestech.panier.model.Panier;
 
 public class VueGraphique extends JFrame implements VueG {
     private JButton inc;
