@@ -3,15 +3,9 @@ package fr.ufrsciencestech.panier;
 import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mockito;
-import java.util.Observable;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
-import fr.ufrsciencestech.panier.model.Orange;
-import fr.ufrsciencestech.panier.model.Panier;
-import fr.ufrsciencestech.panier.model.PanierPleinException;
-import fr.ufrsciencestech.panier.model.PanierVideException;
-import fr.ufrsciencestech.panier.view.VueConsole;
+import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.view.VueGSwing;
 
 

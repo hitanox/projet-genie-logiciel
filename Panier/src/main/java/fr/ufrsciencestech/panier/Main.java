@@ -1,16 +1,19 @@
 package fr.ufrsciencestech.panier;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
+import fr.ufrsciencestech.panier.model.fruits.fabrique.FabriqueOranges;
+import fr.ufrsciencestech.panier.model.fruits.fabrique.FabriquePoires;
+import fr.ufrsciencestech.panier.model.panier.Panier;
+import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import fr.ufrsciencestech.panier.view.*;
-import fr.ufrsciencestech.panier.model.Panier;
 
 //utilise pour springIoC :
-import javax.swing.*;
+
 
 public class Main {
     private VueGraphique vueg;      //pour pouvoir changer de vue si on le souhaite
     private Controleur controleur;  //pour pouvoir changer de controleur si on le souhaite
-    
+
     /**
      * @return the vueg
      */
@@ -38,21 +41,17 @@ public class Main {
     public void setControleur(Controleur controleur) {
         this.controleur = controleur;
     }
-    
-    
-    public Main(){
+
+    public static void main(String[] args){
         //vueg = new VueGAWT();
         controleur = new Controleur();
         Panier panier = new Panier(5);
         this.vueg = new VueGraphique();
-        
+
         controleur.setVue(vueg);
-        controleur.setPanier(panier);                 
-        panier.addObserver(vueg);                
+        controleur.setPanier(panier);
+        panier.addObserver(vueg);
         vueg.addControleur(controleur);
-    }
-    
-    public static void main(String[] args){
-        Main test = new Main();    //sans utiliser SpringIoC
+
     }
 }

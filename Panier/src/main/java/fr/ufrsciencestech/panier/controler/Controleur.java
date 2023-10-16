@@ -6,6 +6,12 @@ import fr.ufrsciencestech.panier.model.Orange;
 import fr.ufrsciencestech.panier.model.PanierPleinException;
 import fr.ufrsciencestech.panier.model.PanierVideException;
 import fr.ufrsciencestech.panier.model.Poire;
+import fr.ufrsciencestech.panier.model.fruits.Orange;
+import fr.ufrsciencestech.panier.model.panier.Panier;
+import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
+import fr.ufrsciencestech.panier.model.panier.PanierVideException;
+import fr.ufrsciencestech.panier.view.VueG;
+
 import java.awt.*;
 import java.awt.event.*;
 
