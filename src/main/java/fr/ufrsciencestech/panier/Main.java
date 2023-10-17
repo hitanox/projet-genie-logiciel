@@ -45,7 +45,7 @@ public class Main {
     public static void main(String[] args) {
         //vueg = new VueGAWT();
         controleur = new Controleur();
-        Panier panier = Panier.getInstance(5);
+        Panier panier = new Panier(5);
         vueg = new VueGraphique();
 
         controleur.setVue(vueg);

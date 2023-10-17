@@ -6,18 +6,11 @@ import java.util.ArrayList;
 import java.util.Observable;
 
 public class Panier extends Observable {
-    private static Panier instance;
-    public static Panier getInstance(int contenanceMax) {
-        if (instance == null) {
-            instance = new Panier(contenanceMax);
-        }
-        return instance;
-    }
 
     private ArrayList<Fruit> fruits;  //attribut pour stocker les fruits
     private final int contenanceMax; //nb maximum d'oranges que peut contenir le panier
 
-    private Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
+    public Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
         this.fruits = new ArrayList<Fruit>();
         if (contenanceMax < 1) {
             throw new IllegalArgumentException("La contenance maximale doit être supérieure à 0");
