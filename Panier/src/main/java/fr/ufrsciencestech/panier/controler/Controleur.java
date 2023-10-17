@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier.controler;
 
-import fr.ufrsciencestech.panier.model.fruits.Poire;
-import fr.ufrsciencestech.panier.model.fruits.Orange;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Poire;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Orange;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import fr.ufrsciencestech.panier.model.panier.PanierVideException;

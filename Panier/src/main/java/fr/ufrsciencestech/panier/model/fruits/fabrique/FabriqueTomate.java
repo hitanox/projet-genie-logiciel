@@ -1,16 +1,16 @@
 package fr.ufrsciencestech.panier.model.fruits.fabrique;
 
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Orange;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Tomate;
 
-public class FabriqueOranges implements Fabrique {
+public class FabriqueTomate implements Fabrique{
     @Override
     public FruitSimple fabrique() {
-        return new Orange();
+        return new Tomate();
     }
 
     @Override
     public FruitSimple fabrique(double prix, String origine) {
-        return new Orange(prix, origine);
+        return new Tomate(prix, origine);
     }
 }

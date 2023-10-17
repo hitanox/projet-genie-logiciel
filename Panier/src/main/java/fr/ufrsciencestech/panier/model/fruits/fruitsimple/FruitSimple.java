@@ -1,4 +1,6 @@
-package fr.ufrsciencestech.panier.model.fruits;
+package fr.ufrsciencestech.panier.model.fruits.fruitsimple;
+
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
 
 public abstract class FruitSimple implements Fruit {
     private double prix;
