@@ -47,8 +47,13 @@ public class Main {
         controleur = new Controleur();
         Panier panier = new Panier(5);
         vueg = new VuePanierV2();
-        vueg.run();
-
+        
+        controleur.setVue(vueg);
+        controleur.setPanier(panier);
+        panier.addObserver(vueg);
+        vueg.addControleur(controleur);
+        
+        vueg.setVisible(true);
 
     }
 }

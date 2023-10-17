@@ -6,7 +6,9 @@
 package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
+import fr.ufrsciencestech.panier.model.panier.Panier;
 import java.util.Observable;
+import javax.swing.JButton;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -27,6 +29,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         model.addColumn("Origine");
         model.addColumn("Prix");
         model.addColumn("Quantité");
+        model.addColumn("");
 
         // Définissez le modèle pour le tableau jTable1
         jTable1.setModel(model);
@@ -38,16 +41,39 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     }
     
     public void mettreAJourTableau(Object[][] donnees) {
-    // Supprimez toutes les lignes du modèle actuel
-    while (model.getRowCount() > 0) {
-        model.removeRow(0);
+        // Supprimez toutes les lignes du modèle actuel
+        while (model.getRowCount() > 0) {
+            model.removeRow(0);
+        }
+    
+        // Ajoutez de nouvelles lignes de données au modèle
+        for (Object[] ligne : donnees) {
+            model.addRow(ligne);
+        }
     }
     
-    // Ajoutez de nouvelles lignes de données au modèle
-    for (Object[] ligne : donnees) {
-        model.addRow(ligne);
+    @Override
+    public void update(Observable m, Object o) {
+        this.mettreAJourTableau(((Panier) o).toObject());
     }
-}
+
+    @Override
+    public void addControleur(Controleur c) {
+        this.add.addActionListener(c);
+        this.del.addActionListener(c);
+    }
+    
+    /*public void run() {
+        VuePanierV2 vue = new VuePanierV2();
+        vue.setVisible(true);
+
+        // Exemple de mise à jour du tableau
+        Object[][] nouvellesDonnees = {
+            {"Nouveau Produit", "Nouvelle Origine", 20.0, 7},
+            // Ajoutez d'autres données ici
+        };
+        vue.mettreAJourTableau(nouvellesDonnees);
+    }*/
 
 
     /** This method is called from within the constructor to
@@ -61,6 +87,10 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        add = new javax.swing.JButton();
+        add.setName("add");
+        del = new javax.swing.JButton();
+        del.setName("del");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -77,51 +107,55 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        add.setLabel("add");
+        add.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                addActionPerformed(evt);
+            }
+        });
+
+        del.setLabel("del");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(129, 129, 129)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(149, Short.MAX_VALUE))
+                .addGap(170, 170, 170)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(add)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(del)
+                .addContainerGap(124, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(57, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(40, 40, 40))
+                .addContainerGap(19, Short.MAX_VALUE)
+                .addComponent(add)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(del)
+                        .addGap(159, 159, 159))))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
-    public void run() {
-        VuePanierV2 vue = new VuePanierV2();
-        vue.setVisible(true);
 
-        // Exemple de mise à jour du tableau
-        Object[][] nouvellesDonnees = {
-            {"Nouveau Produit", "Nouvelle Origine", 20.0, 7},
-            // Ajoutez d'autres données ici
-        };
-        vue.mettreAJourTableau(nouvellesDonnees);
-    }
+    private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_addActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton add;
+    private javax.swing.JButton del;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     // End of variables declaration//GEN-END:variables
-
-    @Override
-    public void update(Observable m, Object o) {
-        System.out.println("update");
-    }
-
-    @Override
-    public void addControleur(Controleur c) {
-        System.out.println("controleur");
-    }
 
 }

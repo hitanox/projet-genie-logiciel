@@ -115,4 +115,18 @@ public class Panier extends Observable {
         }
         return false;
     }
+
+    public Object[][] toObject() {
+        Object[][] res = new Object[fruits.size()][4];
+
+        for (int i = 0; i < fruits.size(); i++) {
+            Fruit fruit = fruits.get(i);
+            res[i][0] = (fruit.getNom() != null) ? fruit.getNom() : ""; 
+            res[i][1] = (fruit.getOrigine() != null) ? fruit.getOrigine() : ""; 
+            res[i][2] = fruit.getPrix();
+            res[i][3] = 1;
+        }
+    
+        return res;
+    }
 }

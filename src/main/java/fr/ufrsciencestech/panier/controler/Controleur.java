@@ -10,6 +10,10 @@ import fr.ufrsciencestech.panier.view.VuePanierV2;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
 
 public class Controleur implements ActionListener {
     private Panier p;
@@ -17,8 +21,14 @@ public class Controleur implements ActionListener {
     private String fruit = "Orange"; 
     
     @Override
-    public void actionPerformed(ActionEvent e){ 
-              
+    public void actionPerformed(ActionEvent e){
+        if(((Component)e.getSource()).getName().equals("add")) {
+            try {
+                this.p.ajout(new Orange());
+            } catch (PanierPleinException ex) {
+                Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
     }
     public void setPanier(Panier p){
         this.p = p;
