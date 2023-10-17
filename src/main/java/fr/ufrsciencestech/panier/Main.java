@@ -11,20 +11,20 @@ import fr.ufrsciencestech.panier.view.*;
 
 
 public class Main {
-    private static VueGraphique vueg;      //pour pouvoir changer de vue si on le souhaite
+    private static VuePanierV2 vueg;      //pour pouvoir changer de vue si on le souhaite
     private static Controleur controleur;  //pour pouvoir changer de controleur si on le souhaite
 
     /**
      * @return the vueg
      */
-    public VueGraphique getVueg() {
+    public VuePanierV2 getVueg() {
         return vueg;
     }
 
     /**
      * @param vueg the vueg to set
      */
-    public void setVueg(VueGraphique vueg) {
+    public void setVueg(VuePanierV2 vueg) {
         this.vueg = vueg;
     }
 
@@ -46,12 +46,9 @@ public class Main {
         //vueg = new VueGAWT();
         controleur = new Controleur();
         Panier panier = new Panier(5);
-        vueg = new VueGraphique();
+        vueg = new VuePanierV2();
+        vueg.run();
 
-        controleur.setVue(vueg);
-        controleur.setPanier(panier);
-        panier.addObserver(vueg);
-        vueg.addControleur(controleur);
 
     }
 }
