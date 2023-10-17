@@ -1,9 +1,8 @@
 #IDE
 /.idea/
 ./Panier/.idea
+.vscode/settings.json
+/.vscode
 
 # Target
 ./Panier/target
-Panier/pom.xml
-.vscode/settings.json
-W
