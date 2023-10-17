@@ -13,7 +13,7 @@ import org.junit.Test;
 
 public class PanierTest {
 
-  Panier panierTest = new Panier(10);
+  Panier panierTest = Panier.getInstance(10);
   Cerise cerise1 = new Cerise(0.5, "France");
   Banane banane1 = new Banane(1.0, "Espagne");
 
@@ -52,7 +52,7 @@ public class PanierTest {
     fruits.add(cerise1);
     fruits.add(banane1);
 
-    Panier pTest = new Panier(10);
+    Panier pTest = Panier.getInstance(10);
 
     pTest.setFruits(fruits);
     assertEquals(this.panierTest, pTest);
@@ -85,13 +85,13 @@ public class PanierTest {
 
   @Test
   public void testEstVide() {
-    Panier pTest = new Panier(10);
+    Panier pTest = Panier.getInstance(10);
     assertTrue(pTest.estVide());
   }
 
   @Test
   public void testEstPlein() throws PanierPleinException {
-    Panier pTest = new Panier(2);
+    Panier pTest = Panier.getInstance(2);
 
     pTest.ajout(new Cerise());
     pTest.ajout(new Cerise());
@@ -140,7 +140,7 @@ public class PanierTest {
 
   @Test
   public void testEquals() throws PanierPleinException {
-    Panier pTest = new Panier(10);
+    Panier pTest = Panier.getInstance(10);
 
     pTest.ajout(cerise1);
     pTest.ajout(banane1);
@@ -154,7 +154,7 @@ public class PanierTest {
   @Test(expected = PanierPleinException.class)
   public void testAjoutTriggerPanierPleinException()
     throws PanierPleinException {
-    Panier pTest = new Panier(1);
+    Panier pTest = Panier.getInstance(1);
     pTest.ajout(cerise1);
     pTest.ajout(banane1);
   }
@@ -168,6 +168,6 @@ public class PanierTest {
 
   @Test(expected = IllegalArgumentException.class)
   public void testPanierTriggerException() throws IllegalArgumentException {
-    new Panier(0);
+    Panier.getInstance(0);
   }
 }

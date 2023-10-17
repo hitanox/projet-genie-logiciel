@@ -17,7 +17,7 @@ public class VueGSwingTest {
     public void setUp() {
         vue = new VueGSwing();
         Controleur controleur = new Controleur();
-        Panier panier = new Panier(5);
+        Panier panier = Panier.getInstance(5);
         
         controleur.setPanier(panier);                 
         panier.addObserver(vue);        

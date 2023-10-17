@@ -42,10 +42,10 @@ public class Main {
         this.controleur = controleur;
     }
 
-    public static void main(String[] args){
+    public static void main(String[] args) {
         //vueg = new VueGAWT();
         controleur = new Controleur();
-        Panier panier = new Panier(5);
+        Panier panier = Panier.getInstance(5);
         vueg = new VueGraphique();
 
         controleur.setVue(vueg);
