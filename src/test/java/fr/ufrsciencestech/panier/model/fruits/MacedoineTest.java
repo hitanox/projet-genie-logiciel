@@ -2,6 +2,7 @@ package fr.ufrsciencestech.panier.model.fruits;
 
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Orange;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Poire;
+import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 import org.junit.Before;
 import org.junit.Test;

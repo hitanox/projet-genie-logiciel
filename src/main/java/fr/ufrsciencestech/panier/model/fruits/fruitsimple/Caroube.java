@@ -1,14 +1,9 @@
 package fr.ufrsciencestech.panier.model.fruits.fruitsimple;
 
-public class Caroube extends FruitSimple{
+public class Caroube extends FruitSimple {
     public Caroube(double prix, String origine) {
-        super(prix, origine, true);
+        super("Caroube", prix, origine, true);
     }
 
-    public Caroube() {super(3.20, "Moyen-Orient", true);}
-
-    @Override
-    public String getNom() {
-        return "Caroube";
-    }
+    public Caroube() {super("Caroube", 3.20, "Moyen-Orient", true);}
 }

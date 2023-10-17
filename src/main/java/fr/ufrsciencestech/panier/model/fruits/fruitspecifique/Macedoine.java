@@ -1,11 +1,14 @@
-package fr.ufrsciencestech.panier.model.fruits;
+package fr.ufrsciencestech.panier.model.fruits.fruitspecifique;
+
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 
 import java.util.ArrayList;
 
 public class Macedoine implements Fruit {
-    private ArrayList<Fruit> fruits;
+    private ArrayList<FruitSimple> fruits;
 
-    public Macedoine(ArrayList<Fruit> fruits) {
+    public Macedoine(ArrayList<FruitSimple> fruits) {
         this.fruits = fruits;
     }
 
