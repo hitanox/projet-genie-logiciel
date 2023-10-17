@@ -1,6 +1,8 @@
 package fr.ufrsciencestech.panier.model.fruits;
 import static junit.framework.TestCase.*;
 
+import fr.ufrsciencestech.panier.model.fruits.fruitdecorator.Jus;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Orange;
 import org.junit.Test;
 
 

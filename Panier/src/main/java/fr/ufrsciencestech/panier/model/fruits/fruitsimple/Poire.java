@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.model.fruits;
+package fr.ufrsciencestech.panier.model.fruits.fruitsimple;
 
 public class Poire extends FruitSimple {
     public Poire(Double prix, String origine) {

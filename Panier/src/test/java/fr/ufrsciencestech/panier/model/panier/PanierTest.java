@@ -4,9 +4,9 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import fr.ufrsciencestech.panier.model.fruits.Cerise;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Cerise;
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
-import fr.ufrsciencestech.panier.model.fruits.Banane;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Banane;
 import java.util.ArrayList;
 import org.junit.Before;
 import org.junit.Test;

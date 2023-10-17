@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier.model.fruits.fabrique;
 
-import fr.ufrsciencestech.panier.model.fruits.Caroube;
-import fr.ufrsciencestech.panier.model.fruits.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Caroube;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 
 public class FabriqueCaroube implements Fabrique{
     @Override

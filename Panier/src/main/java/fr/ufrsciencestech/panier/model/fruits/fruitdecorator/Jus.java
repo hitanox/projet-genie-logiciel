@@ -1,4 +1,6 @@
-package fr.ufrsciencestech.panier.model.fruits;
+package fr.ufrsciencestech.panier.model.fruits.fruitdecorator;
+
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
 
 public class Jus extends FruitDecorator {
 

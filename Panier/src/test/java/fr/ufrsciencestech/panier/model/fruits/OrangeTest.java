@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier.model.fruits;
 
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Orange;
 import junit.framework.TestCase;
 
 public class OrangeTest extends TestCase {
