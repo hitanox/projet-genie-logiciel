@@ -1,6 +1,7 @@
 package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
+import fr.ufrsciencestech.panier.model.panier.Panier;
 
 import java.awt.*;
 import javax.swing.*;
@@ -36,7 +37,7 @@ public class VueGSwing extends JFrame implements VueG{
     
     @Override
     public void update(Observable m, Object o){     //This method is called whenever the observed object is changed
-        getAffiche().setText(((Integer) o).toString());
+        getAffiche().setText((o).toString());
     }
 
     /**
