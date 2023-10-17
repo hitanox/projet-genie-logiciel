@@ -1,19 +1,14 @@
 package fr.ufrsciencestech.panier.controler;
 
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Poire;
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Orange;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import fr.ufrsciencestech.panier.model.panier.PanierVideException;
-import fr.ufrsciencestech.panier.view.VueGraphique;
 import fr.ufrsciencestech.panier.view.VuePanierV2;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.util.logging.Level;
-import java.util.logging.Logger;
-import javax.swing.JTable;
-import javax.swing.table.DefaultTableModel;
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
 
 public class Controleur implements ActionListener {
     private Panier p;
@@ -24,9 +19,30 @@ public class Controleur implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(((Component)e.getSource()).getName().equals("add")) {
             try {
-                this.p.ajout(new Orange());
+                this.setFruit(vg.getTextFieldType().getText());
+                System.out.println(fruit);
+                    try {
+                        Class vClasse = Class.forName("fr.ufrsciencestech.panier.model.fruits.fruitsimple." + fruit);
+                        try {
+                            Fruit object = (Fruit)vClasse.newInstance();
+                            this.p.ajout(object);
+                        }catch(InstantiationException | IllegalAccessException ex){ System.out.println(ex); }
+                    }
+                    catch(ClassNotFoundException ex) {
+                        System.out.println(ex);
+                        this.p.ajout(new Poire()); //test, à terme ajouter fruit personnalisé
+                    }
             } catch (PanierPleinException ex) {
-                Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+                //Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
+            }
+        }
+        else {
+            try {
+                this.p.retrait();
+            } catch (PanierVideException ex) {
+                //Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+                System.out.println(ex);
             }
         }
     }

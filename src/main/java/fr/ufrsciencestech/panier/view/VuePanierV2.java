@@ -61,6 +61,15 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     public void addControleur(Controleur c) {
         this.add.addActionListener(c);
         this.del.addActionListener(c);
+        //this.jTable1.addActionListener(c);
+    }
+    
+    public javax.swing.JTable getTab() {
+        return jTable1;
+    }
+    
+    public javax.swing.JTextField getTextFieldType() {
+        return tf_Type;
     }
     
     /*public void run() {
@@ -87,10 +96,15 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        add = new javax.swing.JButton();
-        add.setName("add");
         del = new javax.swing.JButton();
         del.setName("del");
+        jPanel1 = new javax.swing.JPanel();
+        tf_Type = new javax.swing.JTextField();
+        tf_Origine = new javax.swing.JTextField();
+        tf_Prix = new javax.swing.JTextField();
+        tf_Quantite = new javax.swing.JTextField();
+        add = new javax.swing.JButton();
+        add.setName("add");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -107,42 +121,40 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         ));
         jScrollPane1.setViewportView(jTable1);
 
+        getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
+
+        del.setLabel("del");
+        getContentPane().add(del, java.awt.BorderLayout.EAST);
+
+        jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel1.setLayout(new java.awt.GridLayout());
+
+        tf_Type.setText("Orange");
+        tf_Type.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tf_TypeActionPerformed(evt);
+            }
+        });
+        jPanel1.add(tf_Type);
+
+        tf_Origine.setText("Origine");
+        jPanel1.add(tf_Origine);
+
+        tf_Prix.setText("Prix");
+        jPanel1.add(tf_Prix);
+
+        tf_Quantite.setText("Quantité");
+        jPanel1.add(tf_Quantite);
+
         add.setLabel("add");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
             }
         });
+        jPanel1.add(add);
 
-        del.setLabel("del");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(170, 170, 170)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(add)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(del)
-                .addContainerGap(124, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(19, Short.MAX_VALUE)
-                .addComponent(add)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 275, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(del)
-                        .addGap(159, 159, 159))))
-        );
+        getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -151,11 +163,20 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         // TODO add your handling code here:
     }//GEN-LAST:event_addActionPerformed
 
+    private void tf_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_TypeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tf_TypeActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton del;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
+    private javax.swing.JTextField tf_Origine;
+    private javax.swing.JTextField tf_Prix;
+    private javax.swing.JTextField tf_Quantite;
+    private javax.swing.JTextField tf_Type;
     // End of variables declaration//GEN-END:variables
 
 }
