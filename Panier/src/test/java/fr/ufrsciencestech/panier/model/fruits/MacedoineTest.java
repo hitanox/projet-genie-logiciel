@@ -9,7 +9,7 @@ import static junit.framework.TestCase.assertEquals;
 
 public class MacedoineTest {
 
-    Panier panierTest = new Panier(10);
+    Panier panierTest = Panier.getInstance(10);
     Orange orange1 = new Orange(0.5, "France");
     Poire poire1= new Poire(1.0, "France");
 
