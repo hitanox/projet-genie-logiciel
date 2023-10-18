@@ -2,8 +2,13 @@ package fr.ufrsciencestech.panier.model.fruits.fruitsimple;
 
 public class Litchi extends FruitSimple {
     public Litchi(double prix, String origine) {
-        super("Litchi", prix, origine, true);
+        super(prix, origine, true);
     }
 
-    public Litchi() {super("Litchi", 1.49, "Chine", true);}
+    public Litchi() {super(1.49, "Chine", true);}
+
+    @Override
+    public String getNom() {
+        return "Litchi";
+    }
 }
