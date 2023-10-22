@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier.model.fruits.fruitspecifique;
+package fr.ufrsciencestech.panier.model.recipe.fruitspecifique;
 
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
