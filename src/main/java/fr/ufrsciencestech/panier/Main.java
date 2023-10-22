@@ -1,6 +1,7 @@
 package fr.ufrsciencestech.panier;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
+import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.view.*;
 
@@ -49,6 +50,5 @@ public class Main {
         controleur.setPanier(panier);
         panier.addObserver(vueg);
         vueg.addControleur(controleur);
-
     }
 }

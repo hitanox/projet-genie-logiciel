@@ -3,7 +3,7 @@ import static junit.framework.TestCase.*;
 
 import fr.ufrsciencestech.panier.model.divers.Jus;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Orange;
-import fr.ufrsciencestech.panier.model.recipe.fruitspecifique.Jus;
+import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import org.junit.Test;
 
 
