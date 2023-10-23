@@ -29,15 +29,10 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         model.addColumn("Origine");
         model.addColumn("Prix");
         model.addColumn("Quantité");
-        model.addColumn("");
 
         // Définissez le modèle pour le tableau jTable1
         jTable1.setModel(model);
 
-        // Ajoutez vos données au modèle (vous pouvez remplacer ces données par les vôtres)
-        model.addRow(new Object[]{"Produit 1", "Origine 1", 10.0, 5});
-        model.addRow(new Object[]{"Produit 2", "Origine 2", 15.0, 3});
-        // Ajoutez d'autres lignes de données ici
     }
     
     public void mettreAJourTableau(Object[][] donnees) {
@@ -72,17 +67,9 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         return tf_Type;
     }
     
-    /*public void run() {
-        VuePanierV2 vue = new VuePanierV2();
-        vue.setVisible(true);
-
-        // Exemple de mise à jour du tableau
-        Object[][] nouvellesDonnees = {
-            {"Nouveau Produit", "Nouvelle Origine", 20.0, 7},
-            // Ajoutez d'autres données ici
-        };
-        vue.mettreAJourTableau(nouvellesDonnees);
-    }*/
+    public Boolean isJuice() {
+        return jCheckBox1.isSelected();
+    }
 
 
     /** This method is called from within the constructor to
@@ -103,6 +90,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         tf_Origine = new javax.swing.JTextField();
         tf_Prix = new javax.swing.JTextField();
         tf_Quantite = new javax.swing.JTextField();
+        jCheckBox1 = new javax.swing.JCheckBox();
         add = new javax.swing.JButton();
         add.setName("add");
 
@@ -127,7 +115,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         getContentPane().add(del, java.awt.BorderLayout.EAST);
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.setLayout(new java.awt.GridLayout());
+        jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
         tf_Type.setText("Orange");
         tf_Type.addActionListener(new java.awt.event.ActionListener() {
@@ -145,6 +133,18 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
         tf_Quantite.setText("Quantité");
         jPanel1.add(tf_Quantite);
+
+        jCheckBox1.setName("jus");
+        jCheckBox1.setText("Jus");
+        jCheckBox1.setMaximumSize(new java.awt.Dimension(20, 22));
+        jCheckBox1.setMinimumSize(new java.awt.Dimension(20, 22));
+        jCheckBox1.setPreferredSize(new java.awt.Dimension(20, 22));
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jCheckBox1);
 
         add.setLabel("add");
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -167,9 +167,14 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_TypeActionPerformed
 
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton del;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

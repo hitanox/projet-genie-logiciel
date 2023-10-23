@@ -14,7 +14,7 @@ public class Jus implements Fruit {
     public FruitSimple getFruit() {
         return fruit;
     }
-
+    
     @Override
     public boolean isSeedless() {return this.getFruit().isSeedless();}
 
@@ -27,5 +27,10 @@ public class Jus implements Fruit {
     @Override
     public String toString() {
         return "Jus(" + fruit.toString().split(" ")[0] + ")";
+    }
+
+    @Override
+    public String getNom() {
+        return "Jus";
     }
 }

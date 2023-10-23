@@ -45,7 +45,7 @@ public class Main {
         controleur = new Controleur();
         PanierFactory bf = new PanierFactory();
         Panier panier = bf.createPanier(5);
-        vueg = new VueGraphique();
+        vueg = new VuePanierV2();
 
         controleur.setVue(vueg);
         controleur.setPanier(panier);

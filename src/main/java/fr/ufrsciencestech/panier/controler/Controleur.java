@@ -9,6 +9,9 @@ import fr.ufrsciencestech.panier.view.VuePanierV2;
 import java.awt.*;
 import java.awt.event.*;
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
+import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 
 public class Controleur implements ActionListener {
     private Panier p;
@@ -19,21 +22,17 @@ public class Controleur implements ActionListener {
     public void actionPerformed(ActionEvent e){
         if(((Component)e.getSource()).getName().equals("add")) {
             try {
+                FruitFactory ff = new FruitFactory();
                 this.setFruit(vg.getTextFieldType().getText());
-                System.out.println(fruit);
-                    try {
-                        Class vClasse = Class.forName("fr.ufrsciencestech.panier.model.fruits.fruitsimple." + fruit);
-                        try {
-                            Fruit object = (Fruit)vClasse.newInstance();
-                            this.p.ajout(object);
-                        }catch(InstantiationException | IllegalAccessException ex){ System.out.println(ex); }
-                    }
-                    catch(ClassNotFoundException ex) {
-                        System.out.println(ex);
-                        this.p.ajout(new Poire()); //test, à terme ajouter fruit personnalisé
-                    }
-            } catch (PanierPleinException ex) {
-                //Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
+                if (vg.isJuice()) {
+                    FruitSimple fruitAJus = ff.createFruitSimple(fruit, 2, "Espagne", true);
+                    Jus object = ff.createJus(fruitAJus);
+                } else {
+                    FruitSimple object = ff.createFruitSimple(fruit, 2, "Espagne", true);
+                }
+                System.out.println(object.toString());
+                this.p.ajout(object);
+            } catch (PanierPleinException | ClassNotFoundException | IllegalAccessException | InstantiationException ex) {
                 System.out.println(ex);
             }
         }
@@ -47,11 +46,11 @@ public class Controleur implements ActionListener {
         }
     }
     public void setPanier(Panier p){
-        this.panier = p;
+        this.p = p;
     }
 
     public Panier getPanier() {
-        return this.panier;
+        return this.p;
     }
     public void setVue(VuePanierV2 vg){
         this.vg = vg;
