@@ -31,6 +31,6 @@ public class Jus implements Fruit {
 
     @Override
     public String getNom() {
-        return "Jus";
+        return "Jus(" + fruit.toString().split(" ")[0] + ")";
     }
 }
