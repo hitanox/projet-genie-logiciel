@@ -11,7 +11,7 @@ import java.awt.*;
 import java.awt.event.*;
 
 public class Controleur implements ActionListener {
-    private Panier p;
+    private Panier panier;
     private VueGraphique vg;
     private String fruit = "Orange"; 
     
@@ -25,10 +25,10 @@ public class Controleur implements ActionListener {
             try {
                 switch (this.getFruit()) {
                     case "Orange":
-                        p.ajout(new Orange());
+                        panier.ajout(new Orange());
                         break;
                     case "Poire":
-                        p.ajout(new Poire());
+                        panier.ajout(new Poire());
                         break;
                 
                 }
@@ -37,18 +37,18 @@ public class Controleur implements ActionListener {
         }
         else {
             try {
-                p.retrait(); 
+                panier.retrait();
             }
             catch(PanierVideException pve) {System.err.println(pve);}
         }
               
     }
     public void setPanier(Panier p){
-        this.p = p;
+        this.panier = p;
     }
 
     public Panier getPanier() {
-        return this.p;
+        return this.panier;
     }
     public void setVue(VueGraphique vg){
         this.vg = vg;

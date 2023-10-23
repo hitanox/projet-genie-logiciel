@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier.model.fruits.fruitsimple;
 
-public class Kiwi extends FruitSimple{
+public class Kiwi extends FruitSimple {
     public Kiwi(double prix, String origine) {
         super(prix, origine, true);
     }
