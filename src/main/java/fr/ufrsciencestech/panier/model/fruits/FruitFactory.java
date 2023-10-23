@@ -19,23 +19,25 @@ public class FruitFactory implements ProductFactory {
     public FruitSimple createFruitSimple(String name, double prix, String origine, boolean isSeedless) {
         switch (name) {
             case "Ananas":
-                return new Ananas();
+                return new Ananas(prix, origine);
             case "Banane":
-                return new Banane();
+                return new Banane(prix, origine);
             case "Cerise":
-                return new Cerise();
+                return new Cerise(prix, origine);
             case "Fraise":
-                return new Fraise();
+                return new Fraise(prix, origine);
             case "Kiwi":
-                return new Kiwi();
+                return new Kiwi(prix, origine);
             case "Orange":
-                return new Orange();
+                return new Orange(prix, origine);
             case "Poire":
-                return new Poire();
+                return new Poire(prix, origine);
             case "Pomme":
-                return new Pomme();
+                return new Pomme(prix, origine);
             case "Tomate":
-                return new Tomate();
+                return new Tomate(prix, origine);
+            case "Caroube":
+                return new Caroube(prix, origine);
             default:
                 return new AnyFruit(name, prix, origine, isSeedless);
         }
