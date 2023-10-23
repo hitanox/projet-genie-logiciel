@@ -1,10 +1,8 @@
 package fr.ufrsciencestech.panier;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
-import fr.ufrsciencestech.panier.model.fruits.fabrique.FabriqueOranges;
-import fr.ufrsciencestech.panier.model.fruits.fabrique.FabriquePoires;
+import fr.ufrsciencestech.panier.model.panier.PanierFactory;
 import fr.ufrsciencestech.panier.model.panier.Panier;
-import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import fr.ufrsciencestech.panier.view.*;
 
 //utilise pour springIoC :
@@ -45,9 +43,10 @@ public class Main {
     public static void main(String[] args) {
         //vueg = new VueGAWT();
         controleur = new Controleur();
-        Panier panier = new Panier(5);
-        vueg = new VuePanierV2();
-        
+        PanierFactory bf = new PanierFactory();
+        Panier panier = bf.createPanier(5);
+        vueg = new VueGraphique();
+
         controleur.setVue(vueg);
         controleur.setPanier(panier);
         panier.addObserver(vueg);

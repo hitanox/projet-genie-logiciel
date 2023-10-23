@@ -47,11 +47,11 @@ public class Controleur implements ActionListener {
         }
     }
     public void setPanier(Panier p){
-        this.p = p;
+        this.panier = p;
     }
 
     public Panier getPanier() {
-        return this.p;
+        return this.panier;
     }
     public void setVue(VuePanierV2 vg){
         this.vg = vg;

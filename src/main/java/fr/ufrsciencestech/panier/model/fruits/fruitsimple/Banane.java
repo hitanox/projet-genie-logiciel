@@ -13,4 +13,5 @@ public class Banane extends FruitSimple {
     public String getNom() {
         return "Banane";
     }
+
 }
