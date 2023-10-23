@@ -63,12 +63,24 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         return jTable1;
     }
     
-    public javax.swing.JTextField getTextFieldType() {
-        return tf_Type;
+    public String getFieldType() {
+        return tf_Type.getText();
+    }
+    
+    public String getFieldOrigine() {
+        return tf_Origine.getText();
+    }
+    
+    public String getFieldPrix() {
+        return tf_Prix.getText();
+    }
+    
+    public String getFieldQuantite() {
+        return tf_Quantite.getText();
     }
     
     public Boolean isJuice() {
-        return jCheckBox1.isSelected();
+        return isJuice.isSelected();
     }
 
 
@@ -90,7 +102,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         tf_Origine = new javax.swing.JTextField();
         tf_Prix = new javax.swing.JTextField();
         tf_Quantite = new javax.swing.JTextField();
-        jCheckBox1 = new javax.swing.JCheckBox();
+        isJuice = new javax.swing.JCheckBox();
         add = new javax.swing.JButton();
         add.setName("add");
 
@@ -111,7 +123,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
         getContentPane().add(jScrollPane1, java.awt.BorderLayout.CENTER);
 
-        del.setLabel("del");
+        del.setText("Supprimer");
         getContentPane().add(del, java.awt.BorderLayout.EAST);
 
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
@@ -134,19 +146,19 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         tf_Quantite.setText("Quantité");
         jPanel1.add(tf_Quantite);
 
-        jCheckBox1.setName("jus");
-        jCheckBox1.setText("Jus");
-        jCheckBox1.setMaximumSize(new java.awt.Dimension(20, 22));
-        jCheckBox1.setMinimumSize(new java.awt.Dimension(20, 22));
-        jCheckBox1.setPreferredSize(new java.awt.Dimension(20, 22));
-        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+        isJuice.setName("jus");
+        isJuice.setText("Jus");
+        isJuice.setMaximumSize(new java.awt.Dimension(20, 22));
+        isJuice.setMinimumSize(new java.awt.Dimension(20, 22));
+        isJuice.setPreferredSize(new java.awt.Dimension(20, 22));
+        isJuice.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBox1ActionPerformed(evt);
+                isJuiceActionPerformed(evt);
             }
         });
-        jPanel1.add(jCheckBox1);
+        jPanel1.add(isJuice);
 
-        add.setLabel("add");
+        add.setText("Ajouter");
         add.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 addActionPerformed(evt);
@@ -167,14 +179,14 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         // TODO add your handling code here:
     }//GEN-LAST:event_tf_TypeActionPerformed
 
-    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+    private void isJuiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isJuiceActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBox1ActionPerformed
+    }//GEN-LAST:event_isJuiceActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton del;
-    private javax.swing.JCheckBox jCheckBox1;
+    private javax.swing.JCheckBox isJuice;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;

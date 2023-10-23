@@ -23,7 +23,7 @@ public class Controleur implements ActionListener {
             try {
                 FruitFactory facto = new FruitFactory();
                 
-                String fruitName = vg.getTextFieldType().getText();
+                String fruitName = vg.getFieldType();
                 FruitSimple fruit = facto.createFruitSimple(fruitName, 2, "Espagne", true);
 
                 if (vg.isJuice()) {

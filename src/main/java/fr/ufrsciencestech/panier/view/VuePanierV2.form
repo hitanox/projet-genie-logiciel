@@ -51,7 +51,7 @@
     </Container>
     <Component class="javax.swing.JButton" name="del">
       <Properties>
-        <Property name="label" type="java.lang.String" value="del"/>
+        <Property name="text" type="java.lang.String" value="Supprimer"/>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="del.setName(&quot;del&quot;);"/>
@@ -102,7 +102,7 @@
             <Property name="text" type="java.lang.String" value="Quantit&#xe9;"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JCheckBox" name="jCheckBox1">
+        <Component class="javax.swing.JCheckBox" name="isJuice">
           <Properties>
             <Property name="text" type="java.lang.String" value="Jus"/>
             <Property name="maximumSize" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
@@ -116,15 +116,15 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jCheckBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="isJuiceActionPerformed"/>
           </Events>
           <AuxValues>
-            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="jCheckBox1.setName(&quot;jus&quot;);"/>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="isJuice.setName(&quot;jus&quot;);"/>
           </AuxValues>
         </Component>
         <Component class="javax.swing.JButton" name="add">
           <Properties>
-            <Property name="label" type="java.lang.String" value="add"/>
+            <Property name="text" type="java.lang.String" value="Ajouter"/>
           </Properties>
           <Events>
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="addActionPerformed"/>
