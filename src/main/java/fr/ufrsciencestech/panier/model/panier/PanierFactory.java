@@ -7,11 +7,11 @@ import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 
 import java.util.ArrayList;
 
-public class BasketFactory implements ProductFactory {
+public class PanierFactory implements ProductFactory {
 
     @Override
     public Panier createPanier(int size) {
-        return Panier.getInstance(size);
+        return new Panier(size);
     }
 
     @Override
