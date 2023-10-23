@@ -36,15 +36,21 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     }
     
     public void mettreAJourTableau(Object[][] donnees) {
-        // Supprimez toutes les lignes du modèle actuel
-        while (model.getRowCount() > 0) {
-            model.removeRow(0);
+        try {
+            // Supprimez toutes les lignes du modèle actuel
+            while (model.getRowCount() > 0) {
+                model.removeRow(0);
+            }
+
+            for (Object[] ligne : donnees) {
+                if (!ligne[0].toString().isEmpty()) {
+                    model.addRow(ligne);
+                }
+            }
+        } catch (Exception e) {
+            System.out.println(e);
         }
-    
-        // Ajoutez de nouvelles lignes de données au modèle
-        for (Object[] ligne : donnees) {
-            model.addRow(ligne);
-        }
+        
     }
     
     @Override
@@ -75,8 +81,12 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         return tf_Prix.getText();
     }
     
-    public String getFieldQuantite() {
-        return tf_Quantite.getText();
+    public Integer getFieldQuantite() {
+        try {
+            return Integer.valueOf(tf_Quantite.getText());
+        } catch (NumberFormatException e) {
+            return 1;
+        }   
     }
     
     public Boolean isJuice() {

@@ -24,13 +24,15 @@ public class Controleur implements ActionListener {
                 FruitFactory facto = new FruitFactory();
                 
                 String fruitName = vg.getFieldType();
+                Integer quantity = vg.getFieldQuantite();
+                
                 FruitSimple fruit = facto.createFruitSimple(fruitName, 2, "Espagne", true);
 
                 if (vg.isJuice()) {
                     Jus jus = facto.createJus(fruit);   
-                    this.p.ajout(jus);
+                    this.p.ajout(jus, quantity);
                 } else {
-                    this.p.ajout(fruit);
+                    this.p.ajout(fruit, quantity);
                 }
                 
             } catch (PanierPleinException ex) {

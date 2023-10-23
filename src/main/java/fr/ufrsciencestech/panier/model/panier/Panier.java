@@ -3,6 +3,8 @@ package fr.ufrsciencestech.panier.model.panier;
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Observable;
 
 public class Panier extends Observable {
@@ -62,12 +64,18 @@ public class Panier extends Observable {
         return this.fruits.size() == this.contenanceMax;
     }
 
-    public void ajout(Fruit o) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
-        if (!estPlein()) {
-            this.fruits.add(o);
-            setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
-        } else throw new PanierPleinException();
+    public void ajout(Fruit o, Integer quantity) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
+        for (int i=0; i < quantity; i++) {
+            if (!estPlein()) {
+                this.fruits.add(o);
+            } else {
+                setChanged();
+                notifyObservers(this);
+                throw new PanierPleinException();
+            }
+        }
+        setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
+        notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
     }
 
     public void retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
@@ -117,14 +125,33 @@ public class Panier extends Observable {
     }
 
     public Object[][] toObject() {
-        Object[][] res = new Object[fruits.size()][4];
+        Map<Fruit, Integer> fruitWithQuantity = new HashMap<>();
 
         for (int i = 0; i < fruits.size(); i++) {
             Fruit fruit = fruits.get(i);
-            res[i][0] = (fruit.getNom() != null) ? fruit.getNom() : ""; 
-            res[i][1] = (fruit.getOrigine() != null) ? fruit.getOrigine() : ""; 
+            System.out.println(fruit.toString());
+
+            if (fruitWithQuantity.containsKey(fruit)) {
+                int currentQuantity = fruitWithQuantity.get(fruit);
+                fruitWithQuantity.put(fruit, currentQuantity + 1);
+            } else {
+                System.out.println("cc");
+                fruitWithQuantity.put(fruit, 1);
+            }
+        }
+
+        Object[][] res = new Object[fruits.size()][4];
+        int i = 0;
+
+        for (Map.Entry<Fruit, Integer> entry : fruitWithQuantity.entrySet()) {
+            Fruit fruit = entry.getKey();
+            int quantity = entry.getValue();
+            res[i][0] = (fruit.getNom() != null) ? fruit.getNom() : "";
+            res[i][1] = (fruit.getOrigine() != null) ? fruit.getOrigine() : "";
             res[i][2] = fruit.getPrix();
-            res[i][3] = 1;
+            res[i][3] = quantity;
+
+            i++;
         }
     
         return res;
