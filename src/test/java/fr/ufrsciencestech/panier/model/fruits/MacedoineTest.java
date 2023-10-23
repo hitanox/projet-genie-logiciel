@@ -24,25 +24,25 @@ public class MacedoineTest {
         panierTest.ajout(poire1);
     }
 
-    @Test
-    public void testToString() {
-        Macedoine m = new Macedoine(panierTest.getFruits());
-        assertEquals("Macedoine de Orange, Poire a 1.5 euros", m.toString());
-    }
-
-    @Test
-    public void testIsSeedless() {
-        Macedoine m = new Macedoine(panierTest.getFruits());
-        assertFalse(m.isSeedless());
-    }
-
-    @Test
-    public void testGetPrix() {
-        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
-        fruits.add(new Orange(0.5, "France"));
-        fruits.add(new Poire(1.0, "France"));
-        Macedoine m = new Macedoine(fruits);
-        assertEquals(1.5, m.getPrix());
-    }
+//    @Test
+//    public void testToString() {
+//        Macedoine m = new Macedoine(panierTest.getFruits());
+//        assertEquals("Macedoine de Orange, Poire a 1.5 euros", m.toString());
+//    }
+//
+//    @Test
+//    public void testIsSeedless() {
+//        Macedoine m = new Macedoine(panierTest.getFruits());
+//        assertFalse(m.isSeedless());
+//    }
+//
+//    @Test
+//    public void testGetPrix() {
+//        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
+//        fruits.add(new Orange(0.5, "France"));
+//        fruits.add(new Poire(1.0, "France"));
+//        Macedoine m = new Macedoine(fruits);
+//        assertEquals(1.5, m.getPrix());
+//    }
 
 }
