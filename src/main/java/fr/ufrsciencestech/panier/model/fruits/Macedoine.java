@@ -26,6 +26,11 @@ public class Macedoine implements Fruit {
         }
         return true;
     }
+    
+    @Override
+    public String getNom() {
+        return "Macedoine";
+    }
 
     @Override
     public double getPrix() {

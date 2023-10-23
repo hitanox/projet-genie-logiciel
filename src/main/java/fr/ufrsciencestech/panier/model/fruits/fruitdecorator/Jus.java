@@ -27,4 +27,9 @@ public class Jus extends FruitDecorator {
     public String getOrigine() {
         return super.getFruit().getOrigine();
     }
+
+    @Override
+    public String getNom() {
+        return "Jus";
+    }
 }
