@@ -2,7 +2,7 @@ package fr.ufrsciencestech.panier.controler;
 
 
 import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
-import fr.ufrsciencestech.panier.model.fruits.fruitSimple.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
