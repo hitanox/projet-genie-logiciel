@@ -23,8 +23,8 @@ public class Controleur implements ActionListener {
             try {
                 FruitFactory facto = new FruitFactory();
                 
-                String fruitName = vg.getFieldType();
-                Integer quantity = vg.getFieldQuantite();
+                String fruitName = vg.getFieldName();
+                Integer quantity = vg.getFieldQuantity();
                 
                 FruitSimple fruit = facto.createFruitSimple(fruitName);
 

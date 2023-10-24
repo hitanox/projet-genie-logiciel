@@ -79,25 +79,25 @@
         <Property name="rows" type="int" value="1"/>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JTextField" name="tf_Type">
+        <Component class="javax.swing.JTextField" name="tfName">
           <Properties>
             <Property name="text" type="java.lang.String" value="Orange"/>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tf_TypeActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tfNameActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_Origine">
+        <Component class="javax.swing.JTextField" name="tfOrigin">
           <Properties>
             <Property name="text" type="java.lang.String" value="Origine"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_Prix">
+        <Component class="javax.swing.JTextField" name="tfPrice">
           <Properties>
             <Property name="text" type="java.lang.String" value="Prix"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="tf_Quantite">
+        <Component class="javax.swing.JTextField" name="tfQuantity">
           <Properties>
             <Property name="text" type="java.lang.String" value="Quantit&#xe9;"/>
           </Properties>
@@ -135,5 +135,15 @@
         </Component>
       </SubComponents>
     </Container>
+    <Component class="javax.swing.JLabel" name="tfTotal">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Total : 0.0 &#x20ac;"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout" value="org.netbeans.modules.form.compat2.layouts.DesignBorderLayout$BorderConstraintsDescription">
+          <BorderConstraints direction="Last"/>
+        </Constraint>
+      </Constraints>
+    </Component>
   </SubComponents>
 </Form>

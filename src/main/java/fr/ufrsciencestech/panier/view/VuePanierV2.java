@@ -19,25 +19,21 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
     private DefaultTableModel model;
     
-    /** Creates new form VuePanierV2 */
     public VuePanierV2() {
         initComponents();
 
-        // Créez un modèle de tableau personnalisé avec les colonnes "Produit", "Origine", "Prix", "Quantité"
         model = new DefaultTableModel();
         model.addColumn("Produit");
         model.addColumn("Origine");
         model.addColumn("Prix");
         model.addColumn("Quantité");
 
-        // Définissez le modèle pour le tableau jTable1
         jTable1.setModel(model);
 
     }
     
     public void mettreAJourTableau(Object[][] donnees) {
         try {
-            // Supprimez toutes les lignes du modèle actuel
             while (model.getRowCount() > 0) {
                 model.removeRow(0);
             }
@@ -56,6 +52,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     @Override
     public void update(Observable m, Object o) {
         this.mettreAJourTableau(((Panier) o).toObject());
+        this.mettreAJourTotal(((Panier) o).getPrix());
     }
 
     @Override
@@ -69,21 +66,21 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         return jTable1;
     }
     
-    public String getFieldType() {
-        return tf_Type.getText();
+    public String getFieldName() {
+        return tfName.getText();
     }
     
-    public String getFieldOrigine() {
-        return tf_Origine.getText();
+    public String getFieldOrigin() {
+        return tfOrigin.getText();
     }
     
-    public String getFieldPrix() {
-        return tf_Prix.getText();
+    public String getFieldPrice() {
+        return tfPrice.getText();
     }
     
-    public Integer getFieldQuantite() {
+    public Integer getFieldQuantity() {
         try {
-            return Integer.valueOf(tf_Quantite.getText());
+            return Integer.valueOf(tfQuantity.getText());
         } catch (NumberFormatException e) {
             return 1;
         }   
@@ -91,6 +88,10 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     
     public Boolean isJuice() {
         return isJuice.isSelected();
+    }
+    
+    public void mettreAJourTotal(double prix) {
+        this.tfTotal.setText("Total : " + prix + " €");
     }
 
 
@@ -108,13 +109,14 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         del = new javax.swing.JButton();
         del.setName("del");
         jPanel1 = new javax.swing.JPanel();
-        tf_Type = new javax.swing.JTextField();
-        tf_Origine = new javax.swing.JTextField();
-        tf_Prix = new javax.swing.JTextField();
-        tf_Quantite = new javax.swing.JTextField();
+        tfName = new javax.swing.JTextField();
+        tfOrigin = new javax.swing.JTextField();
+        tfPrice = new javax.swing.JTextField();
+        tfQuantity = new javax.swing.JTextField();
         isJuice = new javax.swing.JCheckBox();
         add = new javax.swing.JButton();
         add.setName("add");
+        tfTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,22 +141,22 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        tf_Type.setText("Orange");
-        tf_Type.addActionListener(new java.awt.event.ActionListener() {
+        tfName.setText("Orange");
+        tfName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tf_TypeActionPerformed(evt);
+                tfNameActionPerformed(evt);
             }
         });
-        jPanel1.add(tf_Type);
+        jPanel1.add(tfName);
 
-        tf_Origine.setText("Origine");
-        jPanel1.add(tf_Origine);
+        tfOrigin.setText("Origine");
+        jPanel1.add(tfOrigin);
 
-        tf_Prix.setText("Prix");
-        jPanel1.add(tf_Prix);
+        tfPrice.setText("Prix");
+        jPanel1.add(tfPrice);
 
-        tf_Quantite.setText("Quantité");
-        jPanel1.add(tf_Quantite);
+        tfQuantity.setText("Quantité");
+        jPanel1.add(tfQuantity);
 
         isJuice.setName("jus");
         isJuice.setText("Jus");
@@ -178,6 +180,9 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
 
+        tfTotal.setText("Total : 0.0 €");
+        getContentPane().add(tfTotal, java.awt.BorderLayout.PAGE_END);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -185,9 +190,9 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         // TODO add your handling code here:
     }//GEN-LAST:event_addActionPerformed
 
-    private void tf_TypeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_TypeActionPerformed
+    private void tfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tf_TypeActionPerformed
+    }//GEN-LAST:event_tfNameActionPerformed
 
     private void isJuiceActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_isJuiceActionPerformed
         // TODO add your handling code here:
@@ -200,10 +205,13 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField tf_Origine;
-    private javax.swing.JTextField tf_Prix;
-    private javax.swing.JTextField tf_Quantite;
-    private javax.swing.JTextField tf_Type;
+    private javax.swing.JTextField tfName;
+    private javax.swing.JTextField tfOrigin;
+    private javax.swing.JTextField tfPrice;
+    private javax.swing.JTextField tfQuantity;
+    private javax.swing.JLabel tfTotal;
     // End of variables declaration//GEN-END:variables
+
+
 
 }

@@ -33,4 +33,20 @@ public class Jus implements Fruit {
     public String getNom() {
         return "Jus(" + fruit.toString().split(" ")[0] + ")";
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (o != null && getClass() == o.getClass()) {
+            Jus fruit = (Jus) o;
+            return (this.fruit.getPrix() == fruit.getPrix() && this.fruit.getOrigine().equals(fruit.getOrigine()));
+        }
+        return false;
+    }
+    
+    @Override
+    public int hashCode() {
+        int result = Double.hashCode(this.fruit.getPrix());
+        result = 31 * result + this.fruit.getOrigine().hashCode();
+        return result;
+    }
 }

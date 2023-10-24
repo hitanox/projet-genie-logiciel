@@ -13,5 +13,8 @@ public interface Fruit {
     public boolean equals(Object o);  //predicat pour tester si 2 fruits sont equivalents
 
     @Override
+    public int hashCode();
+    
+    @Override
     public String toString();    //affichage d'un fruit
 }
