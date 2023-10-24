@@ -114,7 +114,6 @@ public class Panier extends Observable {
             if (p.fruits.size() == this.fruits.size()) {
                 for (Fruit f : p.fruits) {
                     if (this.fruits.contains(f)) {
-                        System.out.println(f);
                         compt++;
                     }
                 }
@@ -135,12 +134,11 @@ public class Panier extends Observable {
                 int currentQuantity = fruitWithQuantity.get(fruit);
                 fruitWithQuantity.put(fruit, currentQuantity + 1);
             } else {
-                System.out.println("cc");
                 fruitWithQuantity.put(fruit, 1);
             }
         }
 
-        Object[][] res = new Object[fruits.size()][4];
+        Object[][] res = new Object[fruitWithQuantity.size()][4];
         int i = 0;
 
         for (Map.Entry<Fruit, Integer> entry : fruitWithQuantity.entrySet()) {

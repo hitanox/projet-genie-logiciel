@@ -133,6 +133,14 @@
             <AuxValue name="JavaCodeGenerator_CreateCodePost" type="java.lang.String" value="add.setName(&quot;add&quot;);"/>
           </AuxValues>
         </Component>
+        <Component class="javax.swing.JButton" name="btnMacedoine">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Macedoine"/>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePre" type="java.lang.String" value="btnMacedoine.setName(&quot;btnMacedoine&quot;);"/>
+          </AuxValues>
+        </Component>
       </SubComponents>
     </Container>
     <Component class="javax.swing.JLabel" name="tfTotal">
