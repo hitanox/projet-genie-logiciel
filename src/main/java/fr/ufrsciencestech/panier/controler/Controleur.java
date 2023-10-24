@@ -26,7 +26,7 @@ public class Controleur implements ActionListener {
                 String fruitName = vg.getFieldType();
                 Integer quantity = vg.getFieldQuantite();
                 
-                FruitSimple fruit = facto.createFruitSimple(fruitName, 2, "Espagne", true);
+                FruitSimple fruit = facto.createFruitSimple(fruitName);
 
                 if (vg.isJuice()) {
                     Jus jus = facto.createJus(fruit);   

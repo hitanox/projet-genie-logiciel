@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public interface ProductFactory {
     public Panier createPanier(int size);
     public FruitSimple createFruitSimple(String name, double prix, String origine, boolean isSeedless);
-
+    public FruitSimple creaFruitSimple(String name);
     public Macedoine createMacedoine(ArrayList<FruitSimple> fruits);
 
     public Jus createJus(FruitSimple fruit);

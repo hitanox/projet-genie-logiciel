@@ -42,6 +42,35 @@ public class FruitFactory implements ProductFactory {
                 return new AnyFruit(name, prix, origine, isSeedless);
         }
     }
+
+    @Override
+    public FruitSimple createFruitSimple(String name) {
+        switch (name) {
+            case "Ananas":
+                return new Ananas();
+            case "Banane":
+                return new Banane();
+            case "Cerise":
+                return new Cerise();
+            case "Fraise":
+                return new Fraise();
+            case "Kiwi":
+                return new Kiwi();
+            case "Orange":
+                return new Orange();
+            case "Poire":
+                return new Poire();
+            case "Pomme":
+                return new Pomme();
+            case "Tomate":
+                return new Tomate();
+            case "Caroube":
+                return new Caroube();
+            default:
+                return new AnyFruit(name);
+        }
+    }
+
     @Override
     public Macedoine createMacedoine(ArrayList<FruitSimple> fruits) {
         return new Macedoine(fruits);
