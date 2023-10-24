@@ -1,5 +1,6 @@
-package fr.ufrsciencestech.panier.model.fruits;
+package fr.ufrsciencestech.panier.model;
 
+import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import org.junit.Test;
 
