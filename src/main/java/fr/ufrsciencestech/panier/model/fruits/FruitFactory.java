@@ -7,16 +7,48 @@ import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class FruitFactory implements ProductFactory {
+
+    /**
+     * List of fruits available
+     */
+    private String[] fruitsAvailable = {"Ananas", "Banane", "Cerise", "Fraise", "Kiwi", "Orange", "Poire", "Pomme", "Tomate", "Caroube", "Litchi", "Papaye"};
 
     @Override
     public Panier createPanier(int size) {
         return null;
     }
 
+    /**
+     * Create a new instance of a fruit depending on parameters given by the user
+     * @param name
+     * @param prix
+     * @param origine
+     * @param isSeedless
+     * @return a new instance of a fruit depending on parameters given by the user
+     */
     @Override
     public FruitSimple createFruitSimple(String name, double prix, String origine, boolean isSeedless) {
+        isSeedless = false;
+        checkNameParameter(name);
+        if (!Arrays.asList(fruitsAvailable).contains(name)) {
+            checkPriceParameter(prix);
+            checkOriginParameter(origine);
+            return new AnyFruit(name, prix, origine, isSeedless);
+        } else if (prix < 0.0 || origine == null || origine.isEmpty()) {
+            return createFruitSimple(name);
+        } else {
+            return createFruitSimple(name, prix, origine);
+        }
+    }
+
+    @Override
+    public FruitSimple createFruitSimple(String name, double prix, String origine) {
+        checkNameParameter(name);
+        checkPriceParameter(prix);
+        checkOriginParameter(origine);
         switch (name) {
             case "Ananas":
                 return new Ananas(prix, origine);
@@ -38,13 +70,23 @@ public class FruitFactory implements ProductFactory {
                 return new Tomate(prix, origine);
             case "Caroube":
                 return new Caroube(prix, origine);
+            case "Litchi":
+                return new Litchi(prix, origine);
+            case "Papaye":
+                return new Papaye(prix, origine);
             default:
-                return new AnyFruit(name, prix, origine, isSeedless);
+                throw new IllegalArgumentException("Name specified is not a fruit");
         }
     }
 
+    /**
+     * Create a new instance of a fruit depending on the name given by the user
+     * @param name
+     * @return a new instance of a fruit depending on the name given by the user
+     */
     @Override
     public FruitSimple createFruitSimple(String name) {
+        checkNameParameter(name);
         switch (name) {
             case "Ananas":
                 return new Ananas();
@@ -66,18 +108,62 @@ public class FruitFactory implements ProductFactory {
                 return new Tomate();
             case "Caroube":
                 return new Caroube();
+            case "Litchi":
+                return new Litchi();
+            case "Papaye":
+                return new Papaye();
             default:
-                return new AnyFruit(name, 0.0, "Unknown", true);
+                throw new IllegalArgumentException("Name specified is not a fruit");
         }
     }
 
+    /**
+     * Create a new instance of a Macedoine with the list of fruits
+     * @param fruits
+     * @return
+     */
     @Override
-    public Macedoine createMacedoine(ArrayList<FruitSimple> fruits) {
+    public Macedoine createMacedoine(ArrayList<Fruit> fruits) {
         return new Macedoine(fruits);
     }
 
+    /**
+     * Create a new instance of a Jus with the fruit
+     * @param fruit
+     * @return
+     */
     @Override
-    public Jus createJus(FruitSimple fruit) {
+    public Jus createJus(Fruit fruit) {
         return new Jus(fruit);
+    }
+
+    /**
+     * Check if the name parameter is valid
+     * @param name
+     */
+    public void checkNameParameter(String name) {
+        if (name == null || name.isEmpty()) {
+            throw new IllegalArgumentException("Name cannot be null or empty");
+        }
+    }
+
+    /**
+     * Check if the price parameter is valid
+     * @param price
+     */
+    public void checkPriceParameter(double price) {
+        if (price < 0.0) {
+            throw new IllegalArgumentException("Price cannot be negative");
+        }
+    }
+
+    /**
+     * Check if the origin parameter is valid
+     * @param origin
+     */
+    public void checkOriginParameter(String origin) {
+        if (origin == null || origin.isEmpty()) {
+            throw new IllegalArgumentException("Origin cannot be null or empty");
+        }
     }
 }

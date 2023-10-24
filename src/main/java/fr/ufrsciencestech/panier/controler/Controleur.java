@@ -1,11 +1,13 @@
 package fr.ufrsciencestech.panier.controler;
 
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Poire;
+
+import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import fr.ufrsciencestech.panier.model.panier.PanierVideException;
 import fr.ufrsciencestech.panier.view.VuePanierV2;
-
 import java.awt.*;
 import java.awt.event.*;
 import fr.ufrsciencestech.panier.model.fruits.Fruit;

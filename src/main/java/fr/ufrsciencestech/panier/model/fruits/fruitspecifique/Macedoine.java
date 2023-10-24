@@ -16,6 +16,8 @@ public class Macedoine extends Observable implements Fruit {
     }
     
     public Macedoine(ArrayList<FruitSimple> fruits) {
+        super();
+        checkFruits(fruits);
         this.fruits = fruits;
     }
     
@@ -68,6 +70,17 @@ public class Macedoine extends Observable implements Fruit {
     @Override
     public String getOrigine() {
         return "France";
+    }
+
+    private void checkFruits(ArrayList<Fruit> fruits) {
+        for (Fruit f : fruits) {
+            if (f.getClass() == Jus.class) {
+                throw new IllegalArgumentException("Macedoine cannot contain a Jus");
+            }
+            if (f.getClass() == Macedoine.class) {
+                throw new IllegalArgumentException("Macedoine cannot contain another Macedoine");
+            }
+        }
     }
     
     public Object[][] toObject() {

@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.view.VueGraphique;
 import org.assertj.swing.fixture.FrameFixture;
