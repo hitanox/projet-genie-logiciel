@@ -9,13 +9,13 @@ import java.util.Map;
 import java.util.Observable;
 
 public class Macedoine extends Observable implements Fruit {
-    private ArrayList<FruitSimple> fruits;
+    private ArrayList<Fruit> fruits;
 
     public Macedoine() {
         this.fruits = new ArrayList<>();
     }
     
-    public Macedoine(ArrayList<FruitSimple> fruits) {
+    public Macedoine(ArrayList<Fruit> fruits) {
         super();
         checkFruits(fruits);
         this.fruits = fruits;
@@ -45,7 +45,7 @@ public class Macedoine extends Observable implements Fruit {
         return true;
     }
     
-    public ArrayList<FruitSimple> getFruits() {
+    public ArrayList<Fruit> getFruits() {
         return this.fruits;
     }
     

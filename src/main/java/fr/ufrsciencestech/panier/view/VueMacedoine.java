@@ -5,6 +5,7 @@
 package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import java.util.ArrayList;
@@ -250,7 +251,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         this.macedoine.add(fruit);
     }
     
-    public ArrayList<FruitSimple> getMacedoine() {
+    public ArrayList<Fruit> getMacedoine() {
         return this.macedoine.getFruits();
     }
 
