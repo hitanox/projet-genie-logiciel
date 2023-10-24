@@ -1,4 +1,4 @@
-package fr.ufrsciencestech.panier;
+package fr.ufrsciencestech.panier.view;
 
 import static org.junit.Assert.*;
 import org.junit.Before;

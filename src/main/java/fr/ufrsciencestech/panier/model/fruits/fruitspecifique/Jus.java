@@ -1,20 +1,20 @@
 package fr.ufrsciencestech.panier.model.fruits.fruitspecifique;
 
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
-import fr.ufrsciencestech.panier.model.fruits.fruitSimple.FruitSimple;
 
 public class Jus implements Fruit {
 
-    private FruitSimple fruit;
-    public Jus(FruitSimple fruit) {
+    private Fruit fruit;
+    public Jus(Fruit fruit) {
         super();
+        checkFruit(fruit);
         this.fruit = fruit;
     }
 
-    public FruitSimple getFruit() {
+    public Fruit getFruit() {
         return fruit;
     }
-    
+
     @Override
     public boolean isSeedless() {return this.getFruit().isSeedless();}
 
@@ -33,7 +33,7 @@ public class Jus implements Fruit {
     public String getNom() {
         return "Jus(" + fruit.toString().split(" ")[0] + ")";
     }
-    
+
     @Override
     public boolean equals(Object o) {
         if (o != null && getClass() == o.getClass()) {
@@ -42,11 +42,17 @@ public class Jus implements Fruit {
         }
         return false;
     }
-    
+
     @Override
     public int hashCode() {
         int result = Double.hashCode(this.fruit.getPrix());
         result = 31 * result + this.fruit.getOrigine().hashCode();
         return result;
+    }
+
+    private void checkFruit(Fruit fruit) {
+        if (fruit.getClass() == Jus.class) {
+            throw new IllegalArgumentException("Jus cannot contain another Jus");
+        }
     }
 }
