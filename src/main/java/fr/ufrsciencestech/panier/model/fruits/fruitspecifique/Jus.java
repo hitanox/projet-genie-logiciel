@@ -5,13 +5,14 @@ import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 
 public class Jus implements Fruit {
 
-    private FruitSimple fruit;
-    public Jus(FruitSimple fruit) {
+    private Fruit fruit;
+    public Jus(Fruit fruit) {
         super();
+        checkFruit(fruit);
         this.fruit = fruit;
     }
 
-    public FruitSimple getFruit() {
+    public Fruit getFruit() {
         return fruit;
     }
 
@@ -27,5 +28,11 @@ public class Jus implements Fruit {
     @Override
     public String toString() {
         return "Jus(" + fruit.toString().split(" ")[0] + ")";
+    }
+
+    private void checkFruit(Fruit fruit) {
+        if (fruit.getClass() == Jus.class) {
+            throw new IllegalArgumentException("Jus cannot contain another Jus");
+        }
     }
 }
