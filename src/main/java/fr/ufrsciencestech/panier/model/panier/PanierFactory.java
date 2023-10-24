@@ -32,11 +32,6 @@ public class PanierFactory implements ProductFactory {
     }
 
     @Override
-    public FruitSimple createFruitSimple(String name) {
-        return null;
-    }
-
-    @Override
     public Macedoine createMacedoine(ArrayList<Fruit> fruits) {
         return null;
     }
