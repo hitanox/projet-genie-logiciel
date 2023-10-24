@@ -67,7 +67,7 @@ public class FruitFactory implements ProductFactory {
             case "Caroube":
                 return new Caroube();
             default:
-                return new AnyFruit(name);
+                return new AnyFruit(name, 0.0, "Unknown", true);
         }
     }
 
