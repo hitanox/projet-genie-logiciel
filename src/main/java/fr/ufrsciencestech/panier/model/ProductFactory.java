@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier.model;
 
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
@@ -12,6 +13,6 @@ public interface ProductFactory {
     public FruitSimple createFruitSimple(String name, double prix, String origine, boolean isSeedless);
     public FruitSimple createFruitSimple(String name, double prix, String origine);
     public FruitSimple createFruitSimple(String name);
-    public Macedoine createMacedoine(ArrayList<FruitSimple> fruits);
-    public Jus createJus(FruitSimple fruit);
+    public Macedoine createMacedoine(ArrayList<Fruit> fruits);
+    public Jus createJus(Fruit fruit);
 }

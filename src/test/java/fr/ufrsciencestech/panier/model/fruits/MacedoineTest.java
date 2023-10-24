@@ -1,48 +1,69 @@
 package fr.ufrsciencestech.panier.model.fruits;
 
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Orange;
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Poire;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import fr.ufrsciencestech.panier.model.panier.Panier;
+import fr.ufrsciencestech.panier.model.panier.PanierFactory;
+import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import org.junit.Before;
 import org.junit.Test;
-
-import java.util.ArrayList;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertEquals;
 
 public class MacedoineTest {
 
-    Panier panierTest = new Panier(10);
-    Orange orange1 = new Orange(0.5, "France");
-    Poire poire1= new Poire(1.0, "France");
+    PanierFactory pf = new PanierFactory();
+    Panier panierTest = pf.createPanier(10);
+    FruitFactory ff = new FruitFactory();
+    FruitSimple orange = ff.createFruitSimple("Orange");
+    FruitSimple poire = ff.createFruitSimple("Poire");
 
     @Before
     public void setUp() throws Exception {
-        panierTest.ajout(orange1);
-        panierTest.ajout(poire1);
+        panierTest.ajout(orange);
+        panierTest.ajout(poire);
     }
 
-//    @Test
-//    public void testToString() {
-//        Macedoine m = new Macedoine(panierTest.getFruits());
-//        assertEquals("Macedoine de Orange, Poire a 1.5 euros", m.toString());
-//    }
-//
-//    @Test
-//    public void testIsSeedless() {
-//        Macedoine m = new Macedoine(panierTest.getFruits());
-//        assertFalse(m.isSeedless());
-//    }
-//
-//    @Test
-//    public void testGetPrix() {
-//        ArrayList<Fruit> fruits = new ArrayList<Fruit>();
-//        fruits.add(new Orange(0.5, "France"));
-//        fruits.add(new Poire(1.0, "France"));
-//        Macedoine m = new Macedoine(fruits);
-//        assertEquals(1.5, m.getPrix());
-//    }
+    @Test
+    public void testToString() {
+        Macedoine m = ff.createMacedoine(panierTest.getFruits());
+        assertEquals("Macedoine de Orange, Poire a 2.8 euros", m.toString());
+    }
+
+    @Test
+    public void testIsSeedless() {
+        Macedoine m = ff.createMacedoine(panierTest.getFruits());
+        assertFalse(m.isSeedless());
+    }
+
+    @Test
+    public void testGetPrix() {
+        Macedoine m = ff.createMacedoine(panierTest.getFruits());
+        assertEquals(2.8, m.getPrix());
+    }
+
+    @Test
+    public void testExceptionAddMacedoineInMacedoine() {
+        Macedoine m = ff.createMacedoine(panierTest.getFruits());
+        try {
+            m = ff.createMacedoine(panierTest.getFruits());
+        } catch (IllegalArgumentException e) {
+            assertEquals("Macedoine cannot contain another Macedoine", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testExceptionAddJusInMacedoine() throws PanierPleinException {
+        Macedoine m = ff.createMacedoine(panierTest.getFruits());
+        Jus j = ff.createJus(orange);
+        panierTest.ajout(j);
+        try {
+            m = ff.createMacedoine(panierTest.getFruits());
+        } catch (IllegalArgumentException e) {
+            assertEquals("Macedoine cannot contain a Jus", e.getMessage());
+        }
+    }
 
 }
