@@ -1,6 +1,6 @@
-package fr.ufrsciencestech.panier.model.fruits.fruitSimple;
+package fr.ufrsciencestech.panier.model.fruits.fruitsimple;
 
-public class Pomme extends FruitSimple {
+public class Pomme extends FruitSimple{
     public Pomme(double prix, String origine) {
         super(prix, origine, true);
     }
