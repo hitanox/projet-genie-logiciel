@@ -14,6 +14,10 @@ import java.util.Observable;
 import javax.swing.JButton;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableCellRenderer;
+import java.awt.Component;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  *
@@ -27,17 +31,57 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     
     private String name = "Panier";
     
+    private int lineToRemove;
+    
+    private JButton button;
+    
     public VuePanierV2() {
         initComponents();
+        
+        button = new JButton("Supprimer");
+        button.setName("button");
 
         model = new DefaultTableModel();
         model.addColumn("Produit");
         model.addColumn("Origine");
         model.addColumn("Prix");
         model.addColumn("Quantité");
+        model.addColumn("Action");
 
         jTable1.setModel(model);
+        
+        jTable1.getColumn("Action").setCellRenderer(new ButtonRenderer());
+        jTable1.getColumn("Action").setCellEditor(new ButtonEditor());
 
+    }
+    
+    class ButtonRenderer extends JButton implements TableCellRenderer {
+        @Override
+        public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
+            setText("Supprimer");
+            return this;
+        }
+    }
+
+    class ButtonEditor extends DefaultCellEditor {
+        public ButtonEditor() {
+            super(new JCheckBox());
+            button.addActionListener(new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    System.out.println("ligne suppr : "+lineToRemove); //temp
+                    //lineToRemove = jTable1.convertRowIndexToModel(jTable1.getEditingRow());
+                }
+            });
+        }
+
+        @Override
+        public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
+            lineToRemove = row;
+            System.out.println("component ligne suppr : "+lineToRemove); //temp
+            return button;
+        }
+        
     }
     
     public void updateTab(Object[][] donnees) {
@@ -62,6 +106,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         this.del.addActionListener(c);
         this.btnMacedoine.addActionListener(c);
         //this.jTable1.addActionListener(c);
+        this.button.addActionListener(c);
     }
 
     public javax.swing.JTable getTab() {
@@ -86,6 +131,22 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         } catch (NumberFormatException e) {
             return 1;
         }
+    }
+    
+    public int getLineToRemove() {
+        return this.lineToRemove;
+    }
+    
+    public String getNameAt(int n) {
+        return this.jTable1.getValueAt(n,0).toString(); //sécuriser si getValueAt retourne null ?
+    }
+    
+    public String getOriginAt(int n) {
+        return this.jTable1.getValueAt(n,1).toString(); //sécuriser si getValueAt retourne null ?
+    }
+    
+    public double getPriceAt(int n) {
+        return Double.parseDouble(this.jTable1.getValueAt(n,2).toString()); //sécuriser si getValueAt retourne null ?
     }
 
     public Boolean isJuice() {
