@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier.model.fruits;
 
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Cerise;
+import fr.ufrsciencestech.panier.model.fruits.fruitSimple.Cerise;
 import junit.framework.TestCase;
 
 public class CeriseTest extends TestCase {

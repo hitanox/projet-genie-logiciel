@@ -7,8 +7,12 @@ package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.model.panier.Panier;
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
+
+import java.util.ArrayList;
 import java.util.Observable;
 import javax.swing.JButton;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
 public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
     private DefaultTableModel model;
-    
+
     public VuePanierV2() {
         initComponents();
 
@@ -31,7 +35,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         jTable1.setModel(model);
 
     }
-    
+
     public void mettreAJourTableau(Object[][] donnees) {
         try {
             while (model.getRowCount() > 0) {
@@ -46,9 +50,9 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         } catch (Exception e) {
             System.out.println(e);
         }
-        
+
     }
-    
+
     @Override
     public void update(Observable m, Object o) {
         this.mettreAJourTableau(((Panier) o).toObject());
@@ -59,39 +63,47 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     public void addControleur(Controleur c) {
         this.add.addActionListener(c);
         this.del.addActionListener(c);
-        //this.jTable1.addActionListener(c);
     }
-    
+
     public javax.swing.JTable getTab() {
         return jTable1;
     }
-    
+
     public String getFieldName() {
-        return tfName.getText();
+        return (String) comboName.getSelectedItem();
     }
-    
+
     public String getFieldOrigin() {
         return tfOrigin.getText();
     }
-    
+
     public String getFieldPrice() {
         return tfPrice.getText();
     }
-    
+
     public Integer getFieldQuantity() {
         try {
             return Integer.valueOf(tfQuantity.getText());
         } catch (NumberFormatException e) {
             return 1;
-        }   
+        }
     }
-    
+
     public Boolean isJuice() {
         return isJuice.isSelected();
     }
-    
+
     public void mettreAJourTotal(double prix) {
         this.tfTotal.setText("Total : " + prix + " €");
+    }
+
+    public void setFruitsClasses(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        this.comboName.setModel((ComboBoxModel) new DefaultComboBoxModel<String>());
+        for (String className : classes) {
+            System.out.println(className);
+            this.comboName.addItem(((Fruit) Class.forName(className).newInstance()).getNom());
+        }
+        System.out.println(comboName.getItemAt(0));
     }
 
 
@@ -103,13 +115,14 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        System.out.println("INIT");
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         del = new javax.swing.JButton();
         del.setName("del");
         jPanel1 = new javax.swing.JPanel();
-        tfName = new javax.swing.JTextField();
+        comboName = new javax.swing.JComboBox<>();
         tfOrigin = new javax.swing.JTextField();
         tfPrice = new javax.swing.JTextField();
         tfQuantity = new javax.swing.JTextField();
@@ -141,13 +154,15 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        tfName.setText("Orange");
-        tfName.addActionListener(new java.awt.event.ActionListener() {
+        comboName.setEditable(true);
+        comboName.setToolTipText("Fruit");
+        comboName.setName(""); // NOI18N
+        comboName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 tfNameActionPerformed(evt);
             }
         });
-        jPanel1.add(tfName);
+        jPanel1.add(comboName);
 
         tfOrigin.setText("Origine");
         jPanel1.add(tfOrigin);
@@ -185,6 +200,9 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
+
+    }//GEN-LAST:event_addBtnMouseClicked
 
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
@@ -205,7 +223,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField tfName;
+    private javax.swing.JComboBox<String> comboName;
     private javax.swing.JTextField tfOrigin;
     private javax.swing.JTextField tfPrice;
     private javax.swing.JTextField tfQuantity;

@@ -1,6 +1,6 @@
 package fr.ufrsciencestech.panier.model.fruits;
 
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.Poire;
+import fr.ufrsciencestech.panier.model.fruits.fruitSimple.Poire;
 import junit.framework.TestCase;
 
 public class PoireTest extends TestCase {

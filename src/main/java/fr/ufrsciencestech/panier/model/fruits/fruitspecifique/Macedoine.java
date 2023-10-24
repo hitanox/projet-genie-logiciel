@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier.model.fruits.fruitspecifique;
 
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.fruitSimple.FruitSimple;
 
 import java.util.ArrayList;
 

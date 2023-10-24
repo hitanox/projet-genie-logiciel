@@ -1,7 +1,7 @@
 package fr.ufrsciencestech.panier.model.panier;
 
 import fr.ufrsciencestech.panier.model.ProductFactory;
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.fruitSimple.FruitSimple;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 
