@@ -11,7 +11,7 @@ import fr.ufrsciencestech.panier.model.fruits.Fruit;
 
 import java.util.ArrayList;
 import java.util.Observable;
-import javax.swing.JButton;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
@@ -33,13 +33,15 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     
     private int lineToRemove;
     
-    private JButton button;
+    private JButton[] buttons;
     
-    public VuePanierV2() {
+    public VuePanierV2(int maxSize) {
         initComponents();
-        
-        button = new JButton("Supprimer");
-        button.setName("button");
+        buttons = new JButton[maxSize];
+        for(int i=0; i<maxSize; i++) {
+            buttons[i] = new JButton("Supprimer");
+            buttons[i].setName("button");
+        }
 
         model = new DefaultTableModel();
         model.addColumn("Produit");
@@ -66,20 +68,13 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     class ButtonEditor extends DefaultCellEditor {
         public ButtonEditor() {
             super(new JCheckBox());
-            button.addActionListener(new ActionListener() {
-                @Override
-                public void actionPerformed(ActionEvent e) {
-                    System.out.println("ligne suppr : "+lineToRemove); //temp
-                    //lineToRemove = jTable1.convertRowIndexToModel(jTable1.getEditingRow());
-                }
-            });
         }
 
         @Override
         public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
             lineToRemove = row;
             System.out.println("component ligne suppr : "+lineToRemove); //temp
-            return button;
+            return buttons[row];
         }
         
     }
@@ -88,10 +83,25 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         while (model.getRowCount() > 0) {
             model.removeRow(0);
         }
+        
+        model=new DefaultTableModel();
+        model.addColumn("Produit");
+        model.addColumn("Origine");
+        model.addColumn("Prix");
+        model.addColumn("Quantité");
+        model.addColumn("Action");
+        jTable1.setModel(model);
+        jTable1.getColumn("Action").setCellRenderer(new ButtonRenderer());
+        jTable1.getColumn("Action").setCellEditor(new ButtonEditor());
 
+        int index=0;
         for (Object[] ligne : donnees) {
+            //model.insertRow(index, ligne);
+            System.out.println("nb lignes "+index+" "+ligne[0].toString());
             model.addRow(ligne);
+            index++;
         }   
+        System.out.println("nb lignes "+donnees.length);
     }
 
     @Override
@@ -106,7 +116,8 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         this.del.addActionListener(c);
         this.btnMacedoine.addActionListener(c);
         //this.jTable1.addActionListener(c);
-        this.button.addActionListener(c);
+        for(int i=0; i<buttons.length; i++)
+            this.buttons[i].addActionListener(c);
     }
 
     public javax.swing.JTable getTab() {
