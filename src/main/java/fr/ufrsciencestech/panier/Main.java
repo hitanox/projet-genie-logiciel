@@ -64,6 +64,7 @@ public class Main {
 
         controleur.setMainVue(vueg);
         controleur.setPanier(panier);
+        controleur.setFruitsClasses(fruitsClasses);
         panier.addObserver(vueg);
         vueg.addControleur(controleur);
 

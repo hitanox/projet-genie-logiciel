@@ -11,12 +11,9 @@ import fr.ufrsciencestech.panier.model.panier.PanierVideException;
 import fr.ufrsciencestech.panier.view.VuePanierV2;
 import java.awt.*;
 import java.awt.event.*;
+import java.util.ArrayList;
 import java.util.HashMap;
 
-import fr.ufrsciencestech.panier.model.fruits.Fruit;
-import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
-import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import fr.ufrsciencestech.panier.view.VueG;
 import fr.ufrsciencestech.panier.view.VueMacedoine;
@@ -24,7 +21,8 @@ import fr.ufrsciencestech.panier.view.VueMacedoine;
 public class Controleur implements ActionListener {
     private Panier p;
     private VuePanierV2 mainView;
-    private VueG secondaryView;
+    private VueMacedoine secondaryView;
+    private ArrayList<String> fruitsClasses;
 
     @Override
     public void actionPerformed(ActionEvent e){
@@ -48,16 +46,21 @@ public class Controleur implements ActionListener {
                 else if(((Component)e.getSource()).getName().equals("btnMacedoine")) {
                     VueMacedoine vm = new VueMacedoine();
                     vm.addControleur(this);
+                    try {
+                        vm.setFruitsChoices(fruitsClasses);
+                    } catch (Exception exc) {
+                        System.out.println(exc);
+                    }
                     mainView.closeView();
                     vm.openView();
                     this.secondaryView = vm;
                 }
-                else {
+                else if (((Component)e.getSource()).getName().equals("del")){
                         this.p.retrait();
                 }
                 else if (((Component)e.getSource()).getName().equals("comboName")) {
-                    HashMap<String, String> values = FruitHelper.getDefaultValuesFor(vg.getFieldName());
-                    getMainVue().updateForm((String) values.get("origin"), (String) values.get("price"));
+                    HashMap<String, String> values = FruitHelper.getDefaultValuesFor(mainView.getFieldName());
+                    mainView.updateForm((String) values.get("origin"), (String) values.get("price"));
                 }
             }
             if (secondaryView != null && secondaryView.getName() == "Macedoine" && secondaryView.isActiv()) {
@@ -73,14 +76,13 @@ public class Controleur implements ActionListener {
                     ((VueMacedoine) this.secondaryView).addFruit(fruit);
                 } else if (((Component)e.getSource()).getName().equals("comboName")) {
                     HashMap<String, String> values = FruitHelper.getDefaultValuesFor(secondaryView.getFieldName());
-                    secondaryView.updateForm((String) values.get("origin"), (String) values.get("price"));
+                    secondaryView.updateForm(values.get("origin"), values.get("price"));
                 }
 
             }
         } catch (PanierVideException | PanierPleinException ex) {
             System.out.println(ex);
         }
-
     }
 
     public void setPanier(Panier p){
@@ -99,11 +101,15 @@ public class Controleur implements ActionListener {
         return this.mainView;
     }
 
-    public void setSecondaryVue(VueG secondaryView){
+    public void setSecondaryVue(VueMacedoine secondaryView){
         this.secondaryView = secondaryView;
     }
 
     public VueG getSecondaryVue() {
         return this.secondaryView;
+    }
+
+    public void setFruitsClasses(ArrayList<String> fruitsClasses) {
+        this.fruitsClasses = fruitsClasses;
     }
 }

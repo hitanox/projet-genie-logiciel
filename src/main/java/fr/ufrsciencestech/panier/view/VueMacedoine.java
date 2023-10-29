@@ -10,6 +10,7 @@ import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import java.util.ArrayList;
 import java.util.Observable;
+import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -54,7 +55,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         del = new javax.swing.JButton();
         del.setName("del");
         macedoineTitle = new javax.swing.JLabel();
-        tfName = new javax.swing.JTextField();
+        comboName = new javax.swing.JComboBox<>();
         tfOrigin = new javax.swing.JTextField();
         tfPrice = new javax.swing.JTextField();
         tfQuantity = new javax.swing.JTextField();
@@ -85,12 +86,15 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         macedoineTitle.setText("Macedoine");
         macedoineTitle.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
 
-        tfName.setText("Orange");
-        tfName.addActionListener(new java.awt.event.ActionListener() {
+        comboName.setEditable(true);
+        comboName.setToolTipText("Fruit");
+        comboName.setName("comboName"); // NOI18N
+        comboName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNameActionPerformed(evt);
+                comboNameActionPerformed(evt);
             }
         });
+        jPanel1.add(comboName);
 
         tfOrigin.setText("Origine");
 
@@ -123,7 +127,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(del))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(comboName, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tfOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(tfQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -148,7 +152,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(comboName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfOrigin, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfPrice, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(tfQuantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -170,7 +174,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed
+    private void comboNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNameActionPerformed
 
@@ -195,7 +199,11 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     @Override
     public void update(Observable m, Object o) {
         this.updateTab(((Macedoine) o).toObject());
+    }
 
+    public void updateForm(String origine, String prix) {
+        this.tfOrigin.setText(origine);
+        this.tfPrice.setText(prix);
     }
 
     @Override
@@ -227,8 +235,8 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         this.setVisible(true);
     }
     
-        public String getFieldName() {
-        return tfName.getText();
+    public String getFieldName() {
+        return (String) comboName.getSelectedItem();
     }
     
     public String getFieldOrigin() {
@@ -245,6 +253,15 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         } catch (NumberFormatException e) {
             return 1;
         }   
+    }
+
+    public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        this.comboName.setModel((ComboBoxModel) new DefaultComboBoxModel<String>());
+        for (String className : classes) {
+            System.out.println(className);
+            this.comboName.addItem(((Fruit) Class.forName(className).newInstance()).getNom());
+        }
+        System.out.println(comboName.getItemAt(0));
     }
     
     public void addFruit(FruitSimple fruit) {
@@ -263,7 +280,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JLabel macedoineTitle;
-    private javax.swing.JTextField tfName;
+    private javax.swing.JComboBox<String> comboName;
     private javax.swing.JTextField tfOrigin;
     private javax.swing.JTextField tfPrice;
     private javax.swing.JTextField tfQuantity;
