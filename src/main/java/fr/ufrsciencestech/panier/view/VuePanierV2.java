@@ -11,7 +11,6 @@ import fr.ufrsciencestech.panier.model.fruits.Fruit;
 
 import java.util.ArrayList;
 import java.util.Observable;
-import javax.swing.JButton;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -59,10 +58,16 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         this.mettreAJourTotal(((Panier) o).getPrix());
     }
 
+    public void updateForm(String origine, String prix) {
+        this.tfOrigin.setText(origine);
+        this.tfPrice.setText(prix);
+    }
+
     @Override
     public void addControleur(Controleur c) {
         this.add.addActionListener(c);
         this.del.addActionListener(c);
+        this.comboName.addActionListener(c);
     }
 
     public javax.swing.JTable getTab() {
@@ -97,7 +102,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         this.tfTotal.setText("Total : " + prix + " €");
     }
 
-    public void setFruitsClasses(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+    public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         this.comboName.setModel((ComboBoxModel) new DefaultComboBoxModel<String>());
         for (String className : classes) {
             System.out.println(className);
@@ -156,10 +161,10 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
         comboName.setEditable(true);
         comboName.setToolTipText("Fruit");
-        comboName.setName(""); // NOI18N
+        comboName.setName("comboName"); // NOI18N
         comboName.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tfNameActionPerformed(evt);
+                comboNameActionPerformed(evt);
             }
         });
         jPanel1.add(comboName);
@@ -200,15 +205,11 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_addBtnMouseClicked
-
-    }//GEN-LAST:event_addBtnMouseClicked
-
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addActionPerformed
 
-    private void tfNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed
+    private void comboNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfNameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_tfNameActionPerformed
 
@@ -229,7 +230,4 @@ private void addBtnMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:even
     private javax.swing.JTextField tfQuantity;
     private javax.swing.JLabel tfTotal;
     // End of variables declaration//GEN-END:variables
-
-
-
 }

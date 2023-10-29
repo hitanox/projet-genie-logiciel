@@ -68,7 +68,7 @@ public class Main {
         vueg.addControleur(controleur);
 
         try {
-            vueg.setFruitsClasses(fruitsClasses);
+            vueg.setFruitsChoices(fruitsClasses);
         } catch (Exception e) {
             System.out.println(e);
         }
