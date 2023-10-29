@@ -22,6 +22,10 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
     private DefaultTableModel model;
 
+    private Boolean isActiv = false;
+
+    private String name = "Panier";
+
     public VuePanierV2() {
         initComponents();
 
@@ -35,27 +39,20 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
     }
 
-    public void mettreAJourTableau(Object[][] donnees) {
-        try {
-            while (model.getRowCount() > 0) {
-                model.removeRow(0);
-            }
-
-            for (Object[] ligne : donnees) {
-                if (!ligne[0].toString().isEmpty()) {
-                    model.addRow(ligne);
-                }
-            }
-        } catch (Exception e) {
-            System.out.println(e);
+    public void updateTab(Object[][] donnees) {
+        while (model.getRowCount() > 0) {
+            model.removeRow(0);
         }
 
+        for (Object[] ligne : donnees) {
+            model.addRow(ligne);
+        }
     }
 
     @Override
     public void update(Observable m, Object o) {
-        this.mettreAJourTableau(((Panier) o).toObject());
-        this.mettreAJourTotal(((Panier) o).getPrix());
+        this.updateTab(((Panier) o).toObject());
+        this.updateTotal(((Panier) o).getPrix());
     }
 
     public void updateForm(String origine, String prix) {
@@ -68,6 +65,8 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         this.add.addActionListener(c);
         this.del.addActionListener(c);
         this.comboName.addActionListener(c);
+        this.btnMacedoine.addActionListener(c);
+        //this.jTable1.addActionListener(c);
     }
 
     public javax.swing.JTable getTab() {
@@ -98,8 +97,30 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         return isJuice.isSelected();
     }
 
-    public void mettreAJourTotal(double prix) {
+    public void updateTotal(double prix) {
         this.tfTotal.setText("Total : " + prix + " €");
+    }
+
+    @Override
+    public String getName() {
+        return this.name;
+    }
+
+    @Override
+    public Boolean isActiv() {
+        return this.isActiv;
+    }
+
+    @Override
+    public void closeView() {
+        this.isActiv = false;
+        this.setVisible(false);
+    }
+
+    @Override
+    public void openView() {
+        this.isActiv = true;
+        this.setVisible(true);
     }
 
     public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -134,6 +155,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         isJuice = new javax.swing.JCheckBox();
         add = new javax.swing.JButton();
         add.setName("add");
+        btnMacedoine = new javax.swing.JButton();
         tfTotal = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -198,6 +220,10 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         });
         jPanel1.add(add);
 
+        btnMacedoine.setName("btnMacedoine");
+        btnMacedoine.setText("Macedoine");
+        jPanel1.add(btnMacedoine);
+
         getContentPane().add(jPanel1, java.awt.BorderLayout.NORTH);
 
         tfTotal.setText("Total : 0.0 €");
@@ -219,6 +245,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
+    private javax.swing.JButton btnMacedoine;
     private javax.swing.JButton del;
     private javax.swing.JCheckBox isJuice;
     private javax.swing.JPanel jPanel1;
@@ -230,4 +257,7 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     private javax.swing.JTextField tfQuantity;
     private javax.swing.JLabel tfTotal;
     // End of variables declaration//GEN-END:variables
+
+
+
 }

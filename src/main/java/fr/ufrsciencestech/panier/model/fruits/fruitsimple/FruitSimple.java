@@ -52,4 +52,11 @@ public abstract class FruitSimple implements Fruit {
         }
         return false;
     }
+
+    @Override
+    public int hashCode() {
+        int result = Double.hashCode(prix);
+        result = 31 * result + origine.hashCode();
+        return result;
+    }
 }

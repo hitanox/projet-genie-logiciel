@@ -62,7 +62,7 @@ public class Main {
 
         vueg = new VuePanierV2();
 
-        controleur.setVue(vueg);
+        controleur.setMainVue(vueg);
         controleur.setPanier(panier);
         panier.addObserver(vueg);
         vueg.addControleur(controleur);
@@ -73,7 +73,7 @@ public class Main {
             System.out.println(e);
         }
 
-        vueg.setVisible(true);
+        vueg.openView();
 
     }
 }
