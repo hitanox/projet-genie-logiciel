@@ -54,7 +54,6 @@ public class Controleur implements ActionListener {
                 }
                 else {
                     int position = mainView.getLineToRemove();
-                    System.out.println("controleur ligne suppr : "+position); //temp
                     String name = mainView.getNameAt(position);
                     String origin = mainView.getOriginAt(position);
                     double price = mainView.getPriceAt(position);
