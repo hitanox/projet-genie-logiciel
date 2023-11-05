@@ -8,6 +8,7 @@ import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
+import java.awt.Dimension;
 import java.util.ArrayList;
 import java.util.Observable;
 import javax.swing.table.DefaultTableModel;

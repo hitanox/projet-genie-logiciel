@@ -26,7 +26,7 @@ public class Jus implements Fruit {
 
     @Override
     public String toString() {
-        return "Jus(" + fruit.toString().split(" ")[0] + ")";
+        return this.getNom() + " de " + this.getOrigine() + " a " + this.getPrix() + " euros";
     }
 
     @Override

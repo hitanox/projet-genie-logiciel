@@ -15,6 +15,7 @@ import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
+import fr.ufrsciencestech.panier.view.VueConsole;
 import fr.ufrsciencestech.panier.view.VueG;
 import fr.ufrsciencestech.panier.view.VueMacedoine;
 
@@ -22,6 +23,7 @@ public class Controleur implements ActionListener {
     private Panier p;
     private VuePanierV2 mainView;
     private VueG secondaryView;
+    private VueConsole consoleView;
     
     @Override
     public void actionPerformed(ActionEvent e){
@@ -38,8 +40,10 @@ public class Controleur implements ActionListener {
                         if (mainView.isJuice()) {
                             Jus jus = facto.createJus(fruit);   
                             this.p.ajout(jus, quantity);
+                            consoleView.affiche("Ajout de " + jus.toString());
                         } else {
                             this.p.ajout(fruit, quantity);
+                            consoleView.affiche("Ajout de " + fruit.toString());
                         }
                 }
                 else if(((Component)e.getSource()).getName().equals("btnMacedoine")) {
@@ -50,14 +54,16 @@ public class Controleur implements ActionListener {
                     this.secondaryView = vm;
                 }
                 else if(((Component)e.getSource()).getName().equals("del")) {
-                    this.p.retrait();
+                    Fruit fruit = this.p.retrait();
+                    consoleView.affiche("Retrait d'un élément de type " + fruit.toString());
                 }
                 else {
                     int position = mainView.getLineToRemove();
                     String name = mainView.getNameAt(position);
                     String origin = mainView.getOriginAt(position);
                     double price = mainView.getPriceAt(position);
-                    this.p.retrait(name, origin, price);
+                    Fruit fruit = this.p.retrait(name, origin, price);
+                    consoleView.affiche("Retrait des éléments de type " + fruit.toString());
                 }
             }
             if (secondaryView != null && secondaryView.getName() == "Macedoine" && secondaryView.isActiv()) {
@@ -66,6 +72,7 @@ public class Controleur implements ActionListener {
                     mainView.openView();
                     Macedoine macedoine = facto.createMacedoine(((VueMacedoine) this.secondaryView).getMacedoine());
                     this.p.ajout(macedoine, 1);
+                    consoleView.affiche("Ajout de " + macedoine.toString());
                 }
                 if(((Component)e.getSource()).getName().equals("add")) {
                     String fruitName = ((VueMacedoine) this.secondaryView).getFieldName();
@@ -75,7 +82,7 @@ public class Controleur implements ActionListener {
 
             }  
         } catch (PanierVideException | PanierPleinException ex) {
-            System.out.println(ex);
+            consoleView.affiche(ex.toString());
         }
 
     }
@@ -102,5 +109,13 @@ public class Controleur implements ActionListener {
 
     public VueG getSecondaryVue() {
         return this.secondaryView;
+    }
+
+    public void setVueConsole(VueConsole vueConsole){
+        this.consoleView = vueConsole;
+    }
+
+    public VueConsole getVueConsole() {
+        return this.consoleView;
     }
 }

@@ -78,28 +78,30 @@ public class Panier extends Observable {
         notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
     }
 
-    public void retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
+    public Fruit retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
         if (!estVide()) {
+            Fruit fruit = this.fruits.get(getTaillePanier() - 1);;
             this.fruits.remove(getTaillePanier() - 1);
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
             notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+            return fruit;
         } else throw new PanierVideException();
     }
     
-    public void retrait(String nom, String origine, double prix) throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
+    public Fruit retrait(String nom, String origine, double prix) throws PanierVideException {
         if (!estVide()) {
+            Fruit fruit = null;
             for(int i=0; i<getTaillePanier(); i++) {
-                System.out.println("SALUT LE TEST : taille : " + i);
-                System.out.println("SALUT LE TEST : for : " + getFruit(i).toString());
                 if(getFruit(i).getNom().equals(nom) && getFruit(i).getOrigine().equals(origine) && getFruit(i).getPrix()==prix) {
-                    System.out.println("SALUT LE TEST : if : " + getFruit(i).toString());
+                    fruit = this.fruits.get(i);
                     this.fruits.remove(i);
                     i--;
                 }
             }
             setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
             notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
-            } else throw new PanierVideException();
+            return fruit;
+        } else throw new PanierVideException();
     }
 
     public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
@@ -144,7 +146,6 @@ public class Panier extends Observable {
 
         for (int i = 0; i < fruits.size(); i++) {
             Fruit fruit = fruits.get(i);
-            System.out.println(fruit.toString());
 
             if (fruitWithQuantity.containsKey(fruit)) {
                 int currentQuantity = fruitWithQuantity.get(fruit);
