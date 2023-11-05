@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
+import fr.ufrsciencestech.panier.view.VueConsole;
 import fr.ufrsciencestech.panier.view.VueG;
 import fr.ufrsciencestech.panier.view.VueMacedoine;
 
@@ -24,7 +25,8 @@ public class Controleur implements ActionListener {
     private VuePanierV2 mainView;
     private VueMacedoine secondaryView;
     private ArrayList<String> fruitsClasses;
-
+    private VueConsole consoleView;
+    
     @Override
     public void actionPerformed(ActionEvent e) {
         FruitFactory facto = new FruitFactory();
@@ -44,8 +46,10 @@ public class Controleur implements ActionListener {
                         if (mainView.isJuice()) {
                             Jus jus = facto.createJus(fruit);
                             this.p.ajout(jus, quantity);
+                            consoleView.affiche("Ajout de " + jus.toString());
                         } else {
                             this.p.ajout(fruit, quantity);
+                            consoleView.affiche("Ajout de " + fruit.toString());
                         }
                         break;
                     }
@@ -56,14 +60,15 @@ public class Controleur implements ActionListener {
                             vm.setFruitsChoices(fruitsClasses);
                             updateForm(vm);
                         } catch (Exception exc) {
-                            System.out.println(exc.getMessage());
+                            consoleView.affiche(exc.toString());
                         }
                         mainView.closeView();
                         vm.openView();
                         this.secondaryView = vm;
                         break;
                     case "del":
-                        this.p.retrait();
+                        Fruit fruit = this.p.retrait();
+                        consoleView.affiche("Retrait d'un élément de type " + fruit.toString());
                         break;
                     case "comboName":
                         updateForm(mainView);
@@ -85,6 +90,7 @@ public class Controleur implements ActionListener {
                         mainView.openView();
                         Macedoine macedoine = facto.createMacedoine((this.secondaryView).getMacedoine());
                         this.p.ajout(macedoine, 1);
+                        consoleView.affiche("Ajout de " + macedoine.toString());
                         break;
                     case "add":
                         String fruitName = (this.secondaryView).getFieldName();
@@ -98,7 +104,7 @@ public class Controleur implements ActionListener {
 
             }
         } catch (PanierVideException | PanierPleinException ex) {
-            System.out.println(ex.getMessage());
+            consoleView.affiche(ex.getMess.toString());
         }
     }
 
@@ -126,6 +132,14 @@ public class Controleur implements ActionListener {
         return this.secondaryView;
     }
 
+    public void setVueConsole(VueConsole vueConsole){
+        this.consoleView = vueConsole;
+    }
+
+    public VueConsole getVueConsole() {
+        return this.consoleView;
+    }
+
     public void setFruitsClasses(ArrayList<String> fruitsClasses) {
         this.fruitsClasses = fruitsClasses;
     }
@@ -133,5 +147,5 @@ public class Controleur implements ActionListener {
     public void updateForm(VueG view) {
         HashMap<String, String> values = FruitHelper.getDefaultValuesFor(view.getFieldName());
         view.updateForm(values.get("origin"), values.get("price"));
-    }
+        
 }
