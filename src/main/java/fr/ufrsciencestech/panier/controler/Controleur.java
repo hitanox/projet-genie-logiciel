@@ -18,9 +18,12 @@ import java.util.HashMap;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import fr.ufrsciencestech.panier.view.VueG;
 import fr.ufrsciencestech.panier.view.VueMacedoine;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controleur implements ActionListener {
     private Panier p;
+    private Macedoine m;
     private VuePanierV2 mainView;
     private VueMacedoine secondaryView;
     private ArrayList<String> fruitsClasses;
@@ -89,16 +92,21 @@ public class Controleur implements ActionListener {
                     case "add":
                         String fruitName = (this.secondaryView).getFieldName();
                         FruitSimple fruit = facto.createFruitSimple(fruitName);
-                        (this.secondaryView).addFruit(fruit);
+                        this.m.add(fruit);
                         break;
                     case "comboName":
                         updateForm(secondaryView);
+                        break;
+                    case "del":
+                        this.m.retrait();
                         break;
                 }
 
             }
         } catch (PanierVideException | PanierPleinException ex) {
             System.out.println(ex.getMessage());
+        } catch (IllegalAccessException ex) {
+            Logger.getLogger(Controleur.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -108,6 +116,14 @@ public class Controleur implements ActionListener {
 
     public Panier getPanier() {
         return this.p;
+    }
+    
+    public void setMacedoine(Macedoine m) {
+        this.m = m;
+    }
+
+    public Macedoine getMacedoine() {
+        return this.m;
     }
 
     public void setMainVue(VuePanierV2 mainView) {
