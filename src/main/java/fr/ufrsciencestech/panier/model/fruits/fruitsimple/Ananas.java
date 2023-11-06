@@ -5,7 +5,9 @@ public class Ananas extends FruitSimple {
         super(prix, origine, true);
     }
 
-    public Ananas() { super(2.0, "Paraguay", true); }
+    public Ananas() {
+        super(2.0, "Paraguay", true);
+    }
 
     @Override
     public String getNom() {

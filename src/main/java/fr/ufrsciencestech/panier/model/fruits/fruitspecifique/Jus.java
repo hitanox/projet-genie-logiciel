@@ -5,6 +5,7 @@ import fr.ufrsciencestech.panier.model.fruits.Fruit;
 public class Jus implements Fruit {
 
     private Fruit fruit;
+
     public Jus(Fruit fruit) {
         super();
         checkFruit(fruit);
@@ -16,13 +17,19 @@ public class Jus implements Fruit {
     }
 
     @Override
-    public boolean isSeedless() {return this.getFruit().isSeedless();}
+    public boolean isSeedless() {
+        return this.getFruit().isSeedless();
+    }
 
     @Override
-    public double getPrix() { return this.getFruit().getPrix(); }
+    public double getPrix() {
+        return this.getFruit().getPrix();
+    }
 
     @Override
-    public String getOrigine() {return this.getFruit().getOrigine();}
+    public String getOrigine() {
+        return this.getFruit().getOrigine();
+    }
 
     @Override
     public String toString() {

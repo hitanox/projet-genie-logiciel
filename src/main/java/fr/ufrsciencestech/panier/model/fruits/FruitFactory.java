@@ -23,6 +23,7 @@ public class FruitFactory implements ProductFactory {
 
     /**
      * Create a new instance of a fruit depending on parameters given by the user
+     *
      * @param name
      * @param prix
      * @param origine
@@ -72,6 +73,7 @@ public class FruitFactory implements ProductFactory {
 
     /**
      * Create a new instance of a fruit depending on the name given by the user
+     *
      * @param name
      * @return a new instance of a fruit depending on the name given by the user
      */
@@ -110,6 +112,7 @@ public class FruitFactory implements ProductFactory {
 
     /**
      * Create a new instance of a Macedoine with the list of fruits
+     *
      * @param fruits
      * @return
      */
@@ -120,6 +123,7 @@ public class FruitFactory implements ProductFactory {
 
     /**
      * Create a new instance of a Jus with the fruit
+     *
      * @param fruit
      * @return
      */
@@ -130,6 +134,7 @@ public class FruitFactory implements ProductFactory {
 
     /**
      * Check if the name parameter is valid
+     *
      * @param name
      */
     public void checkNameParameter(String name) {
@@ -140,6 +145,7 @@ public class FruitFactory implements ProductFactory {
 
     /**
      * Check if the price parameter is valid
+     *
      * @param price
      */
     public void checkPriceParameter(double price) {
@@ -150,6 +156,7 @@ public class FruitFactory implements ProductFactory {
 
     /**
      * Check if the origin parameter is valid
+     *
      * @param origin
      */
     public void checkOriginParameter(String origin) {

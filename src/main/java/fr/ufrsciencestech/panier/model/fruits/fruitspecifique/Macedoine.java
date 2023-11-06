@@ -14,13 +14,13 @@ public class Macedoine extends Observable implements Fruit {
     public Macedoine() {
         this.fruits = new ArrayList<>();
     }
-    
+
     public Macedoine(ArrayList<Fruit> fruits) {
         super();
         checkFruits(fruits);
         this.fruits = fruits;
     }
-    
+
     public void add(FruitSimple fruit) {
         this.fruits.add(fruit);
         setChanged();
@@ -44,11 +44,11 @@ public class Macedoine extends Observable implements Fruit {
         }
         return true;
     }
-    
+
     public ArrayList<Fruit> getFruits() {
         return this.fruits;
     }
-    
+
     @Override
     public String getNom() {
         String result = "Macedoine de ";
@@ -82,7 +82,7 @@ public class Macedoine extends Observable implements Fruit {
             }
         }
     }
-    
+
     public Object[][] toObject() {
         Map<Fruit, Integer> fruitWithQuantity = new HashMap<>();
 
@@ -111,7 +111,7 @@ public class Macedoine extends Observable implements Fruit {
 
             i++;
         }
-    
+
         return res;
     }
 }
