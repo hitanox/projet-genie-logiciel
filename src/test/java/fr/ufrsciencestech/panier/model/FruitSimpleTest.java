@@ -37,7 +37,7 @@ public class FruitSimpleTest {
         assertEquals("Litchi", litchi.getNom());
         FruitSimple papaye = ff.createFruitSimple("Papaye");
         assertEquals("Papaye", papaye.getNom());
-        FruitSimple specialFruit = ff.createFruitSimple("SpecialFruit", 0.0, "France", false);
+        FruitSimple specialFruit = ff.createFruitSimple("SpecialFruit", 0.0, "France");
         assertEquals("SpecialFruit", specialFruit.getNom());
     }
 
@@ -47,12 +47,12 @@ public class FruitSimpleTest {
         assertEquals("Banane", banane1.getNom());
         assertEquals(1.99, banane1.getPrix(), 0.001);
         assertEquals("Papouasie-Nouvelle-Guinée", banane1.getOrigine());
-        assertEquals(true, banane1.isSeedless());
+        assertTrue(banane1.isSeedless());
         FruitSimple banane2 = ff.createFruitSimple("Banane", 2.99, "France");
         assertEquals("Banane", banane2.getNom());
         assertEquals(2.99, banane2.getPrix(), 0.001);
         assertEquals("France", banane2.getOrigine());
-        assertEquals(true, banane2.isSeedless());
+        assertTrue(banane2.isSeedless());
     }
 
     @Test
@@ -61,12 +61,12 @@ public class FruitSimpleTest {
         assertEquals("Ananas", ananas1.getNom());
         assertEquals(2.0, ananas1.getPrix(), 0.001);
         assertEquals("Paraguay", ananas1.getOrigine());
-        assertEquals(true, ananas1.isSeedless());
+        assertTrue(ananas1.isSeedless());
         FruitSimple ananas2 = ff.createFruitSimple("Ananas", 3.5, "France");
         assertEquals("Ananas", ananas2.getNom());
         assertEquals(3.5, ananas2.getPrix(), 0.001);
         assertEquals("France", ananas2.getOrigine());
-        assertEquals(true, ananas2.isSeedless());
+        assertTrue(ananas2.isSeedless());
     }
 
     @Test
@@ -75,12 +75,12 @@ public class FruitSimpleTest {
         assertEquals("Cerise", cerise1.getNom());
         assertEquals(6.5, cerise1.getPrix(), 0.001);
         assertEquals("Caucase", cerise1.getOrigine());
-        assertEquals(false, cerise1.isSeedless());
+        assertFalse(cerise1.isSeedless());
         FruitSimple cerise2 = ff.createFruitSimple("Cerise", 7.5, "France");
         assertEquals("Cerise", cerise2.getNom());
         assertEquals(7.5, cerise2.getPrix(), 0.001);
         assertEquals("France", cerise2.getOrigine());
-        assertEquals(false, cerise2.isSeedless());
+        assertFalse(cerise2.isSeedless());
     }
 
     @Test
@@ -89,12 +89,12 @@ public class FruitSimpleTest {
         assertEquals("Caroube", caroube1.getNom());
         assertEquals(3.20, caroube1.getPrix(), 0.001);
         assertEquals("Moyen-Orient", caroube1.getOrigine());
-        assertEquals(true, caroube1.isSeedless());
+        assertTrue(caroube1.isSeedless());
         FruitSimple caroube2 = ff.createFruitSimple("Caroube", 0.6, "France");
         assertEquals("Caroube", caroube2.getNom());
         assertEquals(0.6, caroube2.getPrix(), 0.001);
         assertEquals("France", caroube2.getOrigine());
-        assertEquals(true, caroube2.isSeedless());
+        assertTrue(caroube2.isSeedless());
     }
 
     @Test
@@ -103,12 +103,12 @@ public class FruitSimpleTest {
         assertEquals("Fraise", fraise1.getNom());
         assertEquals(1.0, fraise1.getPrix(), 0.001);
         assertEquals("Europe", fraise1.getOrigine());
-        assertEquals(true, fraise1.isSeedless());
+        assertTrue(fraise1.isSeedless());
         FruitSimple fraise2 = ff.createFruitSimple("Fraise", 0.6, "France");
         assertEquals("Fraise", fraise2.getNom());
         assertEquals(0.6, fraise2.getPrix(), 0.001);
         assertEquals("France", fraise2.getOrigine());
-        assertEquals(true, fraise2.isSeedless());
+        assertTrue(fraise2.isSeedless());
     }
 
     @Test
@@ -117,12 +117,12 @@ public class FruitSimpleTest {
         assertEquals("Kiwi", kiwi1.getNom());
         assertEquals(2.99, kiwi1.getPrix(), 0.001);
         assertEquals("Chine", kiwi1.getOrigine());
-        assertEquals(true, kiwi1.isSeedless());
+        assertTrue(kiwi1.isSeedless());
         FruitSimple kiwi2 = ff.createFruitSimple("Kiwi", 0.6, "France");
         assertEquals("Kiwi", kiwi2.getNom());
         assertEquals(0.6, kiwi2.getPrix(), 0.001);
         assertEquals("France", kiwi2.getOrigine());
-        assertEquals(true, kiwi2.isSeedless());
+        assertTrue(kiwi2.isSeedless());
     }
 
     @Test
@@ -131,12 +131,12 @@ public class FruitSimpleTest {
         assertEquals("Orange", orange1.getNom());
         assertEquals(2.0, orange1.getPrix(), 0.001);
         assertEquals("France", orange1.getOrigine());
-        assertEquals(false, orange1.isSeedless());
+        assertFalse(orange1.isSeedless());
         FruitSimple orange2 = ff.createFruitSimple("Orange", 0.6, "France");
         assertEquals("Orange", orange2.getNom());
         assertEquals(0.6, orange2.getPrix(), 0.001);
         assertEquals("France", orange2.getOrigine());
-        assertEquals(false, orange2.isSeedless());
+        assertFalse(orange2.isSeedless());
     }
 
     @Test
@@ -145,12 +145,12 @@ public class FruitSimpleTest {
         assertEquals("Papaye", papaye1.getNom());
         assertEquals(2.99, papaye1.getPrix(), 0.001);
         assertEquals("Mexique", papaye1.getOrigine());
-        assertEquals(true, papaye1.isSeedless());
+        assertTrue(papaye1.isSeedless());
         FruitSimple papaye2 = ff.createFruitSimple("Papaye", 0.6, "France");
         assertEquals("Papaye", papaye2.getNom());
         assertEquals(0.6, papaye2.getPrix(), 0.001);
         assertEquals("France", papaye2.getOrigine());
-        assertEquals(true, papaye2.isSeedless());
+        assertTrue(papaye2.isSeedless());
     }
 
     @Test
@@ -159,12 +159,12 @@ public class FruitSimpleTest {
         assertEquals("Poire", poire1.getNom());
         assertEquals(0.8, poire1.getPrix(), 0.001);
         assertEquals("Espagne", poire1.getOrigine());
-        assertEquals(false, poire1.isSeedless());
+        assertFalse(poire1.isSeedless());
         FruitSimple poire2 = ff.createFruitSimple("Poire", 0.6, "France");
         assertEquals("Poire", poire2.getNom());
         assertEquals(0.6, poire2.getPrix(), 0.001);
         assertEquals("France", poire2.getOrigine());
-        assertEquals(false, poire2.isSeedless());
+        assertFalse(poire2.isSeedless());
     }
 
     @Test
@@ -173,12 +173,12 @@ public class FruitSimpleTest {
         assertEquals("Pomme", pomme1.getNom());
         assertEquals(1.35, pomme1.getPrix(), 0.001);
         assertEquals("Asie", pomme1.getOrigine());
-        assertEquals(true, pomme1.isSeedless());
+        assertTrue(pomme1.isSeedless());
         FruitSimple pomme2 = ff.createFruitSimple("Pomme", 0.6, "France");
         assertEquals("Pomme", pomme2.getNom());
         assertEquals(0.6, pomme2.getPrix(), 0.001);
         assertEquals("France", pomme2.getOrigine());
-        assertEquals(true, pomme2.isSeedless());
+        assertTrue(pomme2.isSeedless());
     }
 
     @Test
@@ -187,12 +187,12 @@ public class FruitSimpleTest {
         assertEquals("Tomate", tomate1.getNom());
         assertEquals(1.49, tomate1.getPrix(), 0.001);
         assertEquals("Amérique du Sud", tomate1.getOrigine());
-        assertEquals(true, tomate1.isSeedless());
+        assertTrue(tomate1.isSeedless());
         FruitSimple tomate2 = ff.createFruitSimple("Tomate", 0.6, "France");
         assertEquals("Tomate", tomate2.getNom());
         assertEquals(0.6, tomate2.getPrix(), 0.001);
         assertEquals("France", tomate2.getOrigine());
-        assertEquals(true, tomate2.isSeedless());
+        assertTrue(tomate2.isSeedless());
     }
 
     @Test
@@ -201,12 +201,12 @@ public class FruitSimpleTest {
         assertEquals("Litchi", litchi1.getNom());
         assertEquals(1.49, litchi1.getPrix(), 0.001);
         assertEquals("Chine", litchi1.getOrigine());
-        assertEquals(true, litchi1.isSeedless());
+        assertTrue(litchi1.isSeedless());
         FruitSimple litchi2 = ff.createFruitSimple("Litchi", 0.6, "France");
         assertEquals("Litchi", litchi2.getNom());
         assertEquals(0.6, litchi2.getPrix(), 0.001);
         assertEquals("France", litchi2.getOrigine());
-        assertEquals(true, litchi2.isSeedless());
+        assertTrue(litchi2.isSeedless());
     }
 
     @Test
@@ -241,8 +241,8 @@ public class FruitSimpleTest {
         FruitSimple cerise1 = ff.createFruitSimple("Cerise");
         FruitSimple cerise2 = ff.createFruitSimple("Cerise");
         FruitSimple banane = ff.createFruitSimple("Banane");
-        assertTrue(cerise1.equals(cerise2));
-        assertFalse(cerise2.equals(banane));
+        assertEquals(cerise1, cerise2);
+        assertNotEquals(cerise2, banane);
     }
 
 }
