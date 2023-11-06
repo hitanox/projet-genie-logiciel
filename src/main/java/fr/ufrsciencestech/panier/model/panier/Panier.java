@@ -85,6 +85,22 @@ public class Panier extends Observable {
             notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
         } else throw new PanierVideException();
     }
+    
+    public void retrait(String nom, String origine, double prix) throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
+        if (!estVide()) {
+            for(int i=0; i<getTaillePanier(); i++) {
+                System.out.println("SALUT LE TEST : taille : " + i);
+                System.out.println("SALUT LE TEST : for : " + getFruit(i).toString());
+                if(getFruit(i).getNom().equals(nom) && getFruit(i).getOrigine().equals(origine) && getFruit(i).getPrix()==prix) {
+                    System.out.println("SALUT LE TEST : if : " + getFruit(i).toString());
+                    this.fruits.remove(i);
+                    i--;
+                }
+            }
+            setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
+            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+            } else throw new PanierVideException();
+    }
 
     public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
         double prix = 0.0;

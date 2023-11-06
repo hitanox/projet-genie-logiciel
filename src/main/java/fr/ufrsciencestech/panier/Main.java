@@ -60,7 +60,7 @@ public class Main {
 
         System.out.println(fruitsClasses);
 
-        vueg = new VuePanierV2();
+        vueg = new VuePanierV2(panier.getContenanceMax());
 
         controleur.setMainVue(vueg);
         controleur.setPanier(panier);

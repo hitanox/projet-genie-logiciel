@@ -55,12 +55,19 @@ public class Controleur implements ActionListener {
                     vm.openView();
                     this.secondaryView = vm;
                 }
-                else if (((Component)e.getSource()).getName().equals("del")){
-                        this.p.retrait();
+                else if (((Component)e.getSource()).getName().equals("del")) {
+                    this.p.retrait();
                 }
                 else if (((Component)e.getSource()).getName().equals("comboName")) {
                     HashMap<String, String> values = FruitHelper.getDefaultValuesFor(mainView.getFieldName());
                     mainView.updateForm((String) values.get("origin"), (String) values.get("price"));
+                }
+                else {
+                    int position = mainView.getLineToRemove();
+                    String name = mainView.getNameAt(position);
+                    String origin = mainView.getOriginAt(position);
+                    double price = mainView.getPriceAt(position);
+                    this.p.retrait(name, origin, price);
                 }
             }
             if (secondaryView != null && secondaryView.getName() == "Macedoine" && secondaryView.isActiv()) {
