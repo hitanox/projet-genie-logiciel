@@ -2,10 +2,9 @@ package fr.ufrsciencestech.panier.model.fruits.fruitsimple;
 
 public class AnyFruit extends FruitSimple {
     public String name;
-    public boolean isSeedless;
 
-    public AnyFruit(String name, Double prix, String origine, boolean isSeedless) {
-        super(prix, origine, isSeedless);
+    public AnyFruit(String name, Double prix, String origine) {
+        super(prix, origine, false);
         this.name = name;
     }
 

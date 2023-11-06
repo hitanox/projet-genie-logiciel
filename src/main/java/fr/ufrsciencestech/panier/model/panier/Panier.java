@@ -13,7 +13,7 @@ public class Panier extends Observable {
     private final int contenanceMax; //nb maximum d'oranges que peut contenir le panier
 
     public Panier(int contenanceMax) {  //initialise un panier vide ayant une certaine contenance maximale (precisee en parametre)
-        this.fruits = new ArrayList<Fruit>();
+        this.fruits = new ArrayList<>();
         if (contenanceMax < 1) {
             throw new IllegalArgumentException("La contenance maximale doit être supérieure à 0");
         } else {
@@ -23,11 +23,11 @@ public class Panier extends Observable {
 
     @Override
     public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
-        String res = "Panier de " + this.getTaillePanier() + " fruits : " + this.getPrix() + "\n";
+        StringBuilder res = new StringBuilder("Panier de " + this.getTaillePanier() + " fruits : " + this.getPrix() + "\n");
         for (Fruit fruit : fruits) {
-            res += fruit.toString() + "\n";
+            res.append(fruit.toString()).append("\n");
         }
-        return res;
+        return res.toString();
     }
 
     public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
@@ -142,8 +142,7 @@ public class Panier extends Observable {
     public Object[][] toObject() {
         Map<Fruit, Integer> fruitWithQuantity = new HashMap<>();
 
-        for (int i = 0; i < fruits.size(); i++) {
-            Fruit fruit = fruits.get(i);
+        for (Fruit fruit : fruits) {
             System.out.println(fruit.toString());
 
             if (fruitWithQuantity.containsKey(fruit)) {

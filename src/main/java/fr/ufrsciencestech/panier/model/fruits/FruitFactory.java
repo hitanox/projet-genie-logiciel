@@ -14,7 +14,7 @@ public class FruitFactory implements ProductFactory {
     /**
      * List of fruits available
      */
-    private String[] fruitsAvailable = {"Ananas", "Banane", "Cerise", "Fraise", "Kiwi", "Orange", "Poire", "Pomme", "Tomate", "Caroube", "Litchi", "Papaye"};
+    private final String[] fruitsAvailable = {"Ananas", "Banane", "Cerise", "Fraise", "Kiwi", "Orange", "Poire", "Pomme", "Tomate", "Caroube", "Litchi", "Papaye"};
 
     @Override
     public Panier createPanier(int size) {
@@ -38,7 +38,7 @@ public class FruitFactory implements ProductFactory {
         if (!Arrays.asList(fruitsAvailable).contains(name)) {
             checkPriceParameter(prix);
             checkOriginParameter(origine);
-            return new AnyFruit(name, prix, origine, false);
+            return new AnyFruit(name, prix, origine);
         } else {
             switch (name) {
                 case "Ananas":

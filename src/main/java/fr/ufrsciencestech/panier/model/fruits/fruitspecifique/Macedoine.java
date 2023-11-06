@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.Observable;
 
 public class Macedoine extends Observable implements Fruit {
-    private ArrayList<Fruit> fruits;
+    private final ArrayList<Fruit> fruits;
 
     public Macedoine() {
         this.fruits = new ArrayList<>();
@@ -29,9 +29,9 @@ public class Macedoine extends Observable implements Fruit {
 
     @Override
     public String toString() {
-        String result = "Macedoine de ";
+        StringBuilder result = new StringBuilder("Macedoine de ");
         for (Fruit f : fruits) {
-            result += f.getClass().getSimpleName() + ", ";
+            result.append(f.getClass().getSimpleName()).append(", ");
         }
         return result.substring(0, result.length() - 2) + " a " + getPrix() + " euros";
     }
@@ -51,11 +51,11 @@ public class Macedoine extends Observable implements Fruit {
 
     @Override
     public String getNom() {
-        String result = "Macedoine de ";
+        StringBuilder result = new StringBuilder("Macedoine de ");
         for (Fruit f : fruits) {
-            result += f.getClass().getSimpleName() + ", ";
+            result.append(f.getClass().getSimpleName()).append(", ");
         }
-        return result;
+        return result.toString();
     }
 
     @Override
@@ -86,8 +86,7 @@ public class Macedoine extends Observable implements Fruit {
     public Object[][] toObject() {
         Map<Fruit, Integer> fruitWithQuantity = new HashMap<>();
 
-        for (int i = 0; i < fruits.size(); i++) {
-            Fruit fruit = fruits.get(i);
+        for (Fruit fruit : fruits) {
             System.out.println(fruit.toString());
 
             if (fruitWithQuantity.containsKey(fruit)) {

@@ -4,7 +4,7 @@ import fr.ufrsciencestech.panier.model.fruits.Fruit;
 
 public class Jus implements Fruit {
 
-    private Fruit fruit;
+    private final Fruit fruit;
 
     public Jus(Fruit fruit) {
         super();
