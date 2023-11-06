@@ -89,10 +89,7 @@ public class Panier extends Observable {
     public void retrait(String nom, String origine, double prix) throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
         if (!estVide()) {
             for (int i = 0; i < getTaillePanier(); i++) {
-                System.out.println("SALUT LE TEST : taille : " + i);
-                System.out.println("SALUT LE TEST : for : " + getFruit(i).toString());
                 if (getFruit(i).getNom().equals(nom) && getFruit(i).getOrigine().equals(origine) && getFruit(i).getPrix() == prix) {
-                    System.out.println("SALUT LE TEST : if : " + getFruit(i).toString());
                     this.fruits.remove(i);
                     i--;
                 }
@@ -152,6 +149,7 @@ public class Panier extends Observable {
                 fruitWithQuantity.put(fruit, 1);
             }
         }
+        System.out.println("\n");
 
         Object[][] res = new Object[fruitWithQuantity.size()][4];
         int i = 0;

@@ -36,7 +36,7 @@ public class Controleur implements ActionListener {
                     case "add": {
                         String fruitName = mainView.getFieldName();
                         Integer quantity = mainView.getFieldQuantity();
-                        float price = Float.parseFloat(mainView.getFieldPrice());
+                        double price = Double.parseDouble(mainView.getFieldPrice());
                         String origin = mainView.getFieldOrigin();
 
                         FruitSimple fruit = facto.createFruitSimple(fruitName, price, origin);
@@ -100,7 +100,6 @@ public class Controleur implements ActionListener {
         } catch (PanierVideException | PanierPleinException ex) {
             System.out.println(ex.getMessage());
         }
-        System.out.println(e);
     }
 
     public void setPanier(Panier p) {

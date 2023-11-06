@@ -6,6 +6,7 @@ import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import java.util.Observable;
 
 public class Macedoine extends Observable implements Fruit {
@@ -73,22 +74,50 @@ public class Macedoine extends Observable implements Fruit {
     }
 
     private void checkFruits(ArrayList<Fruit> fruits) {
-        for (Fruit f : fruits) {
-            if (f.getClass() == Jus.class) {
-                throw new IllegalArgumentException("Macedoine cannot contain a Jus");
-            }
-            if (f.getClass() == Macedoine.class) {
-                throw new IllegalArgumentException("Macedoine cannot contain another Macedoine");
+        if (fruits.size() <= 0) {
+            throw new IllegalArgumentException("Macedoine cannot be empty");
+        } else {
+            for (Fruit f : fruits) {
+                if (f.getClass() == Jus.class) {
+                    throw new IllegalArgumentException("Macedoine cannot contain a Jus");
+                }
+                if (f.getClass() == Macedoine.class) {
+                    throw new IllegalArgumentException("Macedoine cannot contain another Macedoine");
+                }
             }
         }
     }
+    
+    @Override
+    public boolean equals(Object o) { 
+        if (o != null && getClass() == o.getClass()) {
+            Macedoine m = (Macedoine) o;
+            int compt = 0;
+            if (m.fruits.size() == this.fruits.size()) {
+                for (Fruit f : m.fruits) {
+                    if (this.fruits.contains(f)) {
+                        compt++;
+                    }
+                }
+                return compt == m.fruits.size();
+            }
+        }
+        return false;
+    }
 
+    @Override
+    public int hashCode() {
+        int hash = 3;
+        hash = 83 * hash + Objects.hashCode(this.fruits);
+        return hash;
+    }
+    
     public Object[][] toObject() {
         Map<Fruit, Integer> fruitWithQuantity = new HashMap<>();
 
         for (Fruit fruit : fruits) {
             System.out.println(fruit.toString());
-
+            
             if (fruitWithQuantity.containsKey(fruit)) {
                 int currentQuantity = fruitWithQuantity.get(fruit);
                 fruitWithQuantity.put(fruit, currentQuantity + 1);
