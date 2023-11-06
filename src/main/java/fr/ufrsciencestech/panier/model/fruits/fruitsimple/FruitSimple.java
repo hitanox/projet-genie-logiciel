@@ -41,7 +41,7 @@ public abstract class FruitSimple implements Fruit {
 
     @Override
     public String toString() {
-        return this.getNom() + " de " + origine + " a " + prix + " euros.";
+        return this.getNom() + " de " + origine + " a " + prix + " euros";
     }
 
     @Override

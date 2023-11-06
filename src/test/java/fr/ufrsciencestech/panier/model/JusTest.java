@@ -15,7 +15,7 @@ public class JusTest {
 
     @Test
     public void testToString(){
-        assertEquals("Jus(Papaye)", jFruit.toString());
+        assertEquals("Jus(Papaye) de Mexique a 2.99 euros", jFruit.toString());
     }
     @Test
     public void testIsSeedLess(){

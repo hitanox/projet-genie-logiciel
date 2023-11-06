@@ -15,6 +15,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableCellRenderer;
 import java.awt.Component;
+import java.awt.Dimension;
 
 /**
  *
@@ -27,11 +28,15 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     private Boolean isActiv = false;
 
     private String name = "Panier";
-private int lineToRemove;
+    
+    private int lineToRemove;
     
     private JButton[] buttons;
     
+    private VueConsole consoleView;
+    
     public VuePanierV2(int maxSize) {
+        this.setPreferredSize(new Dimension(800, 400));
         initComponents();
         buttons = new JButton[maxSize];
         for(int i=0; i<maxSize; i++) {
@@ -162,22 +167,28 @@ private int lineToRemove;
     public String getName() {
         return this.name;
     }
-
+    
     @Override
     public Boolean isActiv() {
         return this.isActiv;
+    }
+    
+    public void setVueConsole(VueConsole vueConsole){
+        this.consoleView = vueConsole;
     }
 
     @Override
     public void closeView() {
         this.isActiv = false;
         this.setVisible(false);
+        consoleView.setVisible(false);
     }
 
     @Override
     public void openView() {
         this.isActiv = true;
         this.setVisible(true);
+        consoleView.setVisible(true);
     }
 
     public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
@@ -196,7 +207,6 @@ private int lineToRemove;
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        System.out.println("INIT");
 
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
