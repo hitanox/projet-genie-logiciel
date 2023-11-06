@@ -267,6 +267,10 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         System.out.println(comboName.getItemAt(0));
     }
     
+    public void addFruit(FruitSimple fruit) {
+        this.macedoine.add(fruit);
+    }
+    
     public ArrayList<Fruit> getMacedoine() {
         return this.macedoine.getFruits();
     }

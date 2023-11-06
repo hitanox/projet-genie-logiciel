@@ -27,16 +27,6 @@ public class Macedoine extends Observable implements Fruit {
         setChanged();
         notifyObservers(this);
     }
-    
-    public void retrait() throws IllegalAccessException {
-        if (this.fruits.size() > 0) {
-            this.fruits.remove(this.fruits.size() - 1);
-            setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
-        } else {
-            throw new IllegalAccessException("Aucun fruit a supprimé dans la macedoine");
-        };
-    }
 
     @Override
     public String toString() {

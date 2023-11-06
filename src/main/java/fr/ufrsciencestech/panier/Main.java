@@ -4,7 +4,6 @@ import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.*;
-import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.view.*;
 
@@ -50,8 +49,7 @@ public class Main {
         
         controleur = new Controleur();
         Panier panier = new Panier(5);
-        Macedoine macedoine = new Macedoine();
-        
+
         // On récupère toutes les classes de fruits
         ArrayList<String> fruitsClasses = new ArrayList<>();
         fruitsClasses.add(Ananas.class.getName());
@@ -71,7 +69,6 @@ public class Main {
 
         controleur.setMainVue(vueg);
         controleur.setPanier(panier);
-        controleur.setMacedoine(macedoine);
         controleur.setFruitsClasses(fruitsClasses);
         panier.addObserver(vueg);
         vueg.addControleur(controleur);
