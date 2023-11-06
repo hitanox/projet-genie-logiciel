@@ -1,11 +1,15 @@
 package fr.ufrsciencestech.panier;
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import com.formdev.flatlaf.themes.FlatMacLightLaf;
 import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.*;
 import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.view.*;
 
 import java.util.ArrayList;
+import javax.swing.UIManager;
+import javax.swing.UnsupportedLookAndFeelException;
 
 public class Main {
     private static VuePanierV2 vueg;      //pour pouvoir changer de vue si on le souhaite
@@ -39,7 +43,10 @@ public class Main {
         this.controleur = controleur;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws UnsupportedLookAndFeelException {
+        
+        UIManager.setLookAndFeel(new FlatMacLightLaf());
+        
         controleur = new Controleur();
         Panier panier = new Panier(5);
 
