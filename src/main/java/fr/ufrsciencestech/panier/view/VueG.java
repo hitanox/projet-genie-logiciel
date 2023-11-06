@@ -17,5 +17,8 @@ public interface VueG extends Observer {
     public Boolean isActiv();
     public void closeView();
     public void openView();
-    
+
+    String getFieldName();
+
+    void updateForm(String origin, String price);
 }

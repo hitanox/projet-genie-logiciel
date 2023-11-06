@@ -96,11 +96,12 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         });
         jPanel1.add(comboName);
 
-        tfOrigin.setText("Origine");
+        tfOrigin.setToolTipText("Origine");
 
-        tfPrice.setText("Prix");
+        tfPrice.setToolTipText("Prix");
 
-        tfQuantity.setText("Quantité");
+        tfQuantity.setToolTipText("Quantité");
+        tfQuantity.setText("1");
 
         add.setText("Ajouter");
         add.addActionListener(new java.awt.event.ActionListener() {

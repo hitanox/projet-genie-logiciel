@@ -183,10 +183,8 @@ private int lineToRemove;
     public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         this.comboName.setModel(new DefaultComboBoxModel<String>());
         for (String className : classes) {
-            System.out.println(className);
             this.comboName.addItem(((Fruit) Class.forName(className).newInstance()).getNom());
         }
-        System.out.println(comboName.getItemAt(0));
     }
 
 
@@ -248,13 +246,14 @@ private int lineToRemove;
         });
         jPanel1.add(comboName);
 
-        tfOrigin.setText("Origine");
+        tfOrigin.setToolTipText("Origine");
         jPanel1.add(tfOrigin);
 
-        tfPrice.setText("Prix");
+        tfPrice.setToolTipText("Prix");
         jPanel1.add(tfPrice);
 
-        tfQuantity.setText("Quantité");
+        tfQuantity.setToolTipText("Quantité");
+        tfQuantity.setText("1");
         jPanel1.add(tfQuantity);
 
         isJuice.setName("jus");

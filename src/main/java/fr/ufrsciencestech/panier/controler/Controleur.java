@@ -54,6 +54,7 @@ public class Controleur implements ActionListener {
                         vm.addControleur(this);
                         try {
                             vm.setFruitsChoices(fruitsClasses);
+                            updateForm(vm);
                         } catch (Exception exc) {
                             System.out.println(exc.getMessage());
                         }
@@ -65,8 +66,7 @@ public class Controleur implements ActionListener {
                         this.p.retrait();
                         break;
                     case "comboName":
-                        HashMap<String, String> values = FruitHelper.getDefaultValuesFor(mainView.getFieldName());
-                        mainView.updateForm(values.get("origin"), values.get("price"));
+                        updateForm(mainView);
                         break;
                     default: {
                         int position = mainView.getLineToRemove();
@@ -92,8 +92,7 @@ public class Controleur implements ActionListener {
                         (this.secondaryView).addFruit(fruit);
                         break;
                     case "comboName":
-                        HashMap<String, String> values = FruitHelper.getDefaultValuesFor(secondaryView.getFieldName());
-                        secondaryView.updateForm(values.get("origin"), values.get("price"));
+                        updateForm(secondaryView);
                         break;
                 }
 
@@ -130,5 +129,10 @@ public class Controleur implements ActionListener {
 
     public void setFruitsClasses(ArrayList<String> fruitsClasses) {
         this.fruitsClasses = fruitsClasses;
+    }
+
+    public void updateForm(VueG view) {
+        HashMap<String, String> values = FruitHelper.getDefaultValuesFor(view.getFieldName());
+        view.updateForm(values.get("origin"), values.get("price"));
     }
 }

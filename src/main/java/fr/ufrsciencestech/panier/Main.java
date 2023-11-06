@@ -70,6 +70,7 @@ public class Main {
 
         try {
             vueg.setFruitsChoices(fruitsClasses);
+            controleur.updateForm(vueg);
         } catch (Exception e) {
             System.out.println(e);
         }
