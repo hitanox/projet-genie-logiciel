@@ -58,8 +58,6 @@ public class Main {
         fruitsClasses.add(Pomme.class.getName());
         fruitsClasses.add(Tomate.class.getName());
 
-        System.out.println(fruitsClasses);
-
         vueg = new VuePanierV2(panier.getContenanceMax());
 
         controleur.setMainVue(vueg);
