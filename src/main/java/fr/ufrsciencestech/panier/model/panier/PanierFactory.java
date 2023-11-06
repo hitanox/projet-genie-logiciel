@@ -16,12 +16,6 @@ public class PanierFactory implements ProductFactory {
     }
 
     @Override
-    public FruitSimple createFruitSimple(String name, double prix, String origine, boolean isSeedless) {
-        return null;
-    }
-
-
-    @Override
     public FruitSimple createFruitSimple(String name) {
         return null;
     }

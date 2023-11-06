@@ -26,56 +26,47 @@ public class FruitFactory implements ProductFactory {
      * @param name
      * @param prix
      * @param origine
-     * @param isSeedless
      * @return a new instance of a fruit depending on parameters given by the user
      */
     @Override
-    public FruitSimple createFruitSimple(String name, double prix, String origine, boolean isSeedless) {
-        isSeedless = false;
+    public FruitSimple createFruitSimple(String name, double prix, String origine) {
+        if (prix < 0.0) throw new IllegalArgumentException("Price cannot be negative");
+        if (null == origine || origine.isEmpty()) throw new IllegalArgumentException("Origin cannot be empty");
+
         checkNameParameter(name);
         if (!Arrays.asList(fruitsAvailable).contains(name)) {
             checkPriceParameter(prix);
             checkOriginParameter(origine);
-            return new AnyFruit(name, prix, origine, isSeedless);
-        } else if (prix < 0.0 || origine == null || origine.isEmpty()) {
-            return createFruitSimple(name);
+            return new AnyFruit(name, prix, origine, false);
         } else {
-            return createFruitSimple(name, prix, origine);
-        }
-    }
-
-    @Override
-    public FruitSimple createFruitSimple(String name, double prix, String origine) {
-        checkNameParameter(name);
-        checkPriceParameter(prix);
-        checkOriginParameter(origine);
-        switch (name) {
-            case "Ananas":
-                return new Ananas(prix, origine);
-            case "Banane":
-                return new Banane(prix, origine);
-            case "Cerise":
-                return new Cerise(prix, origine);
-            case "Fraise":
-                return new Fraise(prix, origine);
-            case "Kiwi":
-                return new Kiwi(prix, origine);
-            case "Orange":
-                return new Orange(prix, origine);
-            case "Poire":
-                return new Poire(prix, origine);
-            case "Pomme":
-                return new Pomme(prix, origine);
-            case "Tomate":
-                return new Tomate(prix, origine);
-            case "Caroube":
-                return new Caroube(prix, origine);
-            case "Litchi":
-                return new Litchi(prix, origine);
-            case "Papaye":
-                return new Papaye(prix, origine);
-            default:
-                throw new IllegalArgumentException("Name specified is not a fruit");
+            switch (name) {
+                case "Ananas":
+                    return new Ananas(prix, origine);
+                case "Banane":
+                    return new Banane(prix, origine);
+                case "Cerise":
+                    return new Cerise(prix, origine);
+                case "Fraise":
+                    return new Fraise(prix, origine);
+                case "Kiwi":
+                    return new Kiwi(prix, origine);
+                case "Orange":
+                    return new Orange(prix, origine);
+                case "Poire":
+                    return new Poire(prix, origine);
+                case "Pomme":
+                    return new Pomme(prix, origine);
+                case "Tomate":
+                    return new Tomate(prix, origine);
+                case "Caroube":
+                    return new Caroube(prix, origine);
+                case "Litchi":
+                    return new Litchi(prix, origine);
+                case "Papaye":
+                    return new Papaye(prix, origine);
+                default:
+                    throw new IllegalArgumentException("Name specified is not a fruit");
+            }
         }
     }
 

@@ -9,6 +9,7 @@ import fr.ufrsciencestech.panier.model.panier.Panier;
 import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import fr.ufrsciencestech.panier.model.panier.PanierVideException;
 import fr.ufrsciencestech.panier.view.VuePanierV2;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.util.ArrayList;
@@ -25,44 +26,43 @@ public class Controleur implements ActionListener {
     private ArrayList<String> fruitsClasses;
 
     @Override
-    public void actionPerformed(ActionEvent e){
+    public void actionPerformed(ActionEvent e) {
         FruitFactory facto = new FruitFactory();
+        String source = ((Component) e.getSource()).getName();
 
         try {
             if (mainView.isActiv()) {
-                if(((Component)e.getSource()).getName().equals("add")) {
-                        String fruitName = mainView.getFieldName();
-                        Integer quantity = mainView.getFieldQuantity();
+                if (source.equals("add")) {
+                    String fruitName = mainView.getFieldName();
+                    Integer quantity = mainView.getFieldQuantity();
+                    float price = Float.parseFloat(mainView.getFieldPrice());
+                    String origin = mainView.getFieldOrigin();
 
-                        FruitSimple fruit = facto.createFruitSimple(fruitName);
+                    FruitSimple fruit = facto.createFruitSimple(fruitName, price, origin);
 
-                        if (mainView.isJuice()) {
-                            Jus jus = facto.createJus(fruit);
-                            this.p.ajout(jus, quantity);
-                        } else {
-                            this.p.ajout(fruit, quantity);
-                        }
-                }
-                else if(((Component)e.getSource()).getName().equals("btnMacedoine")) {
+                    if (mainView.isJuice()) {
+                        Jus jus = facto.createJus(fruit);
+                        this.p.ajout(jus, quantity);
+                    } else {
+                        this.p.ajout(fruit, quantity);
+                    }
+                } else if (source.equals("btnMacedoine")) {
                     VueMacedoine vm = new VueMacedoine();
                     vm.addControleur(this);
                     try {
                         vm.setFruitsChoices(fruitsClasses);
                     } catch (Exception exc) {
-                        System.out.println(exc);
+                        System.out.println(exc.getMessage());
                     }
                     mainView.closeView();
                     vm.openView();
                     this.secondaryView = vm;
-                }
-                else if (((Component)e.getSource()).getName().equals("del")) {
+                } else if (source.equals("del")) {
                     this.p.retrait();
-                }
-                else if (((Component)e.getSource()).getName().equals("comboName")) {
+                } else if (source.equals("comboName")) {
                     HashMap<String, String> values = FruitHelper.getDefaultValuesFor(mainView.getFieldName());
                     mainView.updateForm((String) values.get("origin"), (String) values.get("price"));
-                }
-                else {
+                } else {
                     int position = mainView.getLineToRemove();
                     String name = mainView.getNameAt(position);
                     String origin = mainView.getOriginAt(position);
@@ -71,28 +71,27 @@ public class Controleur implements ActionListener {
                 }
             }
             if (secondaryView != null && secondaryView.getName() == "Macedoine" && secondaryView.isActiv()) {
-                if(((Component)e.getSource()).getName().equals("addMacedoine")) {
+                if (source.equals("addMacedoine")) {
                     secondaryView.closeView();
                     mainView.openView();
                     Macedoine macedoine = facto.createMacedoine(((VueMacedoine) this.secondaryView).getMacedoine());
                     this.p.ajout(macedoine, 1);
-                }
-                else if(((Component)e.getSource()).getName().equals("add")) {
+                } else if (source.equals("add")) {
                     String fruitName = ((VueMacedoine) this.secondaryView).getFieldName();
                     FruitSimple fruit = facto.createFruitSimple(fruitName);
                     ((VueMacedoine) this.secondaryView).addFruit(fruit);
-                } else if (((Component)e.getSource()).getName().equals("comboName")) {
+                } else if (source.equals("comboName")) {
                     HashMap<String, String> values = FruitHelper.getDefaultValuesFor(secondaryView.getFieldName());
                     secondaryView.updateForm(values.get("origin"), values.get("price"));
                 }
 
             }
         } catch (PanierVideException | PanierPleinException ex) {
-            System.out.println(ex);
+            System.out.println(ex.getMessage());
         }
     }
 
-    public void setPanier(Panier p){
+    public void setPanier(Panier p) {
         this.p = p;
     }
 
@@ -100,7 +99,7 @@ public class Controleur implements ActionListener {
         return this.p;
     }
 
-    public void setMainVue(VuePanierV2 mainView){
+    public void setMainVue(VuePanierV2 mainView) {
         this.mainView = mainView;
     }
 
@@ -108,7 +107,7 @@ public class Controleur implements ActionListener {
         return this.mainView;
     }
 
-    public void setSecondaryVue(VueMacedoine secondaryView){
+    public void setSecondaryVue(VueMacedoine secondaryView) {
         this.secondaryView = secondaryView;
     }
 
