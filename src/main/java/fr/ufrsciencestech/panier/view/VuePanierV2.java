@@ -107,8 +107,7 @@ private int lineToRemove;
         this.del.addActionListener(c);
         this.comboName.addActionListener(c);
         this.btnMacedoine.addActionListener(c);
-        for(int i=0; i<buttons.length; i++)
-            this.buttons[i].addActionListener(c);
+        for (JButton button : buttons) button.addActionListener(c);
     }
 
     public javax.swing.JTable getTab() {
@@ -182,7 +181,7 @@ private int lineToRemove;
     }
 
     public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-        this.comboName.setModel((ComboBoxModel) new DefaultComboBoxModel<String>());
+        this.comboName.setModel(new DefaultComboBoxModel<String>());
         for (String className : classes) {
             System.out.println(className);
             this.comboName.addItem(((Fruit) Class.forName(className).newInstance()).getNom());
