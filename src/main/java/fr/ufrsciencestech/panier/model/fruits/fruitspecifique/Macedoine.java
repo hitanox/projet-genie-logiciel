@@ -73,12 +73,16 @@ public class Macedoine extends Observable implements Fruit {
     }
 
     private void checkFruits(ArrayList<Fruit> fruits) {
-        for (Fruit f : fruits) {
-            if (f.getClass() == Jus.class) {
-                throw new IllegalArgumentException("Macedoine cannot contain a Jus");
-            }
-            if (f.getClass() == Macedoine.class) {
-                throw new IllegalArgumentException("Macedoine cannot contain another Macedoine");
+        if (fruits.size() <= 0) {
+            throw new IllegalArgumentException("Macedoine cannot be empty");
+        } else {
+            for (Fruit f : fruits) {
+                if (f.getClass() == Jus.class) {
+                    throw new IllegalArgumentException("Macedoine cannot contain a Jus");
+                }
+                if (f.getClass() == Macedoine.class) {
+                    throw new IllegalArgumentException("Macedoine cannot contain another Macedoine");
+                }
             }
         }
     }
