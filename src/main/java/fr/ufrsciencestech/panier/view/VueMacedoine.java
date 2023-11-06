@@ -210,6 +210,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     public void addControleur(Controleur c) {
         this.add.addActionListener(c);
         this.del.addActionListener(c);
+        this.comboName.addActionListener(c);
         this.addMacedoine.addActionListener(c);
     }
     
@@ -256,7 +257,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     }
 
     public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
-        this.comboName.setModel((ComboBoxModel) new DefaultComboBoxModel<String>());
+        this.comboName.setModel(new DefaultComboBoxModel<String>());
         for (String className : classes) {
             System.out.println(className);
             this.comboName.addItem(((Fruit) Class.forName(className).newInstance()).getNom());
