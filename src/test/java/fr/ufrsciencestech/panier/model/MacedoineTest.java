@@ -23,8 +23,8 @@ public class MacedoineTest {
 
     @Before
     public void setUp() throws Exception {
-        panierTest.ajout(orange);
-        panierTest.ajout(poire);
+        panierTest.ajout(orange, 1);
+        panierTest.ajout(poire, 1);
     }
 
     @Test
@@ -59,7 +59,7 @@ public class MacedoineTest {
     public void testExceptionAddJusInMacedoine() throws PanierPleinException {
         Macedoine m = ff.createMacedoine(panierTest.getFruits());
         Jus j = ff.createJus(orange);
-        panierTest.ajout(j);
+        panierTest.ajout(j, 1);
         try {
             m = ff.createMacedoine(panierTest.getFruits());
         } catch (IllegalArgumentException e) {
