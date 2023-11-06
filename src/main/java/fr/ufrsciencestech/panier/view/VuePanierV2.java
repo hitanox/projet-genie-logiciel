@@ -28,7 +28,8 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     private Boolean isActiv = false;
 
     private String name = "Panier";
-private int lineToRemove;
+    
+    private int lineToRemove;
     
     private JButton[] buttons;
     
@@ -166,7 +167,7 @@ private int lineToRemove;
     public String getName() {
         return this.name;
     }
-
+    
     @Override
     public Boolean isActiv() {
         return this.isActiv;

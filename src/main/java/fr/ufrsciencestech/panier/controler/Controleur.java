@@ -1,6 +1,7 @@
 package fr.ufrsciencestech.panier.controler;
 
 
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
 import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
 import fr.ufrsciencestech.panier.model.fruits.FruitHelper;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
@@ -78,7 +79,8 @@ public class Controleur implements ActionListener {
                         String name = mainView.getNameAt(position);
                         String origin = mainView.getOriginAt(position);
                         double price = mainView.getPriceAt(position);
-                        this.p.retrait(name, origin, price);
+                        Fruit fruit2 = this.p.retrait(name, origin, price);
+                        consoleView.affiche("Retrait des éléments de type " + fruit2.toString());
                         break;
                     }
                 }
@@ -104,7 +106,7 @@ public class Controleur implements ActionListener {
 
             }
         } catch (PanierVideException | PanierPleinException ex) {
-            consoleView.affiche(ex.getMess.toString());
+            consoleView.affiche(ex.toString());
         }
     }
 
@@ -147,5 +149,6 @@ public class Controleur implements ActionListener {
     public void updateForm(VueG view) {
         HashMap<String, String> values = FruitHelper.getDefaultValuesFor(view.getFieldName());
         view.updateForm(values.get("origin"), values.get("price"));
+    }
         
 }

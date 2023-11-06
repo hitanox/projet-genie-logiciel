@@ -233,7 +233,7 @@ public class FruitSimpleTest {
     @Test
     public void testToString() {
         FruitSimple cerise = ff.createFruitSimple("Cerise");
-        assertEquals("Cerise de Caucase a 6.5 euros.", cerise.toString());
+        assertEquals("Cerise de Caucase a 6.5 euros", cerise.toString());
     }
 
     @Test

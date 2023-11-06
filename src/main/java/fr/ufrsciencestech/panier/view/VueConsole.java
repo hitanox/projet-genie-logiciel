@@ -14,7 +14,7 @@ import java.awt.Dimension;
 public class VueConsole extends javax.swing.JFrame {
     
     public void affiche(String log) {
-        te_console.append(log+"\n");
+        ta_console.append(log+"\n");
     }
     
     /**
@@ -22,8 +22,9 @@ public class VueConsole extends javax.swing.JFrame {
      */
     public VueConsole() {
         this.setPreferredSize(new Dimension(400, 400));
-        this.setLocation(0, 400);
+        this.setLocation(0, 420);
         initComponents();
+        ta_console.setEnabled(false);
     }
 
     /**
@@ -36,14 +37,14 @@ public class VueConsole extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        te_console = new javax.swing.JTextArea();
+        ta_console = new javax.swing.JTextArea();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        te_console.setColumns(20);
-        te_console.setRows(5);
-        jScrollPane1.setViewportView(te_console);
+        ta_console.setColumns(20);
+        ta_console.setRows(5);
+        jScrollPane1.setViewportView(ta_console);
 
         getContentPane().add(jScrollPane1);
 
@@ -87,6 +88,6 @@ public class VueConsole extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea te_console;
+    private javax.swing.JTextArea ta_console;
     // End of variables declaration//GEN-END:variables
 }

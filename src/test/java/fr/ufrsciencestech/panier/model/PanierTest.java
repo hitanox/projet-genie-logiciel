@@ -36,8 +36,8 @@ public class PanierTest {
   public void testToString() {
     String text =
             "Panier de 2 fruits : 2.8\n" +
-            "Orange de France a 2.0 euros.\n" +
-            "Poire de Espagne a 0.8 euros.\n";
+            "Orange de France a 2.0 euros\n" +
+            "Poire de Espagne a 0.8 euros\n";
     assertEquals(text, this.panierTest.toString());
   }
 
@@ -129,6 +129,14 @@ public class PanierTest {
     this.panierTest.retrait();
     fruits.remove(1);
 
+    assertEquals(this.panierTest.getFruits(), fruits);
+  }
+  
+  @Test
+  public void testRetraitPrecis() throws PanierVideException {
+    ArrayList<Fruit> fruits = new ArrayList<>();
+    fruits.add(poire);
+    this.panierTest.retrait("Orange", "France", 2);
     assertEquals(this.panierTest.getFruits(), fruits);
   }
 
