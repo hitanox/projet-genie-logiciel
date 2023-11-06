@@ -31,13 +31,12 @@ public class FruitFactory implements ProductFactory {
      */
     @Override
     public FruitSimple createFruitSimple(String name, double prix, String origine) {
-        if (prix < 0.0) throw new IllegalArgumentException("Price cannot be negative");
-        if (null == origine || origine.isEmpty()) throw new IllegalArgumentException("Origin cannot be empty");
+        checkPriceParameter(prix);
+        checkOriginParameter(origine);
 
         checkNameParameter(name);
         if (!Arrays.asList(fruitsAvailable).contains(name)) {
-            checkPriceParameter(prix);
-            checkOriginParameter(origine);
+
             return new AnyFruit(name, prix, origine);
         } else {
             switch (name) {
