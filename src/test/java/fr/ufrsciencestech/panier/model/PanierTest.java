@@ -28,8 +28,8 @@ public class PanierTest {
 
   @Before
   public void setUp() throws Exception {
-    panierTest.ajout(orange);
-    panierTest.ajout(poire);
+    panierTest.ajout(orange, 1);
+    panierTest.ajout(poire, 1);
   }
 
   @Test
@@ -101,8 +101,8 @@ public class PanierTest {
   public void testEstPlein() throws PanierPleinException {
     Panier pTest = pf.createPanier(2);
 
-    pTest.ajout(orange);
-    pTest.ajout(orange);
+    pTest.ajout(orange, 1);
+    pTest.ajout(orange, 1);
 
     assertTrue(pTest.estPlein());
   }
@@ -115,7 +115,7 @@ public class PanierTest {
     fruits.add(poire);
     fruits.add(cerise);
 
-    this.panierTest.ajout(cerise);
+    this.panierTest.ajout(cerise, 1);
 
     assertEquals(this.panierTest.getFruits(), fruits);
   }
@@ -150,13 +150,13 @@ public class PanierTest {
   public void testEquals() throws PanierPleinException {
     Panier pTest = new Panier(10);
 
-    pTest.ajout(orange);
-    pTest.ajout(poire);
+    pTest.ajout(orange, 1);
+    pTest.ajout(poire, 1);
 
     assertTrue(this.panierTest.equals(pTest));
     FruitSimple cerise = ff.createFruitSimple("Cerise");
 
-    pTest.ajout(cerise);
+    pTest.ajout(cerise, 1);
     assertFalse(this.panierTest.equals(pTest));
   }
 
@@ -164,8 +164,8 @@ public class PanierTest {
   public void testAjoutTriggerPanierPleinException(){
     Panier pTest = pf.createPanier(1);
     try {
-      pTest.ajout(orange);
-      pTest.ajout(poire);
+      pTest.ajout(orange, 1);
+      pTest.ajout(poire, 1);
     } catch (PanierPleinException e) {
       assertEquals("Ajout impossible car le panier est plein !", e.getMessage());
     }
