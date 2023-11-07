@@ -2,7 +2,7 @@ package fr.ufrsciencestech.panier.model;
 
 import fr.ufrsciencestech.panier.model.fruits.Fruit;
 import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
-import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
+import fr.ufrsciencestech.panier.model.fruits.fruitsimple.*;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Macedoine;
 import fr.ufrsciencestech.panier.model.panier.Panier;
@@ -15,7 +15,8 @@ import java.util.ArrayList;
 
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertEquals;
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class MacedoineTest {
 
@@ -50,6 +51,12 @@ public class MacedoineTest {
     }
 
     @Test
+    public void testGetOrigine() {
+        Macedoine m = ff.createMacedoine(panierTest.getFruits());
+        assertEquals("France", m.getOrigine());
+    }
+
+    @Test
     public void testExceptionAddMacedoineInMacedoine() {
         Macedoine m = ff.createMacedoine(panierTest.getFruits());
         try {
@@ -57,6 +64,14 @@ public class MacedoineTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Macedoine cannot contain another Macedoine", e.getMessage());
         }
+    }
+
+    @Test
+    public void testAddFruit() {
+        Macedoine m = ff.createMacedoine(panierTest.getFruits());
+        FruitSimple cerise = ff.createFruitSimple("Cerise");
+        m.add(cerise);
+        assertTrue(m.getFruits().contains(cerise));
     }
 
     @Test
@@ -141,6 +156,52 @@ public class MacedoineTest {
     public void testGetNom() {
         Macedoine m = ff.createMacedoine(panierTest.getFruits());
         assertEquals("Macedoine de Orange, Poire, ", m.getNom());
+    }
+
+    @Test
+    public void testHashCode() {
+        Macedoine m1 = new Macedoine();
+        m1.add(new Orange());
+        m1.add(new Pomme());
+        m1.add(new Poire());
+
+        Macedoine m2 = new Macedoine();
+        m2.add(new Orange());
+        m2.add(new Pomme());
+        m2.add(new Poire());
+
+        assertEquals(m1.hashCode(), m2.hashCode());
+
+        Macedoine m3 = new Macedoine();
+        m3.add(new Orange());
+        m3.add(new Pomme());
+        m3.add(new Cerise());
+
+        assertNotEquals(m1.hashCode(), m3.hashCode());
+    }
+
+    @Test
+    public void testCheckFruits() {
+        Macedoine macedoine = new Macedoine();
+
+        ArrayList<Fruit> fruits = new ArrayList<>();
+        fruits.add(new Pomme());
+        fruits.add(new Banane());
+
+        Jus jusTest = new Jus(new Orange());
+
+        fruits.add(jusTest);
+
+        Macedoine macedoineTest = new Macedoine();
+
+        fruits.add(macedoineTest);
+
+        try {
+            macedoine.checkFruits(fruits);
+            fail("IllegalArgumentException should be thrown for an invalid list of fruits.");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Macedoine cannot contain a Jus", e.getMessage());
+        }
     }
 
 }
