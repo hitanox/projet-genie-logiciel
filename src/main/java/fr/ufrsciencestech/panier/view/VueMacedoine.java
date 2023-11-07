@@ -53,8 +53,8 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jPanel1 = new javax.swing.JPanel();
-        del = new javax.swing.JButton();
-        del.setName("del");
+        cancel = new javax.swing.JButton();
+        cancel.setName("cancel");
         macedoineTitle = new javax.swing.JLabel();
         tfOrigin = new javax.swing.JTextField();
         tfPrice = new javax.swing.JTextField();
@@ -82,10 +82,10 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         jPanel1.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         jPanel1.setLayout(new java.awt.GridLayout(1, 0));
 
-        del.setText("Annuler");
-        del.addActionListener(new java.awt.event.ActionListener() {
+        cancel.setText("Annuler");
+        cancel.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                delActionPerformed(evt);
+                cancelActionPerformed(evt);
             }
         });
 
@@ -136,7 +136,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1030, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(del, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cancel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(addMacedoine, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -165,7 +165,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(del, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(cancel, javax.swing.GroupLayout.PREFERRED_SIZE, 387, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(layout.createSequentialGroup()
@@ -181,9 +181,9 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         // TODO add your handling code here:
     }//GEN-LAST:event_addActionPerformed
 
-    private void delActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_delActionPerformed
+    private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_delActionPerformed
+    }//GEN-LAST:event_cancelActionPerformed
 
     /**
      * @param args the command line arguments
@@ -212,7 +212,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     @Override
     public void addControleur(Controleur c) {
         this.add.addActionListener(c);
-        this.del.addActionListener(c);
+        this.cancel.addActionListener(c);
         this.comboName.addActionListener(c);
         this.addMacedoine.addActionListener(c);
     }
@@ -279,8 +279,8 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton add;
     private javax.swing.JButton addMacedoine;
+    private javax.swing.JButton cancel;
     private javax.swing.JComboBox<String> comboName;
-    private javax.swing.JButton del;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
