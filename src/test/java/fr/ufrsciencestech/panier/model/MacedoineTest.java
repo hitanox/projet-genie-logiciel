@@ -261,4 +261,63 @@ public class MacedoineTest {
         }
     }
 
+    @Test
+    public void testMacedoineDesIles() throws PanierPleinException {
+        Panier panier = pf.createPanier(10);
+        FruitSimple ananas = ff.createFruitSimple("Ananas");
+        FruitSimple banane = ff.createFruitSimple("Banane");
+        panier.ajout(ananas, 1);
+        panier.ajout(banane, 1);
+        Macedoine m = ff.createMacedoine(panier.getFruits());
+        assertEquals(3.99, m.getPrix());
+        assertEquals("Macedoine de Ananas, Banane, ", m.getNom());
+        assertEquals("Macedoine de Ananas, Banane a 3.99 euros", m.toString());
+    }
+
+    @Test
+    public void testMacedoineFruitRouge() throws PanierPleinException {
+        Panier panier = pf.createPanier(10);
+        FruitSimple fraise = ff.createFruitSimple("Fraise");
+        FruitSimple cerise = ff.createFruitSimple("Cerise");
+        panier.ajout(fraise, 1);
+        panier.ajout(cerise, 1);
+        Macedoine m = ff.createMacedoine(panier.getFruits());
+        assertEquals(7.5, m.getPrix());
+        assertEquals("Macedoine de Fraise, Cerise, ", m.getNom());
+        assertEquals("Macedoine de Fraise, Cerise a 7.5 euros", m.toString());
+    }
+
+    @Test
+    public void testMacedoineFruitTout() throws PanierPleinException {
+        Panier panier = pf.createPanier(50);
+        FruitSimple orange = ff.createFruitSimple("Orange");
+        FruitSimple poire = ff.createFruitSimple("Poire");
+        FruitSimple pomme = ff.createFruitSimple("Pomme");
+        FruitSimple banane = ff.createFruitSimple("Banane");
+        FruitSimple kiwi = ff.createFruitSimple("Kiwi");
+        FruitSimple fraise = ff.createFruitSimple("Fraise");
+        FruitSimple cerise = ff.createFruitSimple("Cerise");
+        FruitSimple ananas = ff.createFruitSimple("Ananas");
+        FruitSimple caroube = ff.createFruitSimple("Caroube");
+        FruitSimple litchi = ff.createFruitSimple("Litchi");
+        FruitSimple papaye = ff.createFruitSimple("Papaye");
+        FruitSimple tomate = ff.createFruitSimple("Tomate");
+        panier.ajout(orange, 1);
+        panier.ajout(poire, 1);
+        panier.ajout(pomme, 1);
+        panier.ajout(banane, 1);
+        panier.ajout(kiwi, 1);
+        panier.ajout(fraise, 1);
+        panier.ajout(cerise, 1);
+        panier.ajout(ananas, 1);
+        panier.ajout(caroube, 1);
+        panier.ajout(litchi, 1);
+        panier.ajout(papaye, 1);
+        panier.ajout(tomate, 1);
+        Macedoine m = ff.createMacedoine(panier.getFruits());
+        assertEquals(27.8, m.getPrix());
+        assertEquals("Macedoine de Orange, Poire, Pomme, Banane, Kiwi, Fraise, Cerise, Ananas, Caroube, Litchi, Papaye, Tomate, ", m.getNom());
+        assertEquals("Macedoine de Orange, Poire, Pomme, Banane, Kiwi, Fraise, Cerise, Ananas, Caroube, Litchi, Papaye, Tomate a 27.8 euros", m.toString());
+    }
+
 }
