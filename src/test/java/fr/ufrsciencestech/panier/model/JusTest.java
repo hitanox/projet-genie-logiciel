@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier.model;
 import static junit.framework.TestCase.*;
+import static org.junit.Assert.assertNotEquals;
 
 import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
@@ -38,6 +39,14 @@ public class JusTest {
         catch(IllegalArgumentException e){
             assertEquals("Jus cannot contain another Jus", e.getMessage());
         }
+    }
+
+    @Test
+    public void testHashCode(){
+        Jus jFruit2 = ff.createJus(papaye);
+        assertEquals(jFruit.hashCode(), jFruit2.hashCode());
+        Jus jFruit3 = ff.createJus(ff.createFruitSimple("Pomme"));
+        assertNotEquals(jFruit.hashCode(), jFruit3.hashCode());
     }
 
 }
