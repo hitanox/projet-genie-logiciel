@@ -300,4 +300,16 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     private javax.swing.JTextField tfPrice;
     private javax.swing.JTextField tfQuantity;
     // End of variables declaration//GEN-END:variables
+
+    public JButton getAddButton() {
+        return add;
+    }
+    
+    public JButton getDelButton() {
+        return del;
+    }
+    
+    public JButton getAddMacedoineButton() {
+        return addMacedoine;
+    }
 }
