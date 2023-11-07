@@ -28,6 +28,11 @@ public class Controleur implements ActionListener {
     private ArrayList<String> fruitsClasses;
     private VueConsole consoleView;
     
+    
+    /** 
+     * Selon l'événement reçu depuis la vue, lance les actions nécessaires sur le modèle et change potentiellement de vue
+     * @param e événement capté par le controleur
+     */
     @Override
     public void actionPerformed(ActionEvent e) {
         FruitFactory facto = new FruitFactory();
@@ -114,42 +119,82 @@ public class Controleur implements ActionListener {
         }
     }
 
+    
+    /** 
+     * @param p
+     */
     public void setPanier(Panier p) {
         this.p = p;
     }
 
+    
+    /** 
+     * @return Panier
+     */
     public Panier getPanier() {
         return this.p;
     }
 
+    
+    /** 
+     * @param mainView
+     */
     public void setMainVue(VuePanierV2 mainView) {
         this.mainView = mainView;
     }
 
+    
+    /** 
+     * @return VueG
+     */
     public VueG getMainVue() {
         return this.mainView;
     }
 
+    
+    /** 
+     * @param secondaryView
+     */
     public void setSecondaryVue(VueMacedoine secondaryView) {
         this.secondaryView = secondaryView;
     }
 
+    
+    /** 
+     * @return VueG
+     */
     public VueG getSecondaryVue() {
         return this.secondaryView;
     }
 
+    
+    /** 
+     * @param vueConsole
+     */
     public void setVueConsole(VueConsole vueConsole){
         this.consoleView = vueConsole;
     }
 
+    
+    /** 
+     * @return VueConsole
+     */
     public VueConsole getVueConsole() {
         return this.consoleView;
     }
 
+    
+    /** 
+     * @param fruitsClasses
+     */
     public void setFruitsClasses(ArrayList<String> fruitsClasses) {
         this.fruitsClasses = fruitsClasses;
     }
 
+    
+    /** 
+     * @param view
+     */
     public void updateForm(VueG view) {
         HashMap<String, String> values = FruitHelper.getDefaultValuesFor(view.getFieldName());
         view.updateForm(values.get("origin"), values.get("price"));

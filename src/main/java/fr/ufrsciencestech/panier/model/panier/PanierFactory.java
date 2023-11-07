@@ -10,6 +10,12 @@ import java.util.ArrayList;
 
 public class PanierFactory implements ProductFactory {
 
+    
+    /** 
+     * Crée un panier de taille size
+     * @param size taille du panier
+     * @return Panier créé
+     */
     @Override
     public Panier createPanier(int size) {
         return new Panier(size);

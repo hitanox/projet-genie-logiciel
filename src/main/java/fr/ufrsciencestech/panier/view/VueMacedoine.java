@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
@@ -14,10 +10,6 @@ import java.util.Observable;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author sltctom
- */
 public class VueMacedoine extends javax.swing.JFrame implements VueG {
     
     private DefaultTableModel model;
@@ -177,6 +169,8 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+
+/*
     private void addActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_addActionPerformed
@@ -184,11 +178,12 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     private void cancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
-
-    /**
-     * @param args the command line arguments
-     */
+*/
     
+    /**
+     * Mise à jour du modèle de données du tableau d'affichage
+     * @param donnees matrice contenant le panier
+     */
     public void updateTab(Object[][] donnees) {
         while (model.getRowCount() > 0) {
             model.removeRow(0);
@@ -199,16 +194,34 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         }   
     }
 
+    
+    
+    /** 
+     * Mise à jour de la vue
+     * @param m
+     * @param o
+     */
     @Override
     public void update(Observable m, Object o) {
         this.updateTab(((Macedoine) o).toObject());
     }
 
+    
+    /** 
+     * Mise à jour du formulaire associé
+     * @param origine
+     * @param prix
+     */
     public void updateForm(String origine, String prix) {
         this.tfOrigin.setText(origine);
         this.tfPrice.setText(prix);
     }
 
+    
+    /** 
+     * Ajout au controleur des objets à observer
+     * @param c
+     */
     @Override
     public void addControleur(Controleur c) {
         this.add.addActionListener(c);
@@ -217,11 +230,20 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         this.addMacedoine.addActionListener(c);
     }
     
+    
+    /** 
+     * Retourne le nom de la vue
+     * @return String
+     */
     @Override
     public String getName() {
         return this.name;
     }
     
+    
+    /** 
+     * @return Boolean
+     */
     @Override
     public Boolean isActiv() {
         return this.isActiv;
@@ -239,18 +261,34 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         this.setVisible(true);
     }
     
+    
+    /** 
+     * @return String
+     */
     public String getFieldName() {
         return (String) comboName.getSelectedItem();
     }
     
+    
+    /** 
+     * @return String
+     */
     public String getFieldOrigin() {
         return tfOrigin.getText();
     }
     
+    
+    /** 
+     * @return String
+     */
     public String getFieldPrice() {
         return tfPrice.getText();
     }
     
+    
+    /** 
+     * @return Integer
+     */
     public Integer getFieldQuantity() {
         try {
             return Integer.valueOf(tfQuantity.getText());
@@ -259,6 +297,13 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         }   
     }
 
+    
+    /** 
+     * @param classes
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
     public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         this.comboName.setModel(new DefaultComboBoxModel<String>());
         for (String className : classes) {
@@ -268,10 +313,18 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         System.out.println(comboName.getItemAt(0));
     }
     
+    
+    /** 
+     * @param fruit
+     */
     public void addFruit(FruitSimple fruit) {
         this.macedoine.add(fruit);
     }
     
+    
+    /** 
+     * @return ArrayList<Fruit>
+     */
     public ArrayList<Fruit> getMacedoine() {
         return this.macedoine.getFruits();
     }

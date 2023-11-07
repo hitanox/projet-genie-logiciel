@@ -22,12 +22,20 @@ public class Macedoine extends Observable implements Fruit {
         this.fruits = fruits;
     }
 
+    
+    /** Ajoute le fruit en paramètre à la liste
+     * @param fruit
+     */
     public void add(FruitSimple fruit) {
         this.fruits.add(fruit);
         setChanged();
         notifyObservers(this);
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder("Macedoine de ");
@@ -37,6 +45,10 @@ public class Macedoine extends Observable implements Fruit {
         return result.substring(0, result.length() - 2) + " a " + getPrix() + " euros";
     }
 
+    
+    /** 
+     * @return boolean
+     */
     public boolean isSeedless() {
         for (Fruit f : fruits) {
             if (!f.isSeedless()) {
@@ -46,10 +58,18 @@ public class Macedoine extends Observable implements Fruit {
         return true;
     }
 
+    
+    /** Retourne la liste de fruits
+     * @return ArrayList<Fruit>
+     */
     public ArrayList<Fruit> getFruits() {
         return this.fruits;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String getNom() {
         StringBuilder result = new StringBuilder("Macedoine de ");
@@ -59,6 +79,10 @@ public class Macedoine extends Observable implements Fruit {
         return result.toString();
     }
 
+    
+    /** 
+     * @return double
+     */
     @Override
     public double getPrix() {
         double prix = 0;
@@ -68,11 +92,19 @@ public class Macedoine extends Observable implements Fruit {
         return prix;
     }
 
+    
+    /** 
+     * @return String
+     */
     @Override
     public String getOrigine() {
         return "France";
     }
 
+    
+    /** Vérifie qu'il n'y a ni jus, ni macédoine dans la liste de fruits placée en paramètre
+     * @param fruits
+     */
     private void checkFruits(ArrayList<Fruit> fruits) {
         if (fruits.size() <= 0) {
             throw new IllegalArgumentException("Macedoine cannot be empty");
@@ -88,6 +120,11 @@ public class Macedoine extends Observable implements Fruit {
         }
     }
     
+    
+    /** 
+     * @param o
+     * @return boolean
+     */
     @Override
     public boolean equals(Object o) { 
         if (o != null && getClass() == o.getClass()) {
@@ -105,6 +142,10 @@ public class Macedoine extends Observable implements Fruit {
         return false;
     }
 
+    
+    /** 
+     * @return int hashcode assoocié à la macédoine
+     */
     @Override
     public int hashCode() {
         int hash = 3;
@@ -112,6 +153,10 @@ public class Macedoine extends Observable implements Fruit {
         return hash;
     }
     
+    
+    /** Transforme la macédoine en une matrice d'objets : chaque ligne représente un fruit (avec son nom, son origine, son prix et sa quantité)
+     * @return Object[][]
+     */
     public Object[][] toObject() {
         Map<Fruit, Integer> fruitWithQuantity = new HashMap<>();
 
