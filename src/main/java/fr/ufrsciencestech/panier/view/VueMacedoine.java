@@ -242,6 +242,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     
     
     /** 
+     * Retourne si la vue est active ou non
      * @return Boolean
      */
     @Override
@@ -249,12 +250,18 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         return this.isActiv;
     }
 
+    /**
+     * Ferme la vue
+     */
     @Override
     public void closeView() {
         this.isActiv = false;
         this.dispose();
     }
     
+    /**
+     * Ouvre la vue
+     */
     @Override
     public void openView() {
         this.isActiv = true;
@@ -263,6 +270,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     
     
     /** 
+     * Retourne la valeur sélectionnée dans la comboBox
      * @return String
      */
     public String getFieldName() {
@@ -271,6 +279,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     
     
     /** 
+     * Retourne le texte du jTextField tfOrigin
      * @return String
      */
     public String getFieldOrigin() {
@@ -279,6 +288,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     
     
     /** 
+     * Retourne le texte du jTextField tfPrice
      * @return String
      */
     public String getFieldPrice() {
@@ -287,6 +297,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     
     
     /** 
+     * Retourne l'entier contenu dans le jTextField tfQuantity
      * @return Integer
      */
     public Integer getFieldQuantity() {
@@ -299,7 +310,8 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
 
     
     /** 
-     * @param classes
+     * Initialise les fruits disponibles dans la comboBox
+     * @param classes classes de fruits disponibles
      * @throws ClassNotFoundException
      * @throws InstantiationException
      * @throws IllegalAccessException
@@ -315,7 +327,8 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     
     
     /** 
-     * @param fruit
+     * Ajoute un fruit dans la macédoine
+     * @param fruit fruit à ajouter
      */
     public void addFruit(FruitSimple fruit) {
         this.macedoine.add(fruit);
@@ -323,6 +336,7 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
     
     
     /** 
+     * Retourne la liste de fruits de la macédoine
      * @return ArrayList<Fruit>
      */
     public ArrayList<Fruit> getMacedoine() {
