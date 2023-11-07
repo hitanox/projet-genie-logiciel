@@ -324,6 +324,4 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
     private javax.swing.JLabel tfTotal;
     // End of variables declaration//GEN-END:variables
 
-
-
 }

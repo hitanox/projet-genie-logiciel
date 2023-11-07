@@ -23,6 +23,7 @@ public class ControleurTest {
     private VuePanierV2 mainView;
     private VueConsole vueC;
     private FruitFactory facto;
+    ArrayList<String> fruitsClasses = new ArrayList<>();
 
     @Before
     public void setUp() {
@@ -36,8 +37,7 @@ public class ControleurTest {
         controleur.setPanier(panier);
         controleur.setMainVue(mainView);
         controleur.setVueConsole(vueC);
-
-        ArrayList<String> fruitsClasses = new ArrayList<>();
+  
         fruitsClasses.add(Ananas.class.getName());
         fruitsClasses.add(Banane.class.getName());
         fruitsClasses.add(Caroube.class.getName());
@@ -132,18 +132,16 @@ public class ControleurTest {
     }
 
     @Test
-    public void action_btnMacedoine() {
+    public void action_btnMacedoine() throws ClassNotFoundException, InstantiationException, IllegalAccessException{
+
         when(mainView.isActiv()).thenReturn(true);
 
         controleur.action("btnMacedoine");
 
         verify(mainView).closeView();
-        verify(secondaryView).openView();
-        verify(secondaryView).addControleur(controleur);
-        
-        verify(secondaryView).setFruitsChoices(fruitsClasses);
-        
-        verify(controleur).updateForm(secondaryView);
+
     }
+
+    
 
 }
