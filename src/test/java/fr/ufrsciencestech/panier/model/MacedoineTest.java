@@ -204,4 +204,61 @@ public class MacedoineTest {
         }
     }
 
+    @Test
+    public void testCheckFruitsEmptyList() {
+        Macedoine macedoine = new Macedoine();
+        ArrayList<Fruit> fruits = new ArrayList<>();
+
+        try {
+            macedoine.checkFruits(fruits);
+            fail("IllegalArgumentException should be thrown for an empty list of fruits.");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Macedoine cannot be empty", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testCheckFruitsWithJus() {
+        Macedoine macedoine = new Macedoine();
+        ArrayList<Fruit> fruits = new ArrayList<>();
+        fruits.add(new Pomme());
+        fruits.add(new Jus(new Orange()));
+
+        try {
+            macedoine.checkFruits(fruits);
+            fail("IllegalArgumentException should be thrown for a list containing Jus.");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Macedoine cannot contain a Jus", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testCheckFruitsWithMacedoine() {
+        Macedoine macedoine = new Macedoine();
+        ArrayList<Fruit> fruits = new ArrayList<>();
+        fruits.add(new Pomme());
+        fruits.add(new Macedoine());
+
+        try {
+            macedoine.checkFruits(fruits);
+            fail("IllegalArgumentException should be thrown for a list containing another Macedoine.");
+        } catch (IllegalArgumentException e) {
+            assertEquals("Macedoine cannot contain another Macedoine", e.getMessage());
+        }
+    }
+
+    @Test
+    public void testCheckFruitsValidList() {
+        Macedoine macedoine = new Macedoine();
+        ArrayList<Fruit> fruits = new ArrayList<>();
+        fruits.add(new Pomme());
+        fruits.add(new Banane());
+
+        try {
+            macedoine.checkFruits(fruits);
+        } catch (IllegalArgumentException e) {
+            fail("IllegalArgumentException should not be thrown for a valid list of fruits.");
+        }
+    }
+
 }
