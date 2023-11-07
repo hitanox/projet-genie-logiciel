@@ -30,9 +30,15 @@ public class Controleur implements ActionListener {
     
     @Override
     public void actionPerformed(ActionEvent e) {
-        FruitFactory facto = new FruitFactory();
         String source = ((Component) e.getSource()).getName();
 
+        action(source);
+        
+    }
+
+    public void action(String source){
+        FruitFactory facto = new FruitFactory();
+        
         try {
             if (mainView.isActiv()) {
                 switch (source) {
