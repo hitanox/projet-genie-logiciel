@@ -1,8 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
-
 package fr.ufrsciencestech.panier.view;
 
 import fr.ufrsciencestech.panier.controler.Controleur;
@@ -17,10 +12,6 @@ import javax.swing.table.TableCellRenderer;
 import java.awt.Component;
 import java.awt.Dimension;
 
-/**
- *
- * @author sltctom
- */
 public class VuePanierV2 extends javax.swing.JFrame implements VueG {
 
     private DefaultTableModel model;
@@ -79,6 +70,11 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         
     }
 
+    
+    /** 
+     * Met à jour le contenu du tableau
+     * @param donnees données à insérer dans le tableau
+     */
     public void updateTab(Object[][] donnees) {
         model=new DefaultTableModel();
         model.addColumn("Produit");
@@ -95,17 +91,34 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         }
     }
 
+    
+    /** 
+     * Met à jour la vue
+     * @param m
+     * @param o
+     */
     @Override
     public void update(Observable m, Object o) {
         this.updateTab(((Panier) o).toObject());
         this.updateTotal(((Panier) o).getPrix());
     }
 
+    
+    /** 
+     * Met à jour le formulaire associé à la vue
+     * @param origine
+     * @param prix
+     */
     public void updateForm(String origine, String prix) {
         this.tfOrigin.setText(origine);
         this.tfPrice.setText(prix);
     }
 
+    
+    /** 
+     * Ajout au controleur des objets à observer
+     * @param c
+     */
     @Override
     public void addControleur(Controleur c) {
         this.add.addActionListener(c);
@@ -115,22 +128,47 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         for (JButton button : buttons) button.addActionListener(c);
     }
 
+    
+    /** 
+     * Retourne le tableau jTable1
+     * @return JTable
+     */
     public javax.swing.JTable getTab() {
         return jTable1;
     }
 
+    
+    /** 
+     * Retourne la valeur sélectionnée dans la comboBox
+     * @return String
+     */
     public String getFieldName() {
         return (String) comboName.getSelectedItem();
     }
 
+    
+    /** 
+     * Retourne le texte du jTextField tfOrigin
+     * @return String
+     */
     public String getFieldOrigin() {
         return tfOrigin.getText();
     }
 
+    
+    /** 
+     * Retourne le texte du jTextField tfPrice
+     * @return String
+     */
     public String getFieldPrice() {
         return tfPrice.getText();
     }
 
+    
+    /** 
+     * Retourne l'entier contenu dans le jTextField tfQuantity
+     * @return Integer
+     */
     public Integer getFieldQuantity() {
         try {
             return Integer.valueOf(tfQuantity.getText());
@@ -139,44 +177,95 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         }
     }
     
+    
+    /** 
+     * Retourne lineToRemove (position de la ligne à supprimer)
+     * @return int
+     */
     public int getLineToRemove() {
         return this.lineToRemove;
     }
     
+    
+    /** 
+     * Retourne le nom de l'élément en position n dans le tableau
+     * @param n
+     * @return String
+     */
     public String getNameAt(int n) {
-        return this.jTable1.getValueAt(n,0).toString(); //sécuriser si getValueAt retourne null ?
+        return this.jTable1.getValueAt(n,0).toString();
     }
     
+    
+    /** 
+     * Retourne l'origine de l'élément en position n dans le tableau
+     * @param n
+     * @return String
+     */
     public String getOriginAt(int n) {
         return this.jTable1.getValueAt(n,1).toString(); //sécuriser si getValueAt retourne null ?
     }
     
+    
+    /** 
+     * Retourne le prix de l'élément en position n dans le tableau
+     * @param n
+     * @return double
+     */
     public double getPriceAt(int n) {
         return Double.parseDouble(this.jTable1.getValueAt(n,2).toString()); //sécuriser si getValueAt retourne null ?
     }
 
+    
+    /** 
+     * Retourne le choix de l'option isJuice : true si le bouton est activé, false sinon
+     * @return Boolean
+     */
     public Boolean isJuice() {
         return isJuice.isSelected();
     }
 
+    
+    /** 
+     * Met à jour l'affichage de tfTotal avec le prix total passé en paramètre
+     * @param prix
+     */
     public void updateTotal(double prix) {
         this.tfTotal.setText("Total : " + prix + " €");
     }
 
+    
+    /** 
+     * Retourne le nom de la vue
+     * @return String
+     */
     @Override
     public String getName() {
         return this.name;
     }
     
+    
+    /** 
+     * Retourne si la vue est active ou non
+     * @return Boolean
+     */
     @Override
     public Boolean isActiv() {
         return this.isActiv;
     }
     
+    
+    /** 
+     * Modificateur de la variable de classe consoleView
+     * @param vueConsole
+     */
     public void setVueConsole(VueConsole vueConsole){
         this.consoleView = vueConsole;
     }
 
+    /**
+     * Ferme la vue ainsi que la vue console
+     */
     @Override
     public void closeView() {
         this.isActiv = false;
@@ -184,6 +273,9 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         consoleView.setVisible(false);
     }
 
+    /**
+     * Ouvre la vue ainsi que la vue console
+     */
     @Override
     public void openView() {
         this.isActiv = true;
@@ -191,6 +283,14 @@ public class VuePanierV2 extends javax.swing.JFrame implements VueG {
         consoleView.setVisible(true);
     }
 
+    
+    /** 
+     * Initialise les fruits disponibles dans la comboBox
+     * @param classes classes de fruits disponibles
+     * @throws ClassNotFoundException
+     * @throws InstantiationException
+     * @throws IllegalAccessException
+     */
     public void setFruitsChoices(ArrayList<String> classes) throws ClassNotFoundException, InstantiationException, IllegalAccessException {
         this.comboName.setModel(new DefaultComboBoxModel<String>());
         for (String className : classes) {
