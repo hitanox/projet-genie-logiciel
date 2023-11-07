@@ -105,7 +105,7 @@ public class Macedoine extends Observable implements Fruit {
     /** Vérifie qu'il n'y a ni jus, ni macédoine dans la liste de fruits placée en paramètre
      * @param fruits
      */
-    private void checkFruits(ArrayList<Fruit> fruits) {
+    public void checkFruits(ArrayList<Fruit> fruits) {
         if (fruits.size() <= 0) {
             throw new IllegalArgumentException("Macedoine cannot be empty");
         } else {
