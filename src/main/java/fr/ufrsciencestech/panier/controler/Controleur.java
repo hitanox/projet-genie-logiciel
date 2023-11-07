@@ -102,6 +102,10 @@ public class Controleur implements ActionListener {
                     case "comboName":
                         updateForm(secondaryView);
                         break;
+                    case "cancel":
+                        secondaryView.closeView();
+                        mainView.openView();
+                        break;
                 }
 
             }
