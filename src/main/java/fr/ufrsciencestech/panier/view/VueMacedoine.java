@@ -98,7 +98,12 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
 
         tfPrice.setText("Prix");
 
-        tfQuantity.setText("Quantité");
+        tfQuantity.setText("1");
+        tfQuantity.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tfQuantityActionPerformed(evt);
+            }
+        });
 
         add.setText("Ajouter");
         add.addActionListener(new java.awt.event.ActionListener() {
@@ -185,6 +190,10 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         // TODO add your handling code here:
     }//GEN-LAST:event_cancelActionPerformed
 
+    private void tfQuantityActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tfQuantityActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tfQuantityActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -268,8 +277,10 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         System.out.println(comboName.getItemAt(0));
     }
     
-    public void addFruit(FruitSimple fruit) {
-        this.macedoine.add(fruit);
+    public void addFruit(FruitSimple fruit, int quantity) {
+        for(int i=0; i < quantity; i++) {
+            this.macedoine.add(fruit);
+        }
     }
     
     public ArrayList<Fruit> getMacedoine() {

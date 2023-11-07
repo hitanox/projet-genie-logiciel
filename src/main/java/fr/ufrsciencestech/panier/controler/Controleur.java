@@ -96,8 +96,9 @@ public class Controleur implements ActionListener {
                         break;
                     case "add":
                         String fruitName = (this.secondaryView).getFieldName();
+                        Integer quantity = secondaryView.getFieldQuantity();
                         FruitSimple fruit = facto.createFruitSimple(fruitName);
-                        (this.secondaryView).addFruit(fruit);
+                        (this.secondaryView).addFruit(fruit, quantity);
                         break;
                     case "comboName":
                         updateForm(secondaryView);
