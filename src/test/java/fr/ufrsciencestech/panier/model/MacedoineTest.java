@@ -1,5 +1,6 @@
 package fr.ufrsciencestech.panier.model;
 
+import fr.ufrsciencestech.panier.model.fruits.Fruit;
 import fr.ufrsciencestech.panier.model.fruits.FruitFactory;
 import fr.ufrsciencestech.panier.model.fruits.fruitsimple.FruitSimple;
 import fr.ufrsciencestech.panier.model.fruits.fruitspecifique.Jus;
@@ -10,8 +11,11 @@ import fr.ufrsciencestech.panier.model.panier.PanierPleinException;
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
+
 import static junit.framework.Assert.assertFalse;
 import static junit.framework.TestCase.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 public class MacedoineTest {
 
@@ -65,6 +69,78 @@ public class MacedoineTest {
         } catch (IllegalArgumentException e) {
             assertEquals("Macedoine cannot contain a Jus", e.getMessage());
         }
+    }
+
+    @Test
+    public void testToObject() throws PanierPleinException {
+        Panier panier = pf.createPanier(10);
+        FruitSimple pomme = ff.createFruitSimple("Pomme");
+        FruitSimple banane = ff.createFruitSimple("Banane");
+        FruitSimple kiwi = ff.createFruitSimple("Kiwi");
+
+        panier.ajout(pomme, 1);
+        panier.ajout(banane, 1);
+        panier.ajout(kiwi, 1);
+
+        Macedoine m = ff.createMacedoine(panier.getFruits());
+        Object[][] res = m.toObject();
+
+        Object[][] expected = new Object[][]{
+                {"Banane", 1.99, "Papouasie-Nouvelle-Guinée", 1},
+                {"Pomme", 1.35, "Asie", 1},
+                {"Kiwi", 2.99, "Chine", 1}
+        };
+
+        assertEquals(res.length, expected.length);
+        for (int i = 0; i < res.length; i++) {
+            assertEquals(res[i][0], expected[i][0]);
+            assertEquals(res[i][3], expected[i][3]);
+        }
+    }
+
+    @Test
+    public void testEquals() throws PanierPleinException {
+        FruitSimple pomme = ff.createFruitSimple("Pomme");
+        FruitSimple banane = ff.createFruitSimple("Banane");
+        FruitSimple kiwi = ff.createFruitSimple("Kiwi");
+
+        ArrayList<Fruit> fruits = new ArrayList<>();
+        fruits.add(pomme);
+        fruits.add(banane);
+        fruits.add(kiwi);
+
+        Macedoine m1 = ff.createMacedoine(fruits);
+
+        FruitSimple pomme2 = ff.createFruitSimple("Pomme");
+        FruitSimple banane2 = ff.createFruitSimple("Banane");
+        FruitSimple kiwi2 = ff.createFruitSimple("Kiwi");
+
+        ArrayList<Fruit> fruits2 = new ArrayList<>();
+        fruits2.add(pomme2);
+        fruits2.add(banane2);
+        fruits2.add(kiwi2);
+
+        Macedoine m2 = ff.createMacedoine(fruits2);
+
+        FruitSimple papaye = ff.createFruitSimple("Papaye");
+        FruitSimple poire = ff.createFruitSimple("Poire");
+        FruitSimple litchi = ff.createFruitSimple("Litchi");
+
+        ArrayList<Fruit> fruits3 = new ArrayList<>();
+        fruits3.add(papaye);
+        fruits3.add(poire);
+        fruits3.add(litchi);
+
+        Macedoine m3 = ff.createMacedoine(fruits3);
+
+        assertTrue(m1.equals(m2));
+        assertFalse(m1.equals(m3));
+    }
+
+    @Test
+    public void testGetNom() {
+        Macedoine m = ff.createMacedoine(panierTest.getFruits());
+        assertEquals("Macedoine de Orange, Poire, ", m.getNom());
     }
 
 }
