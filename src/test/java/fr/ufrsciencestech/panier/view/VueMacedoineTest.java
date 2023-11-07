@@ -27,18 +27,11 @@ public class VueMacedoineTest {
     }
 
     @Test
-    public void testDelButtonActionPerformed() {
-
-        vue.getDelButton().doClick(); 
-
-        verify(controleur).actionPerformed(any(ActionEvent.class));
-    }
-
-    @Test
     public void testAddMacedoineButtonActionPerformed() {
 
         vue.getAddMacedoineButton().doClick(); 
 
         verify(controleur).actionPerformed(any(ActionEvent.class));
     }
+
 }

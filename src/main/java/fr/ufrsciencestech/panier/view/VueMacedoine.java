@@ -305,11 +305,8 @@ public class VueMacedoine extends javax.swing.JFrame implements VueG {
         return add;
     }
     
-    public JButton getDelButton() {
-        return del;
-    }
-    
     public JButton getAddMacedoineButton() {
         return addMacedoine;
     }
+
 }
