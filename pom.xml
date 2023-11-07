@@ -125,7 +125,24 @@
                 <target>8</target>
             </configuration>
         </plugin>
-            
+        <plugin>
+          <groupId>org.apache.maven.plugins</groupId>
+          <artifactId>maven-javadoc-plugin</artifactId>
+          <executions>
+                <execution>
+                    <id>attach-javadocs</id>
+                    <goals>
+                        <goal>jar</goal>
+                    </goals>
+                </execution>
+            </executions>
+          <configuration>
+            <excludePackageNames>com.formdev.flatlaf.themes</excludePackageNames>
+            <additionalparam>-Xdoclint:none</additionalparam>
+            <ignoreWarnings>true</ignoreWarnings>
+            <failOnError>false</failOnError>
+          </configuration>
+        </plugin>
     </plugins>
   </build>
     <repositories>
