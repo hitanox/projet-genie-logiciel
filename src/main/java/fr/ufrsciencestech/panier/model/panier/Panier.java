@@ -21,8 +21,11 @@ public class Panier extends Observable {
         }
     }
 
+    /**
+     * Affichage de ce qui est contenu dans le panier : liste des fruits presents
+     */
     @Override
-    public String toString() {  //affichage de ce qui est contenu dans le panier : liste des fruits presents
+    public String toString() {
         StringBuilder res = new StringBuilder("Panier de " + this.getTaillePanier() + " fruits : " + this.getPrix() + "\n");
         for (Fruit fruit : fruits) {
             res.append(fruit.toString()).append("\n");
@@ -30,41 +33,81 @@ public class Panier extends Observable {
         return res.toString();
     }
 
-    public ArrayList<Fruit> getFruits() {  //accesseur du premier attribut
+    /**
+     * Accesseur de la liste de fruits
+     * @return liste de fruits
+     */
+    public ArrayList<Fruit> getFruits() {  
         return this.fruits;
     }
 
-    public void setFruits(ArrayList<Fruit> fruits) { //modificateur du premier attribut
+    /**
+     * Modificateur de la liste de fruits
+     * @param fruits
+     */
+    public void setFruits(ArrayList<Fruit> fruits) {
         this.fruits = fruits;
     }
 
-    public int getTaillePanier() {  //accesseur retournant la taille allouee pour l'attibut fruits
+    /**
+     * Accesseur retournant la taille allouee pour l'attibut fruits
+     * @return taille du panier
+     */
+    public int getTaillePanier() {
         return this.fruits.size();
     }
 
-    public int getContenanceMax() {  //accesseur du second attribut
+    /**
+     * Accesseur de la contenance maximale du panier
+     * @return contenance maximale du panier
+     */
+    public int getContenanceMax() {
         return this.contenanceMax;
     }
 
-    public Fruit getFruit(int i) {  //accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
+    /**
+     * Accesseur retournant le fruit contenu dans le panier a l'emplacement n°i ou null s'il n'y a rien a cet emplacement
+     * @param i position du fruit que l'on veut
+     * @return fruit souhaité ou null
+     */
+    public Fruit getFruit(int i) {  
         return this.fruits.get(i);
     }
 
-    public void setFruit(int i, Fruit f) {  //modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
+    /**
+     * Modificateur du fruit contenu dans le panier a l'emplacement n°i par f (s'il y a bien deja un fruit a cet emplacement, ne rien faire sinon)
+     * @param i position que l'on veux modifier
+     * @param f fruit que l'on veut ajouter
+     */
+    public void setFruit(int i, Fruit f) {  
         if (this.fruits.contains(this.fruits.get(i))) {
             this.fruits.set(i, f);
         }
     }
 
-    public boolean estVide() {  //predicat indiquant que le panier est vide
+    /**
+     * Prédicat indiquant que le panier est vide
+     * @return booléen informant si le panier est vide ou non
+     */
+    public boolean estVide() {  
         return this.fruits.isEmpty();
     }
 
-    public boolean estPlein() {  //predicat indiquant que le panier est plein
+    /**
+     * Prédicat indiquant que le panier est plein
+     * @return booléen informant si le panier est plein ou non
+     */
+    public boolean estPlein() {  
         return this.fruits.size() == this.contenanceMax;
     }
 
-    public void ajout(Fruit o, Integer quantity) throws PanierPleinException {  //ajoute le fruit o a la fin du panier si celui-ci n'est pas plein
+    /**
+     * Ajoute le fruit o à la fin du panier si celui-ci n'est pas plein
+     * @param o fruit à ajouter
+     * @param quantity nombre de fruits à ajouter
+     * @throws PanierPleinException
+     */
+    public void ajout(Fruit o, Integer quantity) throws PanierPleinException {  
         for (int i = 0; i < quantity; i++) {
             if (!estPlein()) {
                 this.fruits.add(o);
@@ -74,20 +117,33 @@ public class Panier extends Observable {
                 throw new PanierPleinException();
             }
         }
-        setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-        notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+        setChanged();
+        notifyObservers(this);
     }
 
-    public Fruit retrait() throws PanierVideException { //retire le dernier fruit du panier si celui-ci n'est pas vide
+    /**
+     * Retire le dernier fruit du panier si celui-ci n'est pas vide
+     * @return fruit retiré
+     * @throws PanierVideException
+     */
+    public Fruit retrait() throws PanierVideException { 
         if (!estVide()) {
             Fruit fruit = this.fruits.get(getTaillePanier() - 1);;
             this.fruits.remove(getTaillePanier() - 1);
-            setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+            setChanged();
+            notifyObservers(this);
             return fruit;
         } else throw new PanierVideException();
     }
     
+    /**
+     * Retire du panier les fruits identifiés par nom, origine et prix
+     * @param nom
+     * @param origine
+     * @param prix
+     * @return exemple de fruit retiré
+     * @throws PanierVideException
+     */
     public Fruit retrait(String nom, String origine, double prix) throws PanierVideException {
         if (!estVide()) {
             Fruit fruit = null;
@@ -98,13 +154,17 @@ public class Panier extends Observable {
                     i--;
                 }
             }
-            setChanged(); //marks this Observable object as having been changed; the hasChanged method will now return true
-            notifyObservers(this); //if this object has changed, as indicated by the hasChanged method, then notify all of its observers and then call the clearChanged method to indicate that this object has no longer changed
+            setChanged();
+            notifyObservers(this);
             return fruit;
         } else throw new PanierVideException();
     }
 
-    public double getPrix() {  //calcule le prix du panier par addition des prix de tous les fruits contenus dedans
+    /**
+     * Calcule le prix du panier par addition des prix de tous les fruits contenus dedans
+     * @return prix du panier
+     */
+    public double getPrix() {  
         double prix = 0.0;
         for (Fruit fruit : fruits) {
             prix += fruit.getPrix();
@@ -112,6 +172,10 @@ public class Panier extends Observable {
         return prix;
     }
 
+    /**
+     * Boycotte une origine placée en paramètre
+     * @param origine
+     */
     public void boycotteOrigine(String origine) {
         ArrayList<Fruit> filters = new ArrayList<>();
 
@@ -124,8 +188,12 @@ public class Panier extends Observable {
         this.fruits = filters;
     }
 
+    /**
+     * Prédicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
+     * @return prédicat
+     */
     @Override
-    public boolean equals(Object o) {  ///predicat pour tester si 2 paniers sont equivalents : s'ils contiennent exactement les memes fruits
+    public boolean equals(Object o) {  
         if (o != null && getClass() == o.getClass()) {
             Panier p = (Panier) o;
             int compt = 0;
@@ -141,6 +209,10 @@ public class Panier extends Observable {
         return false;
     }
 
+    /**
+     * Transforme le panier en une matrice d'objets : chaque ligne contient un fruit avec sa description (nom, prix origine, quantité)
+     * @return matrice d'objets obtenue
+     */
     public Object[][] toObject() {
         Map<Fruit, Integer> fruitWithQuantity = new HashMap<>();
 

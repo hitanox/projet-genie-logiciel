@@ -14,45 +14,45 @@ import javax.swing.UnsupportedLookAndFeelException;
 public class Main {
     private static VuePanierV2 vueg;      //pour pouvoir changer de vue si on le souhaite
     private static Controleur controleur;  //pour pouvoir changer de controleur si on le souhaite
-    private static VueConsole vuec;
+    private static VueConsole vuec;     //pour pouvoir changer de console si on le souhaite
 
     /**
-     * @return the vueg
+     * @return vueg
      */
     public VuePanierV2 getVueg() {
         return vueg;
     }
 
     /**
-     * @param vueg the vueg to set
+     * @param vueg
      */
     public void setVueg(VuePanierV2 vueg) {
         this.vueg = vueg;
     }
 
     /**
-     * @return the controleur
+     * @return controleur
      */
     public Controleur getControleur() {
         return controleur;
     }
 
     /**
-     * @param controleur the controleur to set
+     * @param controleur 
      */
     public void setControleur(Controleur controleur) {
         this.controleur = controleur;
     }
 
     /**
-     * @return the vuec
+     * @return vuec
      */
     public VueConsole getVuec() {
         return vuec;
     }
 
     /**
-     * @param vuec the vuec to set
+     * @param vuec
      */
     public void setVuec(VueConsole vuec) {
         this.vuec = vuec;

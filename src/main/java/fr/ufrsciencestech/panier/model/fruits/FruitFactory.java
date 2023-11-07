@@ -12,7 +12,7 @@ import java.util.Arrays;
 public class FruitFactory implements ProductFactory {
 
     /**
-     * List of fruits available
+     * Liste des fruits disponibles
      */
     private final String[] fruitsAvailable = {"Ananas", "Banane", "Cerise", "Fraise", "Kiwi", "Orange", "Poire", "Pomme", "Tomate", "Caroube", "Litchi", "Papaye"};
 
@@ -22,12 +22,11 @@ public class FruitFactory implements ProductFactory {
     }
 
     /**
-     * Create a new instance of a fruit depending on parameters given by the user
-     *
-     * @param name
-     * @param prix
-     * @param origine
-     * @return a new instance of a fruit depending on parameters given by the user
+     * Crée une nouvelle instance de fruit en fonction des paramètres
+     * @param name nom du fruit
+     * @param prix prix du fruit
+     * @param origine origine du fruit
+     * @return l'instance du fruit créé
      */
     @Override
     public FruitSimple createFruitSimple(String name, double prix, String origine) {
@@ -71,10 +70,10 @@ public class FruitFactory implements ProductFactory {
     }
 
     /**
-     * Create a new instance of a fruit depending on the name given by the user
+     * Crée une nouvelle instance de fruit à partir d'un nom
      *
-     * @param name
-     * @return a new instance of a fruit depending on the name given by the user
+     * @param name nom du fruit
+     * @return l'instance du fruit créé
      */
     @Override
     public FruitSimple createFruitSimple(String name) {
@@ -110,10 +109,10 @@ public class FruitFactory implements ProductFactory {
     }
 
     /**
-     * Create a new instance of a Macedoine with the list of fruits
+     * Crée une nouvelle instance de macédoine à partir d'une liste de fruits 
      *
      * @param fruits
-     * @return
+     * @return l'instance de la macédoine créée
      */
     @Override
     public Macedoine createMacedoine(ArrayList<Fruit> fruits) {
@@ -121,10 +120,10 @@ public class FruitFactory implements ProductFactory {
     }
 
     /**
-     * Create a new instance of a Jus with the fruit
+     * Crée un jus à partir d'un fruit
      *
      * @param fruit
-     * @return
+     * @return l'instance du jus créé
      */
     @Override
     public Jus createJus(Fruit fruit) {
@@ -132,7 +131,7 @@ public class FruitFactory implements ProductFactory {
     }
 
     /**
-     * Check if the name parameter is valid
+     * Vérifie la validité du nom placé en paramètre
      *
      * @param name
      */
@@ -143,7 +142,7 @@ public class FruitFactory implements ProductFactory {
     }
 
     /**
-     * Check if the price parameter is valid
+     * Vérifie la validité du prix placé en paramètre
      *
      * @param price
      */
@@ -154,7 +153,7 @@ public class FruitFactory implements ProductFactory {
     }
 
     /**
-     * Check if the origin parameter is valid
+     * Vérifie la validité de l'origine placée en paramètre
      *
      * @param origin
      */
