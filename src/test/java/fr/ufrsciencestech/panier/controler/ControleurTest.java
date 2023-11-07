@@ -21,6 +21,7 @@ public class ControleurTest {
     private Controleur controleur;
     private Panier panier;
     private VuePanierV2 mainView;
+    private VueMacedoine secondaryView; 
     private VueConsole vueC;
     private FruitFactory facto;
     ArrayList<String> fruitsClasses = new ArrayList<>();
@@ -33,6 +34,8 @@ public class ControleurTest {
 
         mainView = Mockito.mock(VuePanierV2.class);
         mainView.setVueConsole(vueC);
+
+        secondaryView = Mockito.mock(VueMacedoine.class);
 
         controleur.setPanier(panier);
         controleur.setMainVue(mainView);
@@ -141,7 +144,5 @@ public class ControleurTest {
         verify(mainView).closeView();
 
     }
-
-    
 
 }

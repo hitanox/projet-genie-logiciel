@@ -2,18 +2,18 @@ import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
+import java.awt.event.ActionEvent;
 import fr.ufrsciencestech.panier.model.panier.*;
 import fr.ufrsciencestech.panier.controler.Controleur;
 import fr.ufrsciencestech.panier.view.*;
-import java.awt.event.ActionEvent;
 
-public class VuePanierV2Test {
-    private VuePanierV2 vue;
+public class VueMacedoineTest {
+    private VueMacedoine vue;
     private Controleur controleur;
 
     @Before
     public void setUp() {
-        vue = new VuePanierV2(5); 
+        vue = new VueMacedoine();
         controleur = mock(Controleur.class);
         vue.addControleur(controleur);
     }
@@ -35,11 +35,10 @@ public class VuePanierV2Test {
     }
 
     @Test
-    public void testBtnMacedoineActionPerformed() {
+    public void testAddMacedoineButtonActionPerformed() {
 
-        vue.getBtnMacedoine().doClick(); 
+        vue.getAddMacedoineButton().doClick(); 
 
         verify(controleur).actionPerformed(any(ActionEvent.class));
     }
-
 }
