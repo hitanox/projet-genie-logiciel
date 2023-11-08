@@ -1,10 +1,9 @@
+package fr.ufrsciencestech.panier.view;
+
 import org.junit.Before;
 import org.junit.Test;
 import static org.mockito.Mockito.*;
-import static org.junit.Assert.*;
-import fr.ufrsciencestech.panier.model.panier.*;
 import fr.ufrsciencestech.panier.controler.Controleur;
-import fr.ufrsciencestech.panier.view.*;
 import java.awt.event.ActionEvent;
 
 public class VuePanierV2Test {
