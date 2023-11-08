@@ -60,10 +60,9 @@
 
     <dependency>
       <groupId>org.mockito</groupId>
-      <artifactId>mockito-all</artifactId>
-      <version>1.9.5</version>
+      <artifactId>mockito-core</artifactId>
+      <version>5.7.0</version>
       <scope>test</scope>
-      <type>jar</type>
     </dependency>
   </dependencies>
 
@@ -126,9 +125,10 @@
             </configuration>
         </plugin>
         <plugin>
-          <groupId>org.apache.maven.plugins</groupId>
-          <artifactId>maven-javadoc-plugin</artifactId>
-          <executions>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <version>3.6.2</version>
+            <executions>
                 <execution>
                     <id>attach-javadocs</id>
                     <goals>
@@ -136,13 +136,13 @@
                     </goals>
                 </execution>
             </executions>
-          <configuration>
-            <excludePackageNames>com.formdev.flatlaf.themes</excludePackageNames>
-            <additionalparam>-Xdoclint:none</additionalparam>
-            <ignoreWarnings>true</ignoreWarnings>
-            <failOnError>false</failOnError>
-          </configuration>
+            <configuration>
+                <excludePackageNames>com.formdev.flatlaf.themes</excludePackageNames>
+                <additionalOptions>-Xdoclint:none</additionalOptions>
+                <failOnError>false</failOnError>
+            </configuration>
         </plugin>
+
     </plugins>
   </build>
     <repositories>
